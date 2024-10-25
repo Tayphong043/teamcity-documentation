@@ -22,7 +22,7 @@ Instead of logging in with an empty username, you can also go to `<TeamCity_serv
 
 
 
-### Disable Super User
+## Disable Super User
 
 
 Super User login is enabled by default but can be disabled by setting the `teamcity.superUser.disable=true` [internal property](server-startup-properties.md#TeamCity+Internal+Properties). In emergencies, remove this setting in the [<`TeamCity Data Directory>`](teamcity-data-directory.md)`/config/internal.properties` file and restart TeamCity to restore Super User access.
