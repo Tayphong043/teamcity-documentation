@@ -184,7 +184,7 @@ You can add the following properties to the [configuration file](#Configuration+
 
 * `teamcity.storage.migration.processing.threadCount` — the number of threads that the tool should use for processing. The default value is **4**.
 * `teamcity.storage.migration.failWhenCannotAccessStorageSettings` — controls whether the migration should fail if the tool cannot fetch the storage settings from the TeamCity server. It may happen due to the lack of permissions. The default value is **false**.
-* `teamcity.storage.migration.s3.threadCount` — the number of threads that the tool should use to upload data to S3. The default value is **4**.
+* `teamcity.storage.migration.copying.threadCount` — the number of threads that the tool should use to upload data to a cloud storage. The default value is **4**.
+* `teamcity.storage.migration.upload.numberOfRetries` — the number of attempts the tool makes when uploading data to a cloud storage if it encounters errors. The default value is **5**.
+* `teamcity.storage.migration.upload.retryDelayMs` — the initial delay between attempts in milliseconds. The default value is **1000**.
 * `teamcity.storage.migration.s3.forceVirtualHostAddressing` — specifies whether the tool should use the virtual hosted style of S3 URL addresses instead of the deprecated path style. The default value is **true**.
-* `teamcity.storage.migration.s3.upload.numberOfRetries` — the number of attempts the tool makes when uploading data to S3 if it encounters errors. The default value is **5**.
-* `teamcity.storage.migration.s3.upload.retryDelayMs` — the initial delay between attempts in milliseconds. The default value is **1000**.
