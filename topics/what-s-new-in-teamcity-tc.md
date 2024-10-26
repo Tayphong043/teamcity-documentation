@@ -2,6 +2,20 @@
 
 <snippet id="2024-11-tc">
 
+
+## New Dependency Cache Features
+{instance="tc"}
+
+This TeamCity version introduces three new [build features](adding-build-features.md) designed to cache dependencies downloaded during a build, speeding up subsequent builds and enabling offline completion:
+
+* **Maven Cache** — caches dependencies used by [](maven.md) build steps
+* **Gradle Cache** — caches dependencies used by [](gradle.md) build steps
+* **NuGet Cache** — caches NuGet packages used by [](net.md) build steps
+
+All three features require no configuration: add/enable a required build feature to enable caching, and remove/disable it to force agents to re-download missing dependencies with each build.
+
+Learn more: [](dependency-caches.md)
+
 ## Upload Custom Kotlin Libraries
 {instance="tc"}
 
@@ -15,6 +29,7 @@ Learn more: [](kotlin-dsl.md#Add+Custom+Kotlin+Libraries)
 
 
 ## AWS Integration Enhancements
+{instance="tc"}
 
 [Amazon EC2 cloud profiles](setting-up-teamcity-for-amazon-ec2.md) will no longer use access keys or the default credentials provider chain, shifting to authentication through [TeamCity AWS connections](configuring-connections.md#AmazonWebServices). This change consolidates all authentication settings into a single connection that can be shared across multiple features (cloud profiles, [S3 artifact storages](storing-build-artifacts-in-amazon-s3.md), [](aws-credentials.md) build features, and so on).
 
