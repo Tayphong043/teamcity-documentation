@@ -68,3 +68,22 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
     * in a `Directory.Build.Props` file
 
 * NuGet Cache: the build feature calls the `dotnet list package --format=json --output-version=1 --include-transitive` command to analyze project dependencies and detect invalid caches. The `--format` parameter is available in .NET SDK 7.0.200 and higher, meaning the build feature cannot operate on agents with older SDK versions.
+
+
+## DSL Configuration
+
+The sample below illustrates how to add dependency cache features in [](kotlin-dsl.md).
+
+```Kotlin
+object Build : BuildType({
+    name = "Build"
+    
+    features {
+        // ...
+        gradleCache {}
+        mavenCache {}
+        nugetCache {}
+    }
+    // ...
+})
+```
