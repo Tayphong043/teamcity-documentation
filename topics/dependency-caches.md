@@ -69,15 +69,15 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
 
 * The build feature supports all three local Maven repo types: per-agent, per-build, and Maven default.
 
+### NuGet Cache
+
+* The build feature calls the `dotnet list package --format=json --output-version=1 --include-transitive` command to analyze project dependencies and detect invalid caches. The `--format` parameter is available in .NET SDK 7.0.200 and higher, meaning the build feature cannot operate on agents with older SDK versions.
+
 * The caching is not supported for environments with package locations set via MSBuild-specific ways:
 
     * via MSBuild command line
     * in a project file
     * in a `Directory.Build.Props` file
-
-### NuGet Cache
-
-* The build feature calls the `dotnet list package --format=json --output-version=1 --include-transitive` command to analyze project dependencies and detect invalid caches. The `--format` parameter is available in .NET SDK 7.0.200 and higher, meaning the build feature cannot operate on agents with older SDK versions.
 
 
 ## DSL Configuration
