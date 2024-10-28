@@ -273,14 +273,15 @@ Other examples:
 
    ```
 
-<!--
+
 
 ## Pull Request Branch Filters
 
 Use the `+|-pr: <parameter1>=<value1> <parameter2>=<value2> ...` syntax to create filters that target specific pull (merge) request branches. This universal syntax allows you to define fine-grained VCS-agnostic filter expressions that consider more specific parameters than just logical branch names.
 
-> For the `+|-pr:...` filters to have any effect, the related VCS root must first be able to detect pull request branches. To do so, configure the [](pull-requests.md) build feature.
->
+> * For the `+|-pr:...` filters to have any effect, the related VCS root must first be able to detect pull request branches. To do so, configure the [](pull-requests.md) build feature.
+> * Pull request branch filters are currently supported only for triggers.
+> 
 {style="tip"}
 
 The `<parameter>=<value>` expressions are combined using the logical `AND` operator, meaning a pull (merge) request branch must satisfy all conditions to pass the filter. Currently, the following parameters and values are supported:
@@ -291,13 +292,17 @@ The `<parameter>=<value>` expressions are combined using the logical `AND` opera
 
 * `draft` — specifies whether draft pull requests are accepted. This parameter is in effect only for GitHub and GitLab. Supported values: `true` to accept **only** requests labeled as drafts; `false` to accept **only** non-draft requests.
 
-* `author` — allows you to filter pull (merge) requests by their authors. Note that the actual author of incoming changes may be different from a person who sent a request. Supported values: usernames.
+* `author` — allows you to filter pull (merge) requests by their authors. Note that the actual author of incoming changes may be different from a person who sent a request. Supported values: usernames. Currently not supported for Azure and Bitbucket Cloud repositories.
 
 * `github_role` — allows you to filter pull (merge) requests by author roles (relative to the repository organization). Supported values: `collaborator`, `contributor`, `member`, `owner`, `none` (not case-sensitive).
 
 > Currently, joint parameter values are not supported. To enumerate multiple accepted values, add multiple stand-alone filter expressions (for example, `+pr: github_role=COLLABORATOR` and `+pr: github_role=CONTRIBUTOR`).
 >
 {style="note"}
+
+When setting up branch filters, click the magic wand button and switch to the **Pull Request condition** tab to add filter expressions using a visual editor.
+
+<img src="dk-visual-pr-filters-editor.png" alt="Filter Expression Editor" width="706"/>
 
 
 
@@ -370,7 +375,7 @@ object Build : BuildType({
   }
 })
 ```
--->
+
 
 
 
