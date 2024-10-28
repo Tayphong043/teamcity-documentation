@@ -1,7 +1,7 @@
 [//]: # (title: Dependency Caches)
 
 
-**Maven Cache**, **Gradle Cache**, and **NuGet Cache** are configuration-free build features that speed up builds by allowing related steps to reuse dependencies downloaded during previous builds of the same build configuration.
+**Maven Cache**, **Gradle Cache**, and **NuGet Cache** are configuration-free build features that speed up builds by allowing related steps to reuse dependencies downloaded during previous builds of the same build configuration. In addition, caches can be shared between steps of the same build, given that these steps utilize the same dependency directory.
 
 * Maven Cache — caches dependencies used by [](maven.md) build steps
 * Gradle Cache — caches dependencies used by [](gradle.md) build steps
@@ -19,7 +19,7 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
         The initial cache is formed during the first build run. To do this, a build feature caches the contents of track directories as is, without filtering out any files.<br/>
         Tracked repositories:
         <list type="bullet">
-            <li><b>Maven:</b> <a href="https://maven.apache.org/guides/introduction/introduction-to-repositories.html">local Maven repositories</a>. The default path is <code>${user.home}/.m2/repository/</code>.</li>
+            <li><b>Maven:</b> <a href="https://maven.apache.org/guides/introduction/introduction-to-repositories.html">local Maven repositories</a>. The default path depends on step <a href="maven.md#Local+Artifact+Repository+Settings">local artifact repository settings</a>.</li>
             <li><b>NuGet:</b> <a href="https://learn.microsoft.com/en-us/nuget/consume-packages/managing-the-global-packages-and-cache-folders">global package folder</a>. The default path is <code>${user.home}/.nuget/packages</code>.</li>
             <li><b>Gradle:</b> <a href="https://docs.gradle.org/current/userguide/dependency_resolution.html#sub:cache_copy">Gradle cache directory</a>. The default path is <code>${user.home}/.gradle/caches</code>.</li>
         </list>
@@ -35,7 +35,6 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
                     <li>the cache was not validated for 7 days or longer</li>
                     <li>the cache reached its 30-day lifetime, even if it was recently validated</li>
                     <li>the <code>teamcity.depcache.invalidate</code> <a href="configuring-build-parameters.md">parameter</a> equals <b>true</b></li>
-                    <li>the build feature detected a local dependency repository that was missing from the current cache version</li>
                 </ul>
             </li>
             <li>At the end:
@@ -55,19 +54,30 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
 
 ## Special Notes and Limitations
 
-* Currently, caching is employed only for builds running on cloud agents with the "After the first build" terminate condition. Such agents are called ephemeral and can be identified by the [`teamcity.agent.ephemeral=true`](predefined-build-parameters.md) parameter.
+### Common
+
+* Currently, caching is employed only for builds running on cloud agents with the "After the first build" terminate condition. Such agents are called ephemeral and can be identified by the [`teamcity.agent.ephemeral=true`](predefined-build-parameters.md) parameter. You can upvote ticket [TW-90253](https://youtrack.jetbrains.com/issue/TW-90253/Dependency-cache-extend-beyond-ephemeral-agents) or share suggestions if you want "... Cache" features to support other agent types as well.
+
+* The cache is only published if the build was successful. See this ticket for more information: [TW-89838](https://youtrack.jetbrains.com/issue/TW-89838/The-dependency-cache-is-not-saved-and-not-published-for-the-failed-builds-with-failed-tests).
 
 * To enable dependency caching for [builds running in container](container-wrapper.md), set the `-v <path_to_your_cache>:<path_to_your_cache>` volume.
 
-* Maven Cache: the build feature supports all three local Maven repo types: per-agent, per-build, and Maven default.
+* Certain build configuration setups rely on spawning "virtual" builds. For example, when using [](parallel-tests.md) or [](matrix-build.md), each test batch or parameter combination runs in a separate build. Each of these dynamically generated builds publish an identical cache. See the following ticket for more information: [TW-89837](https://youtrack.jetbrains.com/issue/TW-89837/The-same-dependency-cache-is-created-multiple-times-in-every-virtual-build).
 
-* NuGet Cache: the caching is not supported for environments with package locations set via MSBuild-specific ways:
+
+### Maven Cache
+
+* The build feature supports all three local Maven repo types: per-agent, per-build, and Maven default.
+
+* The caching is not supported for environments with package locations set via MSBuild-specific ways:
 
     * via MSBuild command line
     * in a project file
     * in a `Directory.Build.Props` file
 
-* NuGet Cache: the build feature calls the `dotnet list package --format=json --output-version=1 --include-transitive` command to analyze project dependencies and detect invalid caches. The `--format` parameter is available in .NET SDK 7.0.200 and higher, meaning the build feature cannot operate on agents with older SDK versions.
+### NuGet Cache
+
+* The build feature calls the `dotnet list package --format=json --output-version=1 --include-transitive` command to analyze project dependencies and detect invalid caches. The `--format` parameter is available in .NET SDK 7.0.200 and higher, meaning the build feature cannot operate on agents with older SDK versions.
 
 
 ## DSL Configuration
