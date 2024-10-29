@@ -28,6 +28,21 @@ All three features require no configuration: add/enable a required build feature
 
 Learn more: [](dependency-caches.md)
 
+
+## Approve Multiple Builds at Once
+{instance="tc"}
+
+TeamCity enables you to require explicit permission from designated users before starting certain builds. Approval is needed in two cases:
+
+* When a build configuration has the [](build-approval.md) feature to prevent accidental runs.
+* When [](untrusted-builds.md) are enabled, ensuring unverified pull request changes are reviewed before builds begin.
+
+Previously, both options required approving each build individually within a chain. Starting with version 2024.11, clicking **Approve** now grants permission for all builds in the chain at once.
+
+<img src="dk-approve-chain.png" width="706" alt="Approve chain"/>
+
+Learn more: [](build-approval.md), [](untrusted-builds.md)
+
 ## Upload Custom Kotlin Libraries
 {instance="tc"}
 
