@@ -20,7 +20,7 @@ This service message supports the `trackingInfo` attribute (Unicode, up to 1000 
 During agentless steps, the external tool should report all build status information and send any other types of requests directly to the TeamCity server via [REST API](https://www.jetbrains.com/help/teamcity/rest/teamcity-rest-api-documentation.html).
 
 To perform a request, it needs to provide:
-* [build-level authentication](artifact-dependencies.md#Build-level+authentication) credentials specified as [build system properties](configuring-build-parameters.md):
+* [build-level authentication](artifact-dependencies.md#build-level-auth) credentials specified as [build system properties](configuring-build-parameters.md):
    * username: `%\system.teamcity.auth.userId%`
    * password: `%\system.teamcity.auth.password%`
 * [build ID](build-results-page.md#Internal+Build+ID): `%\teamcity.build.id%`

@@ -128,7 +128,7 @@ Note the following nuances:
   * can retrieve settings of the build configurations where the builds are run, including the values of the password fields.
   * can download artifacts from any build on the server.
     <anchor name="view-build-config-settings"/>
-* Users with the "View build configuration settings" permission (by default, the Project Developer role) can obtain values of [build-level authentication parameters](artifact-dependencies.md#Build-level+authentication) and exploit them to view all the projects on the server that they normally cannot access. To prevent this from happening, use the `teamcity.buildAuth.enableStrictMode=true` [internal property](server-startup-properties.md#TeamCity+Internal+Properties).
+* Users with the "View build configuration settings" permission (by default, the Project Developer role) can obtain values of [build-level authentication parameters](artifact-dependencies.md#build-level-auth) and exploit them to view all the projects on the server that they normally cannot access. To prevent this from happening, use the `teamcity.buildAuth.enableStrictMode=true` [internal property](server-startup-properties.md#TeamCity+Internal+Properties).
   {instance="tc"}
 * Users with the "View build configuration settings" permission (by default, the Project Developer role) can view all the projects on the server.
   {instance="tcc"}
