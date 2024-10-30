@@ -31,7 +31,7 @@ Learn more: [Storing Project Settings in Version Control Systems](storing-projec
 
 Starting with this version you can store the contents of your server's [`Data_Directory/config`](teamcity-data-directory.md) directory in an external repository. This setup allows you to view and investigate the complete history of server edits, and easily restore these configuration files should they ever become corrupted.
 
-Learn more: [](teamcity-data-directory.md#Upload+Configuration+Files+to+a+Version+Control)
+Learn more: [](teamcity-data-directory.md#TeamCityDataDirectory-centralRepository)
 
 
 ## VCS Integration Enhancements

@@ -85,4 +85,4 @@ Build logs located in the `/logs` subdirectory of [`/artifacts`](teamcity-data-d
 
 ## Restoring Configuration Files
 
-Set up an [external configuration storage](teamcity-data-directory.md#Upload+Configuration+Files+to+a+Version+Control) to maintain a complete history of server edits. This allows you to quickly restore files in the [`<TeamCity Data Directory>`](teamcity-data-directory.md)`/config` directory if they become corrupted.
+Set up an [external configuration storage](teamcity-data-directory.md#TeamCityDataDirectory-centralRepository) to maintain a complete history of server edits. This allows you to quickly restore files in the [`<TeamCity Data Directory>`](teamcity-data-directory.md)`/config` directory if they become corrupted.
