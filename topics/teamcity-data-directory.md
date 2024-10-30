@@ -64,9 +64,10 @@ We highly recommend placing the Data Directory outside of the TeamCity installat
 <!--[//]: # (Internal note. Do not delete. "TeamCity Data Directoryd311e146.txt")-->
 
 
-<anchor id="TeamCityDataDirectory-centralRepository" auxiliary-id="TeamCityDataDirectory-centralRepository"/>
+
 
 ### Upload Configuration Files to a Version Control
+{id="TeamCityDataDirectory-centralRepository" auxiliary-id="TeamCityDataDirectory-centralRepository"}
 
 You can configure TeamCity to push files from the `.BuildServer/config` directory (excluding the `_trash` subfolder) to an external VCS repository. This setup allows you to:
 
