@@ -352,6 +352,7 @@ where `TEAMCITY_HOST` is hostname or IP address of your TeamCity server (without
 As `USER_ID/PASSWORD` you can use either username/password of a regular TeamCity user (the user should have corresponding permissions to access artifacts of the source build configuration) or system properties `teamcity.auth.userId/teamcity.auth.password`.
 
 ## Build-level authentication
+{id="build-level-auth" auxiliary-id="build-level-auth"}
 
 The system properties `teamcity.auth.userId` and `teamcity.auth.password` store automatically generated build-unique values which can be used to authenticate on TeamCity server. The values are valid only during the time the build is running. This generated user has limited permissions which allow build-related operations. The primary intent for the user is to use the authentication to download artifacts from other TeamCity builds within the build script.
 
