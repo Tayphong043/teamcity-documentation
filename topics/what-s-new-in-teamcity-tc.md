@@ -55,6 +55,18 @@ To start using these libraries in your project's [.kts files](kotlin-dsl.md), ad
 Learn more: [](kotlin-dsl.md#Add+Custom+Kotlin+Libraries)
 
 
+## Partial Chain Execution
+{instance="tc"}
+
+Version 2024.11 introduces two configuration parameters that accept tags and IDs of upstream builds. Doing so allows you to run a portion of your build chain.
+
+<img src="dk-subchains-gif.gif" width="706" alt="Subchains"/>
+
+These parameters can be a permanent part of your configuration or occasionally added via the [Run Custom Build](running-custom-build.md) dialog when you need to run a specific sub-chain.
+
+Learn more: [](build-chain.md#Partial+Chain+Execution)
+
+
 ## AWS Integration Enhancements
 {instance="tc"}
 

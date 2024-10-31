@@ -102,6 +102,360 @@ From this page you can also:
 If dependencies are configured, you can view their details on the build results page, the __Dependencies__ tab. This tab also displays indirect dependencies, for example, if a build A depends on a build B which depends on builds C and D, then these builds C and D are indirect dependencies for build A.   
 The tab also displays artifacts downloaded and delivered by the builds of the chain. It also allows grouping/ungrouping builds and highlighting the builds reused from previous chains ([suitable builds](snapshot-dependencies.md#Suitable+Builds)).
 
+
+## Partial Chain Execution
+
+When two build configurations are linked by a snapshot dependency, the dependent build always requires the finished other build before starting. However, sometimes only part of the build chain needs to run. This section explains how to skip unnecessary chain configurations and run only the required ones.
+
+### Run Custom Build Dialog
+
+If you rarely need to run a chain portion, you can leave your chain configuration as use the [Run Custom Build dialog](running-custom-build.md) whenever you need to run a portion of a chain. Switch to the **Dependencies** tab of a dialog and choose the "Skip" option for a build configuration you want to ignore.
+
+<img src="dk-skip-chain-builds.png" width="706" alt="Skip builds"/>
+
+Note that the dialog allows you to skip only those build configurations that are directly linked to the configuration you are about to run. For example, starting "Build 4" of the "Build 1 &rarr; Build 2 &rarr; Build 3 &rarr; Build 4" chain allows you to skip only "Build 3". You cannot trigger "Build 4" and tell TeamCity to ignore any configurations preceding "Build 3".
+
+### Build Parameters
+
+Starting with version 2024.11, TeamCity supports the `teamcity.build.chain.skipTags` and `teamcity.build.chain.onlyTags` [configuration parameters](configuring-build-parameters.md).
+
+* The `teamcity.build.chain.skipTags` parameter explicitly skips unwanted configurations. The chain will run only non-excluded builds.
+* The `teamcity.build.chain.onlyTags` parameter specifies configurations you want to run. However, this does not limit the build chain to these parameters only. If `onlyTags` references configurations that have their own dependencies, these dependencies will be run as well.
+
+#### Parameter Values
+
+Both parameters accept comma-separated tags and configuration IDs as values.
+
+* Tags are values of the `teamcity.configuration.tags` parameter. Use this parameter to label any configuration and set the same value in `skipTags`/`onlyTags`.
+* [Configuration IDs](identifier.md) are shown in configuration settings, below the configuration name.
+
+    <img src="dk-get-build-conf-id.png" width="706" alt="Build configuration ID"/>
+
+    You can also copy configuration IDs from URLs of configuration-related pages. These IDs typically have the `projectName_configurationName` format. For example, the "https://foo.com/buildConfiguration/Glacier_TestWin/2554" URL corresponds to the build results page, where "Glacier_TestWin" is a configuration ID and "2554" is the internal build number.
+
+#### Parameter Priority
+
+When a chain (or its portion) is triggered, TeamCity reads `skipTags` and `onlyTags` parameters from the topmost configuration only. Parameters from upstream builds are ignored.
+
+The following build chain illustrates three sample configurations linked in a single "BuildA &rarr; BuildB &rarr; BuildC" chain.
+
+```Kotlin
+// Configuration A
+object BuildA : BuildType({
+    id = AbsoluteId("BuildA")
+    params {
+        param("teamcity.configuration.tags", "extra")
+    }
+})
+// Configuration B
+object BuildB : BuildType({
+    id = AbsoluteId("BuildB")
+    params {
+        param("teamcity.configuration.tags", "extra")
+        param("teamcity.build.chain.skipTags", "extra")
+    }
+
+    dependencies { snapshot(BuildA) {} }
+})
+// Configuration C
+object BuildC : BuildType({
+    id = AbsoluteId("BuildC")
+    name = "BuildC"
+    dependencies { snapshot(BuildB) {} }
+})
+```
+
+If you start a new "Configuration B" build, it will run as a solo build, skipping "Configuration A". However, starting "Configuration C" will trigger the entire "BuildA &rarr; BuildB &rarr; BuildC" chain.
+
+#### Artifact Resolution
+
+If you skip a build that [provides an artifact](artifact-dependencies.md) to another build, this downstream build will fail because no artifact was delivered. To prevent it from happening, TeamCity dynamically replaces strict artifact dependencies with [optional ones](artifact-dependencies.md#Optional+dependency) (`?:build.jar => build/libs/` instead of `+:build.jar => build/libs/`).
+
+#### Build Reuse for Partial Builds
+
+If a build skipped some of its upstream configurations, TeamCity considers it to be a build with modified dependencies. For that reason, further chain runs will not [reuse](snapshot-dependencies.md#Suitable+Builds) this build and instead trigger a new one.
+
+#### Example 1: Skip Tags
+
+The following chain includes multiple building and testing configurations with the "Build All" [composite configuration](composite-build-configuration.md) triggering the entire chain.
+
+<img src="dk-skip-builds-full-chain.png" width="706" alt="Full chain"/>
+
+Running the entire chain can be time- and resource-consuming. To allow "Build All" to run only core "Build..." configurations, add the `teamcity.build.chain.skipTags` parameter using either tags or IDs as a value. Both methods are identical, choose the one that most suites your needs.
+
+<procedure title="skipTags parameter value">
+
+<tabs>
+
+<tab title="Configuration tags">
+
+
+Add the <code>teamcity.configuration.tags</code> parameter to each configuration you want to skip. Set these parameters to any string you want, and use the same string as the <code>teamcity.build.chain.skipTags</code> parameter.
+
+The <a href="kotlin-dsl.md">Kotlin</a> snippet below uses the "optional" tag for unwanted configurations.
+
+<br/>
+
+<code-block lang="kotlin">
+object TestWin : BuildType({
+    id("TestWin")
+    params {
+        param("teamcity.configuration.tags", "optional")
+    }
+})
+object TestAndroid : BuildType({
+    id("TestAndroid")
+    params {
+        param("teamcity.configuration.tags", "optional")
+    }
+})
+// other build configurations
+object TeamcityGatedPrDemo_BuildAll : BuildType({
+    id("BuildAll")
+    type = BuildTypeSettings.Type.COMPOSITE
+    params {
+        param("teamcity.build.chain.skipTags", "optional")
+    }
+    dependencies {
+        snapshot(BuildLinux_iOS) {}
+        snapshot(BuildPlugins) {}
+        snapshot(BuildPortable) {}
+        snapshot(BuildWin) {}
+    }
+})
+</code-block>
+
+</tab>
+
+<tab title="Configuration IDs">
+
+Instead of marking each unwanted configuration with a tag, you can use this configuration ID as the <code>teamcity.build.chain.skipTags</code> parameter value.
+
+<br/>
+
+<code-block lang="kotlin">
+object TestWin : BuildType({
+    id("TestWin")
+})
+object TestAndroid : BuildType({
+    id("TestAndroid")
+})
+// other build configurations
+object TeamcityGatedPrDemo_BuildAll : BuildType({
+    id("BuildAll")
+    type = BuildTypeSettings.Type.COMPOSITE
+    params {
+        param("teamcity.build.chain.skipTags", "TestAndroid,TestIOS,TestLinux,TestPS,TestWin,BuildPlugins")
+    }
+    dependencies {
+        snapshot(BuildLinux_iOS) {}
+        snapshot(BuildPlugins) {}
+        snapshot(BuildPortable) {}
+        snapshot(BuildWin) {}
+    }
+})
+</code-block>
+
+<br/>
+
+</tab>
+
+</tabs>
+
+</procedure>
+
+
+To run the entire chain, remove the `teamcity.build.chain.skipTags` parameter or set it to any value that does not match configuration tags or IDs. For example, add a [schedule trigger](configuring-schedule-triggers.md) that will run full nightly builds with configurations omitted during shortened daily builds. TeamCity trigger settings include the **Build Customization** section that allows you to add or modify build parameters.
+
+```Kotlin
+object TeamcityGatedPrDemo_BuildAll : BuildType({
+    id("BuildAll")
+    type = BuildTypeSettings.Type.COMPOSITE
+    params {
+        param("teamcity.build.chain.skipTags", "optional")
+    }
+    triggers {
+        schedule {
+            // Full "Build All" chain running daily at 3 AM
+            schedulingPolicy = daily { hour = 3 }
+            triggerBuild = always()
+            withPendingChangesOnly = false
+            buildParams {
+                param("teamcity.build.chain.skipTags", "nightly-build-mode")
+            }
+        }
+    }
+})
+```
+
+
+#### Example 2: Only Tags
+
+This example utilizes the same chain as in Example 1:
+
+<img src="dk-skip-builds-full-chain.png" width="706" alt="Full chain"/>
+
+Each individual configuration is tagged using the `teamcity.configuration.tags` parameter. For your convenience, the [Kotlin](kotlin-dsl.md) configuration of this chain is categorized into tabs.
+
+<tabs>
+
+<tab title="Windows">
+
+```Kotlin
+object TestWin : BuildType({
+    id = AbsoluteId("TestWin")
+    params { param("teamcity.configuration.tags", "tests,windows") }
+})
+
+object BuildWin : BuildType({
+    id = AbsoluteId("BuildWin")
+    params { param("teamcity.configuration.tags", "build,windows") }
+    dependencies {
+        snapshot(TestWin) {}
+    }
+})
+```
+
+</tab>
+
+<tab title="Linux">
+
+```Kotlin
+object TestLinux : BuildType({
+    id = AbsoluteId("TestLinux")
+    params { param("teamcity.configuration.tags", "tests,linux") }
+})
+
+// Shared configuration for Linux and iOS
+object BuildLinux_iOS : BuildType({
+    id = AbsoluteId("BuildLinux_iOS")
+    params { param("teamcity.configuration.tags", "build,linux,ios") }
+    dependencies {
+        snapshot(TestIOS) {}
+        snapshot(TestLinux) {}
+    }
+})
+```
+
+</tab>
+
+
+<tab title="iOS">
+
+```Kotlin
+object TestIOS : BuildType({
+    id = AbsoluteId("TestIOS")
+    params { param("teamcity.configuration.tags", "tests,ios") }
+})
+
+// Shared configuration for Linux and iOS
+object BuildLinux_iOS : BuildType({
+    id = AbsoluteId("BuildLinux_iOS")
+    params { param("teamcity.configuration.tags", "build,linux,ios") }
+    dependencies {
+        snapshot(TestIOS) {}
+        snapshot(TestLinux) {}
+    }
+})
+```
+
+</tab>
+
+<tab title="Android and Playstation">
+
+```Kotlin
+object TestAndroid : BuildType({
+    id = AbsoluteId("TestAndroid")
+    params { param("teamcity.configuration.tags", "tests,portable") }
+})
+
+object TestPS : BuildType({
+    id = AbsoluteId("TestPS")
+    params { param("teamcity.configuration.tags", "tests,portable" }
+})
+
+object BuildPortable : BuildType({
+    id = AbsoluteId("BuildPortable")
+    params { param("teamcity.configuration.tags", "build,portable") }
+    dependencies {
+        snapshot(TestAndroid) {}
+        snapshot(TestPS) {}
+    }
+})
+```
+
+</tab>
+
+<tab title="Plugins">
+
+```Kotlin
+object BuildPlugins : BuildType({
+    id = AbsoluteId("BuildPlugins")
+    params { param("teamcity.configuration.tags", "build,plugins") }
+})
+```
+
+</tab>
+
+<tab title="Composite 'BuildAll'">
+
+```Kotlin
+object TeamcityGatedPrDemo_BuildAll : BuildType({
+    id("BuildAll")
+    type = BuildTypeSettings.Type.COMPOSITE
+    params {
+        select("teamcity.build.chain.onlyTags","",
+            label = "Choose a sub-chain to run",description = """
+            * run all — runs the entire chain
+            * desktop — runs "Build (Win)" and "Build (Linux/iOS)" builds with their related tests
+            * portable — runs the "Build (Portable)" build with its related Android/PS tests
+            * windows — runs the "Test (Win) > Build (Win)" sequence
+            * linux — runs the "Test (Linux) > Build (Linux/iOS)" sequence
+            * ios  — runs the "Test (iOS) > Build (Linux/iOS)" sequence
+            * plugins — runs the solo "Build Plugins" configuration
+        """.trimIndent(),
+        display = ParameterDisplay.PROMPT,
+        options = listOf(
+            "run all" to "",
+            "plugins",
+            "desktop" to "windows,linux,ios",
+            "portable" to "BuildPortable",
+            "windows",
+            "linux",
+            "ios"))
+    }
+
+    dependencies {
+        snapshot(BuildLinux_iOS) {}
+        snapshot(BuildPlugins) {}
+        snapshot(BuildPortable) {}
+        snapshot(BuildWin) {}
+    }
+})
+```
+
+</tab>
+
+</tabs>
+
+
+The composite "Build All" configuration [styles](typed-parameters.md) the `teamcity.build.chain.onlyTags` parameter as a "Select" parameter with the "Prompt" behavior mode. Whenever the chain is manually triggered, the **Run Custom Build** dialog pops up, allowing users to choose which part of a chain they want to launch.
+
+<img src="dk-subchain-selector.png" width="706" alt="Subchain selector"/>
+
+* run all — the label mapped to an empty string. This is the initial/default value of the `onlyTags` parameter. Runs all nine configurations of this chain.
+* plugins — triggers the "Build Plugins" configuration. This configuration will run alone since there are no other configurations with the "plugins" tag, and it has no dependencies on other builds.
+* desktop — runs a sub-chain of five build/test configurations that have any of the "windows", "linux", and "ios" tags.
+* portable — explicitly points to "BuildPortable" configuration by its ID. This configuration depends on "TestAndroid" and "TestPS", so all three configurations will run. Identical to using the "portable" tag as the parameter value.
+* windows/linux/ios — parameter values mapped to identical tags. Trigger short platform-specific "Test &rarr; Build" sub-chains. Note that "linux" and "ios" sub-chains are identical, since triggering the shared "BuildLinux_iOS" configuration forces both linked "TestLinux" and "TestIOS" configurations to run.
+
+The list of available values does **NOT** have these options:
+
+* build — this value will trigger all "Build ..." configurations directly, which in turn will start their linked "Test ..." configurations. As a result, the entire chain will run.
+* tests — this value can confuse users since you cannot trigger only leftmost "Test ..." and rightmost "Build All" configurations, leaving "Build ..." configurations intact. This happens because TeamCity cannot skip configurations in the middle of a chain, since it is then unclear how to handle dependencies traversing configurations which never run. 
+
+
+
  <seealso>
         <category ref="concepts">
             <a href="dependent-build.md">Dependent Build</a>
