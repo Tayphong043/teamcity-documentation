@@ -192,7 +192,7 @@ InspectCode Platform
 
 </td>
 
-<td id="ReSharperInspectionsPlatform" auxiliary-id="ReSharperInspectionsPlatform">
+<td id="ReSharperInspectionsPlatform" help-id="ReSharperInspectionsPlatform">
 
 Select the platform bitness of the InspectCode tool. To find code issues in C++ projects, use the x86 platform. The cross-platform inspections are also supported in ReSharper 2020.2.1 or later.
 

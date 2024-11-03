@@ -49,7 +49,7 @@ Description
 
 </td>
 
-<td id="Docker_build" auxiliary-id="Docker build">
+<td id="Docker_build" help-id="Docker build">
 
 Dockerfile source
 

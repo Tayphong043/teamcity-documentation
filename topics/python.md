@@ -11,7 +11,7 @@ Refer to [Configuring Build Steps](configuring-build-steps.md) for a description
 title="New in TeamCity 2020.2: Python Build Runner"/>
 
 ## Сommand settings
-{id="pythonCommandSettings" auxiliary-id="Python command settings"}
+{id="pythonCommandSettings" help-id="Python command settings"}
 
 You can choose one of the following Python commands:
 
@@ -335,7 +335,7 @@ Arguments that will be passed to the Python interpreter if a custom command is s
 </table>
 
 ## Python executable settings
-{id="pythonVersion" auxiliary-id="Python autodetection"}
+{id="pythonVersion" help-id="Python autodetection"}
 
 In this block of settings, you can choose a Python version to run.
 
@@ -360,7 +360,7 @@ The runner sets the first detected versions of Python 2.x and 3.x as the agent's
 You can also specify arguments that will be passed to the interpreter in every Python run of this build step (for example, a custom environment tool run or reporting run).
 
 ## Environment tool settings
-{id="pythonEnvTool" auxiliary-id="Python environment tool settings"}
+{id="pythonEnvTool" help-id="Python environment tool settings"}
 
 Optionally, you can run a Python build step in a virtual environment. The Python runner supports the following tools:
 * [Pipenv](#Pipenv+settings)

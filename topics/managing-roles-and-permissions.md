@@ -198,7 +198,7 @@ All project-level agent management permissions are by default added to the [Proj
 A user can perform a task controlled by one of these permissions on all the agents belonging to some [pool](configuring-agent-pools.md) provided this permission is granted to the user in all the projects associated with this pool. For example, a user with the _"Enable/disable agents associated with project"_ permission granted in some projects can enable or disable agents which belong to the pools of the related projects if the permission is granted in __all the projects__ associated with the pools.
 
 ## Managing Roles
-{id="Managing+Roles" auxiliary-id="Managing Roles"}
+{id="Managing+Roles" help-id="Managing Roles"}
 
 If per-project permissions are enabled in your installation, you can view the existing roles, modify them, and create new ones in the TeamCity UI — on the __Administration | Roles__ page. It allows:
 * Creating new roles.
