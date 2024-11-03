@@ -39,9 +39,10 @@ Template (optional)
 
 </td>
 
-<td id="Template">
+<td>
 
 File Content Replacer provides a template for every attribute to be replaced. Clicking the __Load Template__ button displays the combobox with templates containing value presets for replacement. The templates can be filtered by _language_ (for example, `C#`), _file_ (for example, `AssemblyInfo`) or _attribute_ (for example, `AssemblyVersion`) by typing in the combobox. When a template is selected, the settings are automatically filled with predefined values. See the [section below](#Templates) for template details.
+id="Template"
 
 </td></tr><tr>
 
@@ -51,9 +52,11 @@ Process files
 
 </td>
 
-<td id="Wildcards">
+<td>
 
-Click __Edit file list__ and specify paths to files where the values to be replaced will be searched. Provide a newline- or comma-separated set of rules in the form of `+|-:[path relative to the checkout directory]`.   
+Click __Edit file list__ and specify paths to files where the values to be replaced will be searched. Provide a newline- or comma-separated set of rules in the form of `+|-:[path relative to the checkout directory]`. 
+{id="Wildcards"}
+
 [Ant-like wildcards](wildcards.md#Antlike+Wildcards) are supported, for example, `dir/**/*.cs`.
 
 <include from="branch-filter.md" element-id="OR-syntax-tip"/>
@@ -86,9 +89,10 @@ File encoding
 
 </td>
 
-<td id="Fileencoding">
+<td>
 
-By default, TeamCity will autodetect the file encoding. To specify the encoding explicitly, select it from the drop-down menu. When specifying a _custom_ encoding, make sure it is [supported](https://docs.oracle.com/javase/8/docs/technotes/guides/intl/encoding.doc.html) by the agent.     
+By default, TeamCity will autodetect the file encoding. To specify the encoding explicitly, select it from the drop-down menu. When specifying a _custom_ encoding, make sure it is [supported](https://docs.oracle.com/javase/8/docs/technotes/guides/intl/encoding.doc.html) by the agent.
+{id="Fileencoding"}
 
 _If a [pre-defined template](file-content-replacer.md#Templates) is selected, the file encoding associated with that template will be used._
 
@@ -100,10 +104,12 @@ Find what
 
 </td>
 
-<td id="Pattern">
+<td>
 
 Specify a pattern to search for, in the [regular expression](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#sum) format.    
-The [MULTILINE](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#MULTILINE) mode is on by default.       
+The [MULTILINE](https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html#MULTILINE) mode is on by default.
+{id="Pattern"}
+
 _If a [pre-defined template](file-content-replacer.md#Templates) is selected, the pattern associated with that template will be used._
 
 You can disable the MULTILINE mode by adding `(?-m)` at the start of the pattern string.
@@ -116,10 +122,11 @@ Match case
 
 </td>
 
-<td id="matchCase">
+<td>
 
 By default, the comparison is case-sensitive. Uncheck for case-insensitive languages.    
 _If a [predefined template](file-content-replacer.md#Templates) is selected, the comparison associated with that template will be used._
+{id="matchCase"}
 
 </td></tr><tr>
 
@@ -129,9 +136,10 @@ Regex mode
 
 </td>
 
-<td id="Regex">
+<td>
 
 Enabled by default and applies to both the search and replacement strings. Uncheck to use fixed strings.
+{id="Regex"}
 
 <note id="RegexMixed">
 
@@ -157,10 +165,11 @@ features {
 <td>
 
 Replace with
+{id="Replacement"}
 
 </td>
 
-<td id="Replacement">
+<td>
 
 Type the text to be used for replacing the characters in the __Find what__ box. To delete the characters in the __Find what__ box from your file, leave this box blank.
 
@@ -201,7 +210,7 @@ The templates for replacing the following [Assembly attributes](https://msdn.mic
 * [`AllowPartiallyTrustedCallers`](https://msdn.microsoft.com/en-us/library/system.security.allowpartiallytrustedcallersattribute.aspx)
 * [`NeutralResourcesLanguageAttribute`](https://msdn.microsoft.com/en-us/library/system.resources.neutralresourceslanguageattribute.aspx)
 
-#### .NET Core [csproj](https://docs.microsoft.com/en-us/dotnet/articles/core/tools/csproj) templates
+#### .NET Core csproj templates
 
 * `AssemblyName`
 * `AssemblyTitle`

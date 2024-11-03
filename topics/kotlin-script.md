@@ -73,9 +73,10 @@ Kotlin script
 
 </td>
 
-<td id="custom-script" help-id="kotlin-custom-script">
+<td>
 
 Available for the __Custom Script__ type.
+{id="custom-script" help-id="kotlin-custom-script"}
 
 Enter a code of a Kotlin script.
 
@@ -109,9 +110,10 @@ See [Kotlin Help](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting
 
 <tr>
 
-<td id="script-file" help-id="kotlin-script-file">
+<td>
 
 Kotlin script file
+{id="script-file" help-id="kotlin-script-file"}
 
 </td>
 
@@ -163,9 +165,10 @@ JDK
 
 </td>
 
-<td id="kotlin-java9-note" help-id="kotlin-java9-note">
+<td>
 
 Select JDK to run the script:
+
 * __Default__: the path to JDK Home is read either from the `JAVA_HOME` environment variable on the agent machine, or from the `env.JAVA_HOME` property specified in the [build agent configuration file](configure-agent-installation.md) (`buildAgent.properties`). If these values are not specified, TeamCity uses the Java Home of the build agent process itself.
 * __Custom__: enter a path to a JDK installed on the agent.
 * Select any installed __version by number__.
@@ -174,7 +177,7 @@ Select JDK to run the script:
 > `An illegal reflective access operation has occurred`  
 > This is caused by a known issue of the Kotlin compiler and will not affect your build anyhow. The details of the issue and its workaround are described [here](https://youtrack.jetbrains.com/issue/TW-70604#focus=Comments-27-4763145.0-0).
 >
-{style="warning"}
+{style="warning" id="kotlin-java9-note" help-id="kotlin-java9-note"}
 
 </td>
 

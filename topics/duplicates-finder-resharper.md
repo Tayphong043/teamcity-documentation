@@ -95,9 +95,10 @@ dupFinder Platform
 
 </td>
 
-<td id="ReSharperDupFinderPlatform" help-id="ReSharperDupFinderPlatform">
+<td>
 
 Select the platform bitness of the dupFinder tool. By default, x64. The cross-platform duplicates finder is also supported in ReSharper 2020.2.1 or later.
+{id="ReSharperDupFinderPlatform" help-id="ReSharperDupFinderPlatform"}
 
 </td></tr>
 
@@ -119,9 +120,10 @@ Description
 
 </td></tr><tr>
 
-<td id="fragComp">
+<td>
 
 Code fragments comparison
+{id="fragComp"}
 
 </td>
 
@@ -265,9 +267,10 @@ Enter newline-delimited keywords that exclude regions that contain the keyword i
 
 </td></tr><tr>
 
-<td id="debug">
+<td>
 
 Enable debug output
+{id="debug"}
 
 </td>
 
@@ -277,9 +280,10 @@ Check this option to include debug messages in the build log and publish the fil
 
 </td></tr><tr>
 
-<td id="cmdArgs">
+<td>
 
 Additional dupFinder parameters
+{id="cmdArgs"}
 
 </td>
 

@@ -49,9 +49,10 @@ Description
 
 </td>
 
-<td id="Docker_build" help-id="Docker build">
+<td>
 
 Dockerfile source
+{id="Docker_build" help-id="Docker build"}
 
 </td>
 

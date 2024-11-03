@@ -21,9 +21,10 @@ Description
 
 </td></tr><tr>
 
-<td id="vcs-type">
+<td>
 
 Type of VCS
+{id="vcs-type"}
 
 </td>
 
@@ -45,9 +46,10 @@ Unique name of VCS root across all VCS roots of the project.
 
 </td></tr><tr>
 
-<td id="VCSRootID">
+<td>
 
 VCS root ID
+{id="VCSRootID"}
 
 </td>
 
@@ -93,9 +95,10 @@ If TeamCity detects that a [VCS commit hook](configuring-vcs-post-commit-hooks-f
 
 </td></tr><tr>
 
-<td id="svnRootSharing">
+<td>
 
 Belongs to project
+{id="svnRootSharing"}
 
 </td>
 

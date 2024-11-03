@@ -81,9 +81,10 @@ C# script
 
 </td>
 
-<td id="custom-script" help-id="c-custom-script">
+<td>
 
 _Available for the __Custom Script__ type._
+{id="custom-script" help-id="c-custom-script"}
 
 Enter a code of a C# script.
 
@@ -93,9 +94,10 @@ Enter a code of a C# script.
 
 <tr>
 
-<td id="script-file" help-id="c-script-file">
+<td>
 
 C# script file
+{id="script-file" help-id="c-script-file"}
 
 </td>
 
