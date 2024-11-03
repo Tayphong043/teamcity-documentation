@@ -153,9 +153,10 @@ Description
 
 <tr>
 
-<td id="projects">
+<td>
 
 Projects
+{id="projects"}
 
 </td>
 
@@ -167,9 +168,10 @@ Paths to projects and solutions, new-line separated. Wildcards are supported. Pa
 
 </tr><tr>
 
-<td id="working-directory">
+<td>
 
 Working directory
+{id="working-directory"}
 
 </td>
 
@@ -195,9 +197,10 @@ Target framework. For example, `netcoreapp` or `netstandard`. Parameter referenc
 
 </tr><tr>
 
-<td help-id="requiredNetSDK" id="requiredNetSDK">
+<td>
 
 Required SDK
+{id="requiredNetSDK" help-id="requiredNetSDK" }
 
 </td>
 

@@ -185,9 +185,10 @@ When a cloud agent is in [maintenance mode](build-agents-configuration-and-maint
 
 </td></tr><tr>
 
-<td id="agent-terminate-condition">
+<td>
 
 Additional terminate conditions
+{id="agent-terminate-condition"}
 
 </td>
 

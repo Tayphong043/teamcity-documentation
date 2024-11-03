@@ -51,9 +51,10 @@ The \<[TeamCity Data Directory](teamcity-data-directory.md)\> path with the abil
 
 </td></tr><tr>
 
-<td id="artifact-directories">
+<td>
 
 Artifact directories
+{id="artifact-directories"}
 
 </td>
 
@@ -81,9 +82,10 @@ The directory containing TeamCity internal caches (of the VCS repository content
 
 </td></tr><tr>
 
-<td id="server-url">
+<td>
 
 Server URL
+{id="server-url"}
 
 </td>
 
@@ -180,9 +182,10 @@ Default VCS changes check interval
 
 </td>
 
-<td id="default-vcs-check-interval">
+<td>
 
 Set to 60 seconds by default. Specifies how often TeamCity polls the VCS repository for VCS changes. Can be overridden when [configuring VCS roots](configuring-vcs-roots.md).
+{id="default-vcs-check-interval"}
 
 Additionally, you can enforce the interval of VCS changes check as a minimum polling interval for all VCS roots on the server. This way, Project Administrators will only be able to set intervals that are larger than the default one. This helps restrict the frequency of polling requests thus offloading the server.
 
@@ -252,9 +255,10 @@ Note that this mode requires configuring a dedicated domain for TeamCity. To con
 
 </td></tr><tr>
 
-<td id="artifacts-url">
+<td>
 
 Artifacts' URL
+{id="artifacts-url"}
 
 </td>
 

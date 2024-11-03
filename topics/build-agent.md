@@ -55,9 +55,10 @@ An agent is connected if it is registered on the TeamCity server and responds to
 
 </td></tr><tr>
 
-<td id="agent-authorization">
+<td>
 
 __Authorized/ Unauthorized__
+{id="agent-authorization"}
 
 </td>
 
@@ -73,9 +74,10 @@ If a build agent is installed and running on the same computer as the TeamCity b
 
 </td></tr><tr>
 
-<td id="enable-agent">
+<td>
 
 __Enabled/ Disabled (Disabled for maintenance for cloud agents)__
+{id="enable-agent"}
 
 </td>
 

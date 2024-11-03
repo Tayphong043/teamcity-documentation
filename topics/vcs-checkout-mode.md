@@ -25,11 +25,10 @@ Description
 
 </td></tr><tr>
 
-<td id="prefer-agent-checkout">
-
-<anchor name="prefer-agent-checkout"/>
+<td>
 
 Prefer to check out files on agent
+{id="prefer-agent-checkout"}
 
 </td>
 
@@ -49,11 +48,10 @@ TeamCity falls back to the server-side checkout in the following cases:
 
 </td></tr><tr>
 
-<td id="server-checkout">
-
-<anchor name="server-checkout"/>
+<td>
 
 Always check out files on server
+{id="server-checkout"}
 
 </td>
 
@@ -71,11 +69,10 @@ The TeamCity server will [export the sources](build-checkout-directory.md) and p
 
 </td></tr><tr>
 
-<td id="agent-checkout">
-
-<anchor name="agent-checkout"/>
+<td>
 
 Always check out files on agent
+{id="agent-checkout"}
 
 </td>
 
@@ -97,11 +94,10 @@ There is a [known issue](https://youtrack.jetbrains.com/issue/TW-43648) with CVS
 
 </td></tr><tr>
 
-<td id="do-not-checkout-files-automatically">
- 
-<anchor name="do-not-checkout-files-automatically"/>
+<td>
 
 Do not check out files automatically
+{id="do-not-checkout-files-automatically"}
 
 </td>
 
@@ -112,6 +108,7 @@ TeamCity will not check out any sources automatically, the [default build checko
 The build checkout directory will __not__ be cleaned automatically, unless the directory expiration period is [configured](build-checkout-directory.md#Automatic+Checkout+Directory+Cleaning).
 
 </td></tr></table>
+
 
 <seealso>
         <category ref="admin-guide">

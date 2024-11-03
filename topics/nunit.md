@@ -74,11 +74,10 @@ Description
 
 </td></tr><tr>
 
-<td id="pathToNUnitConsoleTool">
-
-<anchor name="NUnit-pathToNUnitConsoleTool"/>
+<td>
 
 NUnit Console
+{id="pathToNUnitConsoleTool" help-id="NUnit-pathToNUnitConsoleTool"}
 
 </td>
 
@@ -88,11 +87,10 @@ Select a preinstalled console tool or specify a custom path to the `nunit3-conso
 
 </td></tr><tr>
 
-<td id="workingDirectory">
-
-<anchor name="NUnit-workingDirectory"/>
+<td>
 
 Working directory
+{id="workingDirectory" help-id="NUnit-workingDirectory"}
 
 </td>
 
@@ -103,11 +101,10 @@ Specify the path to the [build working directory](build-working-directory.md) if
 
 </td></tr><tr>
 
-<td id="appConfigFile">
-
-<anchor name="NUnit-appConfigFile"/>
+<td>
 
 Path to application configuration file
+{id="appConfigFile" help-id="NUnit-appConfigFile"}
 
 </td>
 

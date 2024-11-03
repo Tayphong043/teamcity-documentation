@@ -60,11 +60,10 @@ Check this option to automatically add time stamp suffix to the specified filena
   
 </td></tr><tr>
 
-<td id="backup-scope">
-
-<anchor name="CreatingBackupfromTeamCityWebUI-backup_scope"/>
+<td>
 
 Backup scope
+{id="backup-scope" help-id="CreatingBackupfromTeamCityWebUI-backup_scope"}
 
 </td>
 
