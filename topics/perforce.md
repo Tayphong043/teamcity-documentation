@@ -11,9 +11,10 @@ This article describes the settings specific to a [Perforce Helix Core](https://
 
 <td width="200">Setting</td><td>Description</td></tr><tr>
 
-<td id="perforcePortOptionDescription">
+<td>
 
 Port
+{id="perforcePortOptionDescription"}
 
 </td>
 
@@ -37,9 +38,10 @@ Choose the connection mode. See the details [below](#Use+Perforce+Streams).
 
 </td></tr><tr>
 
-<td id="perforceUserOptionDescription">
+<td>
 
 Username
+{id="perforceUserOptionDescription"}
 
 </td>
 
@@ -49,9 +51,10 @@ Specify the user login name.
 
 </td></tr><tr>
 
-<td id="perforcePasswordOptionDescription">
+<td>
 
 Password or Ticket
+{id="perforcePasswordOptionDescription"}
 
 </td>
 
@@ -68,9 +71,10 @@ The ticket file should be present on the TeamCity server machine and on all buil
 
 </td></tr><tr>
 
-<td id="perforceTicketBasedAuthenticationOptionDescription">
+<td>
 
 Ticket-based authentication
+{id="perforceTicketBasedAuthenticationOptionDescription"}
 
 </td>
 
@@ -160,11 +164,10 @@ When the [agent-side checkout](vcs-checkout-mode.md#agent-checkout) is used, Tea
 
 <td>Setting</td><td>Description</td></tr><tr>
 
-<td id="perforceWorkspaceOptions">
-
-<anchor name="Perforce-perforceWorkspaceOptions"/>
+<td>
 
 Workspace options
+{id="perforceWorkspaceOptions" help-id="Perforce-perforceWorkspaceOptions"}
 
 </td>
 
@@ -274,9 +277,10 @@ To allow using Perforce proxy with the [agent-side checkout](vcs-checkout-mode.m
 
 <tr>
 
-<td id="perforcePathtop4ExecutableOptionDescription">
+<td>
 
 P4 path on the build agent
+{id="perforcePathtop4ExecutableOptionDescription"}
 
 </td>
 
@@ -294,9 +298,10 @@ For the server, the p4 binary should be present in the `PATH` environment variab
 
 </td></tr><tr>
 
-<td id="perforceLabelToCheckout">
+<td>
 
 Label/changelist to sync
+{id="perforceLabelToCheckout"}
 
 </td>
 
@@ -311,9 +316,10 @@ If you use symbolic labels, consider using the [agent-side checkout](vcs-checkou
 
 </td></tr><tr>
 
-<td id="perforceCharsetOptionDescription">
+<td>
 
 Charset
+{id="perforceCharsetOptionDescription"}
 
 </td>
 
@@ -323,9 +329,10 @@ Select the character set used on the client machine.
 
 </td></tr><tr>
 
-<td id="utf16">
+<td>
 
 Support UTF-16 encoding
+{id="utf16"}
 
 </td>
 

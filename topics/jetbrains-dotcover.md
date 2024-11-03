@@ -76,9 +76,10 @@ Supported only for dotCover 2.0 or newer.
 
 </td></tr><tr>
 
-<td id="additional-arguments">
+<td>
 
 Additional arguments
+{id="additional-arguments"}
 
 </td>
 

@@ -221,11 +221,10 @@ Description
 
 </td></tr><tr>
 
-<td id="serverAutoCRLF" help-id="serverAutoCRLF">
-
-<anchor name="Git-serverAutoCRLF"/>
+<td>
 
 Convert line-endings to CRLF
+{id="serverAutoCRLF" help-id="serverAutoCRLF"}
 
 </td>
 
@@ -272,9 +271,10 @@ Provide the path to a Git executable to be used on the agent. When set to `%\env
 
 <tr>
 
-<td id="git-checkout-policy" help-id="git-checkout-policy">
+<td>
 
 Checkout policy
+{id="git-checkout-policy" help-id="git-checkout-policy"}
 
 </td>
 

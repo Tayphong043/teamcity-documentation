@@ -94,9 +94,10 @@ Description
 
 </td></tr><tr>
 
-<td id="targetFramework">
+<td>
 
 Target Frameworks
+{id="targetFramework"}
 
 </td>
 
@@ -192,9 +193,10 @@ InspectCode Platform
 
 </td>
 
-<td id="ReSharperInspectionsPlatform" help-id="ReSharperInspectionsPlatform">
+<td>
 
 Select the platform bitness of the InspectCode tool. To find code issues in C++ projects, use the x86 platform. The cross-platform inspections are also supported in ReSharper 2020.2.1 or later.
+{id="ReSharperInspectionsPlatform" help-id="ReSharperInspectionsPlatform"}
 
 </td></tr></table>
 
@@ -214,9 +216,10 @@ Description
 
 </td></tr><tr>
 
-<td id="settings">
+<td>
 
 Custom settings profile path
+{id="settings"}
 
 </td>
 
