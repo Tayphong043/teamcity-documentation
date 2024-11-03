@@ -113,7 +113,7 @@ See [known issues](known-issues.md#Known+issues+of+native+Git+checkout) of the c
 
 
 ### Branch Matching Rules
-{id="branchMatchingRules" auxiliary-id="Branch Matching Rules"}
+{id="branchMatchingRules" help-id="Branch Matching Rules"}
 
 * If the branch matches a line without patterns, the line is used.
 * If the branch matches several lines with patterns, the best matching line is used.
@@ -221,7 +221,7 @@ Description
 
 </td></tr><tr>
 
-<td id="serverAutoCRLF" auxiliary-id="serverAutoCRLF">
+<td id="serverAutoCRLF" help-id="serverAutoCRLF">
 
 <anchor name="Git-serverAutoCRLF"/>
 
@@ -238,7 +238,7 @@ Convert line-endings of all text files to CRLF (works as setting `core.autocrlf=
 <anchor name="Git-agentSettings"/>
 
 ## Agent Settings
-{id="GitAgentSettings" auxiliary-id="Git Agent Settings"}
+{id="GitAgentSettings" help-id="Git Agent Settings"}
 
 These are the settings used in case of the agent-side [checkout](vcs-checkout-mode.md).   
 Note that the agent-side checkout has limited support for SSH. The only supported authentication methods are "Default Private Key" and "Uploaded Private Key".   
@@ -272,7 +272,7 @@ Provide the path to a Git executable to be used on the agent. When set to `%\env
 
 <tr>
 
-<td id="git-checkout-policy" auxiliary-id="git-checkout-policy">
+<td id="git-checkout-policy" help-id="git-checkout-policy">
 
 Checkout policy
 
@@ -318,7 +318,7 @@ To configure a connection from a TeamCity server running behind a proxy to a rem
 </tip>
 
 ### Git executable on the agent
-{id="agentGitPath" auxiliary-id="Git executable on the agent"}
+{id="agentGitPath" help-id="Git executable on the agent"}
 
 TeamCity needs Git command line client version 1.6.4\+ on the agent in order to use the agent-side checkout.
 
@@ -342,7 +342,7 @@ If Git is not found in any of these locations, it tries to run the git accessibl
 If a compatible git (1.6.4\+) is found, it is reported in the `TEAMCITY_GIT_PATH` environment variable. This variable can be used in the __Path to git__ field in the [VCS root](vcs-root.md) settings. As a result, the configuration with such a VCS root will run only on the agents where Git was detected or specified in the agent properties.
 
 ### Git mirrors on cloud agents
-{auxiliary-id="Git mirrors on cloud agents" instance="tc"}
+{help-id="Git mirrors on cloud agents" instance="tc"}
 
 By default, TeamCity creates a [mirror](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository), that is a copy, of your Git repository under the agent's `system/git` directory. To save time and disk space on fetching source files, TeamCity points to this mirror via the Git alternate mechanism when updating the checkout directory for a build.
 
@@ -363,7 +363,7 @@ This way, builds will run significantly faster, with no need to check out the wh
 > Alternatively, you can store the `system/git` directory in a persistent volume, so it keeps all the updates even when a cloud agent is destroyed, and configure its automatic mounting on each newly created agent.
 
 ## Configuring Git Garbage Collection on Server
-{id="Git_gc" auxiliary-id="Configuring Git Garbage Collection on Server" instance="tc"}
+{id="Git_gc" help-id="Configuring Git Garbage Collection on Server" instance="tc"}
 
 TeamCity server maintains a local clone for every Git repository used in the VCS roots configured on the server. Since the server performs fetch in those clones many times a day, the clone needs regular optimization to maintain predictable performance. If the Git garbage collection for the clone was not run for a long time, the process of collecting changes may slow down or start to report memory-related errors.  
 TeamCity can automatically run `git gc` periodically when the native Git client can be found on the server. Inability to run Git GC results in a related health report.
@@ -429,7 +429,7 @@ teamcity.git.https.credentials.<ALIAS>.password = 081ef11uh
 * Accessing submodule repositories and LFS files is currently supported only via secure HTTPS protocol. SSH and HTTP protocols are not supported.
 
 ## Internal Properties
-{id="internalProperties" auxiliary-id="Internal Properties" instance="tc"}
+{id="internalProperties" help-id="Internal Properties" instance="tc"}
 
 For Git VCS, it is possible to configure the following [internal properties](server-startup-properties.md#TeamCity+Internal+Properties):
 

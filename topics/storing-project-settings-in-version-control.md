@@ -25,7 +25,7 @@ You can store project settings in the XML format or in the [Kotlin language](htt
 <anchor name="StoringProjectSettingsinVersionControl-SynchronizingSettingswithVCS"/>
 
 ## Synchronizing Settings with VCS
-{id="SynchronizingSettingswithVCS" auxiliary-id="SynchronizingSettingswithVCS"}
+{id="SynchronizingSettingswithVCS" help-id="SynchronizingSettingswithVCS"}
 
 By default, the synchronization of the project settings with the version control system is disabled.
 

@@ -203,7 +203,7 @@ Set to 60 seconds by default. Specifies a period (in seconds) that TeamCity main
 <anchor name="TeamCityConfigurationandMaintenance-EncryptionSettings"/>
 
 ## Encryption Settings
-{id="encryption-settings" auxiliary-id="Encryption Settings" instance="tc"}
+{id="encryption-settings" help-id="Encryption Settings" instance="tc"}
 
 In this block, you can choose how TeamCity will process secure values: either using the default _scrambling strategy_ or by _encrypting them with a custom key_.
 
@@ -222,7 +222,7 @@ During backup, your custom keys will be exported along with their projects and a
 </note>
 
 ## Artifacts' Domain Isolation
-{id="artifacts-domain-isolation" auxiliary-id="Artifacts Domain Isolation" instance="tc"}
+{id="artifacts-domain-isolation" help-id="Artifacts Domain Isolation" instance="tc"}
 
 <table><tr>
 

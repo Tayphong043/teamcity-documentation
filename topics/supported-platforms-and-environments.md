@@ -12,7 +12,7 @@ This page covers software-related environments TeamCity works with. For hardware
 TeamCity Server is a web application that runs within a capable J2EE servlet container. It requires a Java SE JRE installation to run. See [notes](how-to.md#Install+Non-Bundled+Version+of+Java) on how to install Java on a TeamCity server.
 
 #### Supported Java Versions
-{id="Supported+Java+Versions+for+TeamCity+Server" auxiliary-id="Supported+Java+Versions+for+TeamCity+Server"}
+{id="Supported+Java+Versions+for+TeamCity+Server" help-id="Supported+Java+Versions+for+TeamCity+Server"}
 
 Supported Java versions: __OpenJDK and Oracle Java 8 (8u16 or later) to 17 (32 or 64 bit)__. Using 64-bit Java is recommended.
 
@@ -25,7 +25,7 @@ For Apple ARM systems (for example, Apple M1 or M2), consider using a different 
 {style="warning"}
 
 #### Supported Platforms
-{id="Supported+Platforms+for+TeamCity+Server" auxiliary-id="Supported+Platforms+for+TeamCity+Server"}
+{id="Supported+Platforms+for+TeamCity+Server" help-id="Supported+Platforms+for+TeamCity+Server"}
 
 >The core features of TeamCity Server are platform-independent. See [considerations](system-requirements.md#Choosing+Server+OS%2FPlatform) on choosing the server platform.
 
@@ -65,7 +65,7 @@ If you are using a different architecture that is not explicitly mentioned above
 TeamCity Agent is a standalone Java application. It requires a Java SE JRE installation to run. See [notes](configure-java-for-agent.md) on how to configure Java on agents.
 
 #### Supported Java Versions
-{id="Supported+Java+Versions+for+TeamCity+Agent" auxiliary-id="Supported+Java+Versions+for+TeamCity+Agent"}
+{id="Supported+Java+Versions+for+TeamCity+Agent" help-id="Supported+Java+Versions+for+TeamCity+Agent"}
 
 Supported Java versions: __OpenJDK and Oracle Java 8 (8u16 or later) to 17 (32 or 64 bit)__. Using 64-bit Java is recommended.
 
@@ -82,7 +82,7 @@ For Apple ARM systems (for example, Apple M1 or M2), consider using a different 
 {style="warning"}
 
 #### Supported Platforms
-{id="Supported+Platforms+for+TeamCity+Agent" auxiliary-id="Supported+Platforms+for+TeamCity+Agent"}
+{id="Supported+Platforms+for+TeamCity+Agent" help-id="Supported+Platforms+for+TeamCity+Agent"}
 
 TeamCity Agent is tested under the following operating systems:
 * Linux
@@ -127,7 +127,7 @@ These agents are automatically maintained by JetBrains and don't require to be i
 You can install a build agent locally on your machine, similarly to how you would do it in [TeamCity On-Premises](https://www.jetbrains.com/help/teamcity/setting-up-and-running-additional-build-agents.html), and connect it to the TeamCity Cloud instance. Note that you need to acquire a [concurrent build slot](teamcity-cloud-subscription-and-licensing.md#Using+Build+Credits) for each self-hosted agent.
 
 #### Supported Java Versions
-{id="Supported+Java+Versions+for+TeamCity+Agent" auxiliary-id="Supported+Java+Versions+for+TeamCity+Agent"}
+{id="Supported+Java+Versions+for+TeamCity+Agent" help-id="Supported+Java+Versions+for+TeamCity+Agent"}
 
 Since agents are Java applications, you need to install Java SE JRE on machines that will run self-hosted agents.
 
@@ -138,7 +138,7 @@ Supported Java versions: OpenJDK and Oracle Java 8 - 17. We recommend using the 
 {style="note"}
 
 #### Supported Platforms
-{id="Supported+Platforms+for+TeamCity+Agent" auxiliary-id="Supported+Platforms+for+TeamCity+Agent"}
+{id="Supported+Platforms+for+TeamCity+Agent" help-id="Supported+Platforms+for+TeamCity+Agent"}
 
 TeamCity Agent is tested under the following operating systems:
 * Linux

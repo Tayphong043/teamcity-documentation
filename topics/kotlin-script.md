@@ -73,7 +73,7 @@ Kotlin script
 
 </td>
 
-<td id="custom-script" auxiliary-id="kotlin-custom-script">
+<td id="custom-script" help-id="kotlin-custom-script">
 
 Available for the __Custom Script__ type.
 
@@ -109,7 +109,7 @@ See [Kotlin Help](https://github.com/Kotlin/KEEP/blob/master/proposals/scripting
 
 <tr>
 
-<td id="script-file" auxiliary-id="kotlin-script-file">
+<td id="script-file" help-id="kotlin-script-file">
 
 Kotlin script file
 
@@ -163,7 +163,7 @@ JDK
 
 </td>
 
-<td id="kotlin-java9-note" auxiliary-id="kotlin-java9-note">
+<td id="kotlin-java9-note" help-id="kotlin-java9-note">
 
 Select JDK to run the script:
 * __Default__: the path to JDK Home is read either from the `JAVA_HOME` environment variable on the agent machine, or from the `env.JAVA_HOME` property specified in the [build agent configuration file](configure-agent-installation.md) (`buildAgent.properties`). If these values are not specified, TeamCity uses the Java Home of the build agent process itself.

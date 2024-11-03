@@ -95,7 +95,7 @@ dupFinder Platform
 
 </td>
 
-<td id="ReSharperDupFinderPlatform" auxiliary-id="ReSharperDupFinderPlatform">
+<td id="ReSharperDupFinderPlatform" help-id="ReSharperDupFinderPlatform">
 
 Select the platform bitness of the dupFinder tool. By default, x64. The cross-platform duplicates finder is also supported in ReSharper 2020.2.1 or later.
 
