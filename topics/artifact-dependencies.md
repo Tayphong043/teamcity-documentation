@@ -28,10 +28,9 @@ To add an artifact dependency to a build configuration:
     <img src="dk-artifact-dependency-dialog.png" width="706" alt="Add artifact dependency dialog"/>
 
     * **Depend on** — the build configuration for the current build configuration to depend on.
-    
-    <anchor id="artifact-dep-get-from" auxiliary-id="artifact-dep-get-from"/>
   
     * **Get artifacts from** — the type of build whose artifacts are to be taken:
+        {id="artifact-dep-get-from" help-id="artifact-dep-get-from"}
   
         * Latest successful build — artifacts will be taken from the successful dependency build with the most recent revision (the latest change ID)
         * Latest [pinned build](build-actions.md#Pin+Build) — artifacts will be taken from the pinned dependency build with the most recent revision (the latest change ID)

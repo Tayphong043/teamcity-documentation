@@ -24,7 +24,7 @@ There are two types of Azure DevOps connections in TeamCity:
 <anchor name="azure-devops-connection"/>
 
 #### Azure DevOps OAuth 2.0 Connection
-{id="Connecting+to+Azure+DevOps" auxiliary-id="Connecting to Azure DevOps"}
+{id="Connecting+to+Azure+DevOps" help-id="Connecting to Azure DevOps"}
 
 This type of connection supports only Azure DevOps Services. It uses the [OAuth 2.0 protocol](https://docs.microsoft.com/en-us/azure/devops/integrate/get-started/authentication/oauth?view=azure-devops) based on JWT tokens and requires creating a dedicated app in your Azure profile.
 
@@ -740,7 +740,7 @@ Configured Slack connections are used by [Notifier](notifications.md#Slack+Notif
 <anchor name="jetbrains-space-connection"/>
 
 ## JetBrains Space
-{id="connect-to-jetbrains-space" auxiliary-id="Connect to JetBrains Space"}
+{id="connect-to-jetbrains-space" help-id="Connect to JetBrains Space"}
 
 >If you are looking for how to integrate your JetBrains Space instance with TeamCity, check out this **[full integration guide](how-to-configure-cicd-for-jetbrains-space.md)**!
 
@@ -852,7 +852,7 @@ When your Space connection is configured and installed, return to TeamCity and a
 Save the connection and proceed with adding a [Commit Status Publisher](commit-status-publisher.md) or [Pull Requests](pull-requests.md#JetBrains+Space+Merge+Requests) feature, [enabling Space authentication](configuring-authentication-settings.md#JetBrains+Space), or creating a [project](creating-and-editing-projects.md#Creating+project+pointing+to+JetBrains+Space) / [build configuration](creating-and-editing-build-configurations.md#Creating+Build+Configuration+Pointing+to+Specific+VCS) / [VCS root](configuring-vcs-roots.md).
 
 ## NPM Registry
-{id="npm-registry-settings" auxiliary-id="npm-registry-settings"}
+{id="npm-registry-settings" help-id="npm-registry-settings"}
 
 This type of connection allows the [](nodejs.md) runner to access a private [npm registry](https://docs.npmjs.com/cli/v7/using-npm/registry) during a build. Since a project can have multiple NPM registry connections, you also need to [configure the related build feature](nodejs.md#Accessing+Private+NPM+Registries) to choose a connection that Node.js build steps should utilize.
 

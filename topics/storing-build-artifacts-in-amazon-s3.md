@@ -163,7 +163,7 @@ See the following AWS help article for more information: [Using Amazon S3 storag
 
 
 ## Transferring Artifacts via CloudFront
-{id="CloudFrontSettings" auxiliary-id="CloudFrontSettings"}
+{id="CloudFrontSettings" help-id="CloudFrontSettings"}
 
 [Amazon CloudFront](https://aws.amazon.com/cloudfront/) is a content delivery network that offers low latency and high transfer speeds. Enabling its support for an S3 storage will allow TeamCity to transfer artifacts through the closest CloudFront server. If your S3 bucket is located in a different region than your TeamCity infrastructure, this could significantly speed up the artifacts' upload/download and reduce expenses.
 

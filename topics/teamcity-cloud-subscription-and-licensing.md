@@ -60,7 +60,7 @@ To acquire credits and manage build resources, use the __[Subscription & Resourc
 <tr><td></td><td></td></tr>
 
 <tr>
-<td id="cloud-build-credits" auxiliary-id="cloud-build-credits">
+<td id="cloud-build-credits" help-id="cloud-build-credits">
 
 __Build credits__
 
@@ -77,7 +77,7 @@ Build credits are granted per every committer slot in a subscription and can be 
 </tr>
 
 <tr>
-<td id="cloud-build-time" auxiliary-id="cloud-build-time">
+<td id="cloud-build-time" help-id="cloud-build-time">
 
 __Build time__
 
@@ -92,7 +92,7 @@ Build time is calculated based on the total number of minutes your builds spend 
 </tr>
 
 <tr>
-<td id="cloud-storage" auxiliary-id="cloud-storage">
+<td id="cloud-storage" help-id="cloud-storage">
 
 __Cloud storage__
 
@@ -107,7 +107,7 @@ Provided for storing the results of builds, primarily build artifacts and build 
 </tr>
 
 <tr>
-<td id="cloud-committers" auxiliary-id="cloud-committers">
+<td id="cloud-committers" help-id="cloud-committers">
 
 __Committer__
 
@@ -122,7 +122,7 @@ A user who authors VCS (version control system) changes for projects that are bu
 </tr>
 
 <tr>
-<td id="cloud-data-transfer" auxiliary-id="cloud-data-transfer">
+<td id="cloud-data-transfer" help-id="cloud-data-transfer">
 
 __Cloud data transfer__
 
@@ -137,7 +137,7 @@ Cloud data transfer is counted when you download artifacts and build logs from T
 </tr>
 
 <tr>
-<td id="cloud-instance-type" auxiliary-id="cloud-instance-tier">
+<td id="cloud-instance-type" help-id="cloud-instance-tier">
 
 __Instance type__
 
@@ -152,7 +152,7 @@ A type of virtual machine with a preinstalled TeamCity agent instance. A type is
 </tr>
 
 <tr>
-<td id="cloud-jb-hosted-agents" auxiliary-id="cloud-jb-hosted-agents">
+<td id="cloud-jb-hosted-agents" help-id="cloud-jb-hosted-agents">
 
 __JetBrains-hosted build agent__
 
@@ -169,7 +169,7 @@ JetBrains-hosted build agents come with a preinstalled set of commonly used buil
 </tr>
 
 <tr>
-<td id="cloud-self-hosted-agents" auxiliary-id="cloud-self-hosted-agents">
+<td id="cloud-self-hosted-agents" help-id="cloud-self-hosted-agents">
 
 __Self-hosted build agent__
 
@@ -186,7 +186,7 @@ You can spend build credits on adding self-hosted build agents to your instance 
 </tr>
 
 <tr>
-<td id="cloud-prepaid-agents" auxiliary-id="cloud-prepaid-agents">
+<td id="cloud-prepaid-agents" help-id="cloud-prepaid-agents">
 
 __Prepaid build agent__
 
@@ -205,7 +205,7 @@ You can combine these agents with regular JetBrains-hosted agents whenever neces
 </tr>
 
 <tr>
-<td id="cloud-web-users" auxiliary-id="cloud-web-users">
+<td id="cloud-web-users" help-id="cloud-web-users">
 
 __Web users__
 

@@ -10,7 +10,7 @@ The Lucene search syntax, supported for both modes, is described in [this articl
 By default, TeamCity stores the search index locally, in [`<TeamCity Data Directory>`](teamcity-data-directory.md)`/system/caches`. In the __Builds Search__ section, you can control the indexing and see its statistics.
 
 ## Elasticsearch
-{id="ElasticSearchSettings" auxiliary-id="ElasticSearchSettings"}
+{id="ElasticSearchSettings" help-id="ElasticSearchSettings"}
 
 TeamCity provides an alternative search mode, based on [Elasticsearch](https://www.elastic.co/). The new mode has two advantages: (1) it saves disk space on the TeamCity server machine and (2) it is better for the TeamCity performance. It is especially effective for multinode installations, as nodes spend fewer resources on maintaining a single remote index than on multiple local indexes.
 

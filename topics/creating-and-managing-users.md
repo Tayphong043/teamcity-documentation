@@ -2,7 +2,7 @@
 [//]: # (auxiliary-id: Creating and Managing Users;Managing Users and User Groups)
 
 ## What is User Account in TeamCity
-{id="User+Account" auxiliary-id="User Account"}
+{id="User+Account" help-id="User Account"}
 
 _User account_ is a combination of username and password that allows TeamCity users to sign in to the server and use its features. User accounts can be created manually, or automatically upon sign in depending on used authentication scheme (refer to the [Authentication Modules](authentication-modules.md) section for more details).
 

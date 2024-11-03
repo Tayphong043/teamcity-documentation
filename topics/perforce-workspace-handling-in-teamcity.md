@@ -55,13 +55,13 @@ If you enable the [feature branches support](integrating-teamcity-with-perforce.
 <anchor name="perforce-admin-access"/>
 
 To establish direct access to your Perforce server, go to __Project Settings | Connections__ in TeamCity and add a _Perforce Administrator Access_ connection. In its settings, enter the host and user credentials for accessing the Perforce server (the user must have the [`admin` permission](https://www.perforce.com/manuals/p4sag/Content/P4SAG/protections.set.html#protections.set.access_levels)), and TeamCity will connect to it.
-{id="P4AdminAccessConnection" auxiliary-id="P4AdminAccessConnection"}
+{id="P4AdminAccessConnection" help-id="P4AdminAccessConnection"}
 
 During every [clean-up](teamcity-data-clean-up.md), TeamCity will detect and delete workspaces that have been inactive for more than 7 days. You can also delete them anytime by clicking _Delete workspaces_ right in the connection settings. Note that workspaces are deleted only on the server — not on build agents — and only if they were created by TeamCity.
 
 It is also possible to delete only workspaces associated with a specific stream. To do this, go to __Build Configuration Home__, open the __Actions__ menu, and click _Delete Perforce stream workspaces_. By default, this action is available to all users with the Project Developer role.  
 In the opened dialog, specify a path to a stream, and TeamCity will delete the related workspaces on the Perforce server. To connect to the server, TeamCity will use the settings from the project's Perforce Administrator Access connection. If it is not available, it will use the [Perforce VCS root](perforce.md) settings instead.
-{id="DeleteP4StreamWorkspaces" auxiliary-id="DeleteP4StreamWorkspaces"}
+{id="DeleteP4StreamWorkspaces" help-id="DeleteP4StreamWorkspaces"}
 
 ## Perforce Sync -f and Workspace Reuse
 

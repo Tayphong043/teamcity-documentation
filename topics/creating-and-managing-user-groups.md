@@ -2,7 +2,7 @@
 [//]: # (auxiliary-id: Creating and Managing User Groups)
 
 ## What is User Group in TeamCity
-{id="User+Group" auxiliary-id="User Group"}
+{id="User+Group" help-id="User Group"}
 
 User groups help manage user accounts more efficiently:
 * Assign [roles](managing-roles-and-permissions.md) to all users included in the group at once: users get all the roles of the groups they belong to.
