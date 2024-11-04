@@ -31,15 +31,14 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
         <ul>
             <li>At the start:
                 <ul>
-                    <li>the cache was not validated for 7 days or longer</li>
-                    <li>the cache reached its 30-day lifetime, even if it was recently validated</li>
-                    <li>the <code>teamcity.depcache.invalidate</code> <a href="configuring-build-parameters.md">parameter</a> equals <b>true</b></li>
+                    <li>If the periodic cleanup is scheduled. Caches are forcibly pruned and republished every 30 days starting from their first publish date. This mechanism ensures caches stay up-to-date. You can modify the cleanup frequency by changing the value of the <code>teamcity.depcache.invalidation.periodical.periodMins</code> <a href="server-startup-properties.md#TeamCity+Internal+Properties">internal property</a>.</li>
+                    <li>If the <code>teamcity.depcache.invalidate</code> <a href="configuring-build-parameters.md">parameter</a> equals <b>true</b></li>
                 </ul>
             </li>
             <li>At the end:
                 <ul>
-                    <li>the list of build steps using this cache has changed</li>
-                    <li>the project dependency list has changed</li>
+                    <li>If the list of build steps using this cache has changed</li>
+                    <li>If the project dependency list has changed</li>
                 </ul>
             </li>
         </ul>
