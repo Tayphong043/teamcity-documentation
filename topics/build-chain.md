@@ -120,7 +120,9 @@ Note that the dialog allows you to skip only those build configurations that are
 Starting with version 2024.11, TeamCity supports the `teamcity.build.chain.skipTags` and `teamcity.build.chain.onlyTags` [configuration parameters](configuring-build-parameters.md).
 
 * The `teamcity.build.chain.skipTags` parameter explicitly skips unwanted configurations. The chain will run only non-excluded builds.
-* The `teamcity.build.chain.onlyTags` parameter specifies configurations you want to run. However, this does not limit the build chain to these parameters only. If `onlyTags` references configurations that have their own dependencies, these dependencies will be run as well.
+* The `teamcity.build.chain.onlyTags` parameter specifies configurations you want to run. However, this does not limit the build chain to the mentioned configurations only.
+    * If `onlyTags` references configurations that have their own dependencies, these dependencies will be run as well.
+    * Configurations in between those mentioned in `onlyTags` parameter cannot be skipped.
 
 #### Parameter Values
 
@@ -209,7 +211,9 @@ object TestAndroid : BuildType({
         param("teamcity.configuration.tags", "optional")
     }
 })
-// other build configurations
+// ...
+// Other optional build configurations
+// ...
 object TeamcityGatedPrDemo_BuildAll : BuildType({
     id("BuildAll")
     type = BuildTypeSettings.Type.COMPOSITE
@@ -240,7 +244,9 @@ object TestWin : BuildType({
 object TestAndroid : BuildType({
     id("TestAndroid")
 })
-// other build configurations
+// ...
+// Other build configurations
+// ...
 object TeamcityGatedPrDemo_BuildAll : BuildType({
     id("BuildAll")
     type = BuildTypeSettings.Type.COMPOSITE
