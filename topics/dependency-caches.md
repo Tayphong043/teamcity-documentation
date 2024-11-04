@@ -1,7 +1,7 @@
 [//]: # (title: Dependency Caches)
 
 
-**Maven Cache**, **Gradle Cache**, and **NuGet Cache** are configuration-free build features that speed up builds by allowing related steps to reuse dependencies downloaded during previous builds of the same build configuration. In addition, caches can be shared between steps of the same build, given that these steps utilize the same dependency directory.
+**Maven Cache**, **Gradle Cache**, and **NuGet Cache** are configuration-free build features that speed up builds by allowing related steps to reuse dependencies downloaded during previous builds of the same build configuration. In addition, caches are shared between steps of the same build, given that these steps utilize the same dependency directory.
 
 * Maven Cache — caches dependencies used by [](maven.md) build steps
 * Gradle Cache — caches dependencies used by [](gradle.md) build steps
@@ -16,12 +16,11 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
 
 <deflist type="narrow">
     <def title="Caching">
-        The initial cache is formed during the first build run. To do this, a build feature caches the contents of track directories as is, without filtering out any files.<br/>
-        Tracked repositories:
+        The initial cache is formed during the first build run. To do this, a build feature caches the contents of the following tracked directories:
         <list type="bullet">
             <li><b>Maven:</b> <a href="https://maven.apache.org/guides/introduction/introduction-to-repositories.html">local Maven repositories</a>. The default path depends on step <a href="maven.md#Local+Artifact+Repository+Settings">local artifact repository settings</a>.</li>
             <li><b>NuGet:</b> <a href="https://learn.microsoft.com/en-us/nuget/consume-packages/managing-the-global-packages-and-cache-folders">global package folder</a>. The default path is <code>${user.home}/.nuget/packages</code>.</li>
-            <li><b>Gradle:</b> <a href="https://docs.gradle.org/current/userguide/dependency_resolution.html#sub:cache_copy">Gradle cache directory</a>. The default path is <code>${user.home}/.gradle/caches</code>.</li>
+            <li><b>Gradle:</b> <a href="https://docs.gradle.org/current/userguide/dependency_resolution.html#sub:cache_copy">Gradle cache directory</a>. The default path is <code>${user.home}/.gradle/caches/modules-&lt;version&gt;</code>.</li>
         </list>
     </def>
     <def title="Publishing">
@@ -60,7 +59,7 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
 
 * The cache is only published if the build was successful. See this ticket for more information: [TW-89838](https://youtrack.jetbrains.com/issue/TW-89838/The-dependency-cache-is-not-saved-and-not-published-for-the-failed-builds-with-failed-tests).
 
-* To enable dependency caching for [builds running in container](container-wrapper.md), set the `-v <path_to_your_cache>:<path_to_your_cache>` volume.
+* To enable dependency caching for [builds running in container](container-wrapper.md), set the `-v <dependency_directory>:<dependency_directory>` volume.
 
 * Certain build configuration setups rely on spawning "virtual" builds. For example, when using [](parallel-tests.md) or [](matrix-build.md), each test batch or parameter combination runs in a separate build. Each of these dynamically generated builds publish an identical cache. See the following ticket for more information: [TW-89837](https://youtrack.jetbrains.com/issue/TW-89837/The-same-dependency-cache-is-created-multiple-times-in-every-virtual-build).
 
