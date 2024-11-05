@@ -80,6 +80,7 @@ Existing connections will retain legacy authentication but recommend migrating t
 
 * The [](artifacts-migration-tool.md) now supports migration to and from Microsoft Azure storages. This tool allows you to easily transfer build artifacts from one storage to another. Note that you need to install an unbundled plugin to set up Azure storages: [Azure Artifact Storage](https://plugins.jetbrains.com/plugin/9617-azure-artifact-storage).
 * All messages written to `teamcity-server.log` during a server startup are now duplicated to the [teamcity-startup.log](teamcity-server-logs.md). This log ensures major boot events are logged to a separate file, which may assist in troubleshooting server startup issues.
+* TeamCity [metrics](teamcity-monitoring-and-diagnostics.md#Metrics) set now includes the experimental `log_messages` metric that allows you to obtain the total number of [Log4j](teamcity-server-logs.md) messages. This metric reports a separate number of log messages for each category (`ACTIVITIES`, `AGENT`, `STARTUP`, and others) and severity (`INFO` or `WARN`).   
 
 </snippet>
 
