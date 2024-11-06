@@ -307,7 +307,7 @@ Label/changelist to sync
 
 <td>
 
-Specify the label if you want to check out sources not with the latest revision, but with a specific Perforce label (with selective changes). For instance, this can be useful to produce a milestone / release build. If this field is empty, the latest changelist will be used for synchronization.
+Specify the label if you want to check out sources not with the latest revision, but with a specific Perforce label (with selective changes). For instance, this can be useful to produce a milestone / release build. If this field is empty, the latest changelist will be used for synchronization. When TeamCity syncs sources using labels, it writes the revision number to the `vcsRoot.{externalId}.changelist` parameter.
 
 <warning>
 

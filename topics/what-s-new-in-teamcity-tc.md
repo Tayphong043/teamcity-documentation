@@ -29,6 +29,12 @@ All three features require no configuration: add/enable a required build feature
 Learn more: [](dependency-caches.md)
 
 
+## Perforce Integration Enhancements
+{instance="tc"}
+
+* When a [Perforce VCS Root](perforce.md) is configured to check out sources by label (the **Label/changelist to sync** setting), TeamCity now records the revision number in a new `vcsRoot.{externalId}.changelist` parameter. This quality-of-life improvement enables clear identification of the synced revision.
+
+
 ## Approve Multiple Builds at Once
 {instance="tc"}
 
