@@ -102,6 +102,12 @@ You can prevent all or individual subprojects from using cloud profiles inherite
 
 
 
+## External Agents
+
+Instead of setting up and maintaining your own build agents, you can delegate this task to an external orchestrator. Currently, only Kubernetes clusters are supported. See this article for more information: [](external-kubernetes-agents.md).
+
+
+
 
 <!--### Specifying Profile Settings
 

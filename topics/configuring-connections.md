@@ -851,6 +851,28 @@ When your Space connection is configured and installed, return to TeamCity and a
 
 Save the connection and proceed with adding a [Commit Status Publisher](commit-status-publisher.md) or [Pull Requests](pull-requests.md#JetBrains+Space+Merge+Requests) feature, [enabling Space authentication](configuring-authentication-settings.md#JetBrains+Space), or creating a [project](creating-and-editing-projects.md#Creating+project+pointing+to+JetBrains+Space) / [build configuration](creating-and-editing-build-configurations.md#Creating+Build+Configuration+Pointing+to+Specific+VCS) / [VCS root](configuring-vcs-roots.md).
 
+
+## Kubernetes
+
+Kubernetes connections allow TeamCity to access your Kubernetes resources. These connections can be used to [offload building tasks to K8s clusters](external-kubernetes-agents.md).
+
+1. <include from="common-templates.md" element-id="open-project-settings"/>
+   
+2. <include from="common-templates.md" element-id="create-new-connection"/>
+
+3. Choose "Kubernetes Connection" from the **Connection type** drop-down.
+
+4. <include from="common-templates.md" element-id="kubernetes-settings-api-server-url"/>
+
+5. <include from="common-templates.md" element-id="kubernetes-settings-certificate-authority"/>
+
+6. <include from="common-templates.md" element-id="kubernetes-settings-namespace"/>
+
+7. <include from="common-templates.md" element-id="kubernetes-settings-auth-strategy"/>
+
+8. <include from="common-templates.md" element-id="test-and-save-connection"></include>
+
+
 ## NPM Registry
 {id="npm-registry-settings" help-id="npm-registry-settings"}
 
