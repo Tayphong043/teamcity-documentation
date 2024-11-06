@@ -35,6 +35,18 @@ Learn more: [](dependency-caches.md)
 * When a [Perforce VCS Root](perforce.md) is configured to check out sources by label (the **Label/changelist to sync** setting), TeamCity now records the revision number in a new `vcsRoot.{externalId}.changelist` parameter. This quality-of-life improvement enables clear identification of the synced revision.
 
 
+## Offload Your Builds to Kubernetes
+{instance="tc"}
+
+In a traditional TeamCity paradigm, you should set up, maintain, and manage build agents that process builds. This applies to both cloud-hosted and local agents.
+
+Starting with version 2024.11, you will be able to take an alternative route: offload building tasks to the K8s cluster. Set up the new integration and start building right away: our K8s executor will generate pod definitions based on build parameters and required containers and submit them to K8s cluster. As a result, your cluster will act as an orchestrator that manages builds and "agents" lifecycle.
+
+<img src="dk-k8s-integration-overview.png" alt="K8S integration" width="706"/>
+
+Learn more: [](external-kubernetes-agents.md), [Kubernetes connection](configuring-connections.md#Kubernetes)
+
+
 ## Approve Multiple Builds at Once
 {instance="tc"}
 

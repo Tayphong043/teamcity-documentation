@@ -83,7 +83,7 @@ Kubernetes API server URL
 </td>
 <td>
 
-Specify the URL of the [Kubernetes API server](https://kubernetes.io/docs/concepts/overview/components/#kube-apiserver).
+<include from="common-templates.md" element-id="kubernetes-settings-api-server-url"/>
 
 </td>
 
@@ -98,7 +98,7 @@ Certificate Authority (CA)
 </td>
 <td>
 
-Enter the content of the [CA certificate](https://kubernetes.io/docs/concepts/cluster-administration/certificates/) for your cluster.
+<include from="common-templates.md" element-id="kubernetes-settings-certificate-authority"/>
 
 </td>
 
@@ -115,7 +115,7 @@ Kubernetes namespace
 </td>
 <td>
 
-Specify a required [Kubernetes namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/). Leave empty to use the [default namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#viewing-namespaces).
+<include from="common-templates.md" element-id="kubernetes-settings-namespace"/>
 
 </td>
 
@@ -130,11 +130,7 @@ Authentication strategy
 </td>
 <td>
 
-Select the required authentication strategy.
-
-Depending on the selected strategy, the set of extra options will vary. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#authentication-strategies) for details on available options.
-
->The _Token_ strategy accepts any token types supported by Kubernetes.
+<include from="common-templates.md" element-id="kubernetes-settings-auth-strategy"/>
 
 </td>
 
