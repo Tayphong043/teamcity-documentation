@@ -2,12 +2,12 @@
 
 ## Project and Configuration Settings
 
-<snippet id="open-project-settings">Open project settings. To do so, navigate to the required project and click the <b>Edit</b> button in the top right corner.</snippet>
+<snippet id="open-project-settings">Navigate to <b>Administration | &lt;Your Project&gt;</b> to access project settings.</snippet>
 
 
 ## Project Features
 
-<snippet id="create-new-connection">Navigate to the **Connections** group and click **Add Connection**. Note that connections can be used only in their parent projects and their subprojects. If you want a connection to be available globally, add it to the **Root** project.</snippet>
+<snippet id="create-new-connection">Switch to the <b>Connections</b> group and click <b>Add Connection</b>. Note that connections can be used only in their parent projects and their subprojects. If you want a connection to be available globally, add it to the <b>Root</b> project.</snippet>
 
 <snippet id="test-and-save-connection">Click <b>Test connection</b> to verify TeamCity can access your resources, and save your new conneciton.</snippet>
 
