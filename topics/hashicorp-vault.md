@@ -28,16 +28,16 @@ Since all communication with Vault is orchestrated by the TeamCity server, this 
 
 <img src="dk-vaultConnection.png" width="460" alt="Vault connection settings"/>
 
-1. Navigate to **Administration | &lt;Your Project&gt; | Connections** and click **Add Connection**.
-2. Choose **HashiCorp Vault** as the connection type.
-3. Specify the basic connection settings: the connection name, Vault URL and namespace, and an optional ID.
-
+1. <include from="common-templates.md" element-id="open-project-settings"/>
+2. <include from="common-templates.md" element-id="create-new-connection"/>
+3. Choose **HashiCorp Vault** as the connection type.
+4. Specify the basic connection settings: the connection name, Vault URL and namespace, and an optional ID.
 
    * [Vault namespaces](https://developer.hashicorp.com/vault/docs/enterprise/namespaces) allow you to create "vaults within a vault" — isolated tenants inside a single Vault Enterprise instance. If you store Vault secrets in this isolated environment, specify its namespace in the **Vault namespace** connection field (for example, `TeamABC/secrets/`). Otherwise, leave this setting empty.
    * **ID** is a custom string that identifies this Vault connection. You can specify this field if you set up multiple Vault connections and specify which connection a specific parameter should use. Otherwise, leave this field blank.
    * **Vault URL** is the address of your Vault instance. Local Vault installations (the default URL is `http://localhost:8200`) are also supported.
-
-4. Choose the desired authentication method. TeamCity can authenticate to HCP Vault using a Vault's AppRole, an AWS IAM role, or a directory access protocol (LDAP).
+   
+5. Choose the desired authentication method. TeamCity can authenticate to HCP Vault using a Vault's AppRole, an AWS IAM role, or a directory access protocol (LDAP).
 
     <tabs>
 
@@ -98,8 +98,9 @@ Since all communication with Vault is orchestrated by the TeamCity server, this 
    
     </tabs>
 
-5. Tick **Fail in case of error** if you want builds to fail with the "Error while fetching data from HashiCorp Vault" message if the agent cannot obtain Vault secrets and write them to [TeamCity parameters](#Create+and+Set+Up+a+Parameter). Note that builds will fail even if these parameters are never used. If this setting is disabled, builds will continue running with empty strings as secret parameter values.
+<!--5. Tick **Fail in case of error** if you want builds to fail with the "Error while fetching data from HashiCorp Vault" message if the agent cannot obtain Vault secrets and write them to [TeamCity parameters](#Create+and+Set+Up+a+Parameter). Note that builds will fail even if these parameters are never used. If this setting is disabled, builds will continue running with empty strings as secret parameter values.-->
 
+6. <include from="common-templates.md" element-id="test-and-save-connection"/>
 
 
 
@@ -118,7 +119,6 @@ project {
                 roleId = "..."
                 secretId = "..."
             }
-            failOnError = false
         }
     }
 }
