@@ -85,6 +85,18 @@ These parameters can be a permanent part of your configuration or occasionally a
 Learn more: [](build-chain.md#Partial+Chain+Execution)
 
 
+## Execute Meta-Runners Inside Containers
+{instance="tc"}
+
+Along with setting [container options](container-wrapper.md) for individual build steps within a [meta-runner](working-with-meta-runner.md), you can now define shared container settings at the meta-runner level.
+
+<img src="dk-docker-container-settings.png" width="706" alt="Container settings in steps and meta-runners"/>
+
+Individual step settings still take precedence, enabling each step to run in its own container if specified.
+
+Learn more: [](working-with-meta-runner.md#Launch+Meta-Runners+in+Containers)
+
+
 ## AWS Integration Enhancements
 {instance="tc"}
 

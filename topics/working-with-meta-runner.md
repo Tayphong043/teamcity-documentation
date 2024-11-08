@@ -118,3 +118,55 @@ Since a meta-runner looks and works like any other runner, it is also possible t
 ## Creating Build Configuration from Meta-Runner
 
 If you need to fix a meta-runner and test your fix, you can create a build configuration from a meta-runner, change its steps, adjust parameters and requirements, check how it works, and then use the __Extract meta-runner__ action to apply the changes to the existing meta-runner with the same ID.
+
+
+## Launch Meta-Runners in Containers
+
+Individual build steps comprise meta-runners have settings that allow TeamCity to run these steps inside [Docker/LXC containers](container-wrapper.md). Same settings are available for meta-runners themselves.
+
+<img src="dk-docker-container-settings.png" width="706" alt="Container settings in steps and meta-runners"/>
+
+If you want all of your steps to be executed inside a required container, set up the required image on the meta-runner level. Container settings of individual steps have a priority over these meta-runner settings and allow you to run each step in its unique container.
+
+[Kotlin sample](kotlin-dsl.md) of a meta-runner that runs its steps inside "ubuntu" Linux container:
+
+```Kotlin
+object Build : BuildType({
+    steps {
+        step {
+            id = "SimpleMetaRunner"
+            type = "idSimpleMetaRunner"
+            executionMode = BuildStep.ExecutionMode.DEFAULT
+            param("plugin.docker.imageId", "ubuntu")
+            param("plugin.docker.imagePlatform", "linux")
+            param("plugin.docker.pull.enabled", "true")
+            param("plugin.docker.run.parameters", "")
+        }
+    }
+})
+```
+
+The XML markup of this meta-runner is shown below, step #1 runs inside the "python:3.9.20-bullseye" container.
+
+```XML
+<meta-runner name="SimpleMetaRunner">
+  <description>A Py/CLI sample meta-runner</description>
+  <settings>
+    <parameters/>
+    <build-runners>
+      <runner name="Py" type="python-runner">
+        <parameters>
+          <param name="plugin.docker.imageId" value="python:3.9.20-bullseye" />
+          <!-- Python step parameters -->
+        </parameters>
+      </runner>
+      <runner name="" type="simpleRunner">
+        <parameters>
+            <!-- CLI step parameters -->
+        </parameters>
+      </runner>
+    </build-runners>
+    <requirements />
+  </settings>
+</meta-runner>
+```
