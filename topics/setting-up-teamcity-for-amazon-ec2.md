@@ -427,7 +427,7 @@ To use [encrypted EBS volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGui
 * `kms:Decrypt`
 * `kms:DescribeKey`
 * `kms:GenerateDataKeyWithoutPlainText`
-* `kms:ReEncrypt`
+* `kms:ReEncrypt*`
 
 <!--To [connect to an agent via SSM](#debugging-and-maintenance), the following additional permissions are required:
 * `sts:GetFederationToken`
@@ -473,7 +473,7 @@ The snippet below illustrates a custom IAM policy definition that allows all EC2
         "kms:Decrypt",
         "kms:DescribeKey",
         "kms:GenerateDataKeyWithoutPlainText",
-        "kms:ReEncrypt"
+        "kms:ReEncrypt*"
       ],
       "Effect": "Allow",
       "Condition": {
