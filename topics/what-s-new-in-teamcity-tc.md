@@ -88,11 +88,11 @@ Learn more: [](build-chain.md#Partial+Chain+Execution)
 ## Execute Meta-Runners Inside Containers
 {instance="tc"}
 
-Along with setting [container options](container-wrapper.md) for individual build steps within a [meta-runner](working-with-meta-runner.md), you can now define shared container settings at the meta-runner level.
+Starting with this version, [meta-runners](working-with-meta-runner.md) provide [container-related settings](container-wrapper.md). These settings are propagated to individual steps, meaning every individual step will be able to run inside the required Docker/Linux image.
 
 <img src="dk-docker-container-settings.png" width="706" alt="Container settings in steps and meta-runners"/>
 
-Individual step settings still take precedence, enabling each step to run in its own container if specified.
+If a step has its own container settings, they override the global meta-runner configuration.
 
 Learn more: [](working-with-meta-runner.md#Launch+Meta-Runners+in+Containers)
 

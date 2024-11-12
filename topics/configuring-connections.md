@@ -37,8 +37,8 @@ To configure an Azure DevOps OAuth 2.0 connection:
 
 1. <include from="common-templates.md" element-id="open-project-settings"/>
 2. <include from="common-templates.md" element-id="create-new-connection"/>
-3. <var name="connection-type" value="Azure DevOps OAuth 2.0"/><include from="common-templates.md" element-id="choose-connection-type"></include>
-3. <var name="unique-url-sample" value="/oauth/azuredevops/rid:your-unique-id/accessToken.html"/><include from="common-templates.md" element-id="connections-unique-callback-URL"/>
+3. <include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="Azure DevOps OAuth 2.0"/></include>
+4. <include from="common-templates.md" element-id="connections-unique-callback-URL"><var name="unique-url-sample" value="/oauth/azuredevops/rid:your-unique-id/accessToken.html"/></include>
 5. TeamCity will display the _Callback URL_ and _scopes_ required for registering an OAuth application in Azure DevOps.
 
     Go to the [Register Application](https://app.vsaex.visualstudio.com/app/register) page in Azure and create a new app using the provided parameters. When created, copy the app's ID and client secret.
@@ -56,7 +56,7 @@ To configure an Azure DevOps PAT connection:
 
 1. <include from="common-templates.md" element-id="open-project-settings"/>
 2. <include from="common-templates.md" element-id="create-new-connection"/>
-3. <var name="connection-type" value="Azure DevOps PAT"/><include from="common-templates.md" element-id="choose-connection-type"/> The page that opens provides the parameters to be used when connecting TeamCity to Azure DevOps Services.
+3. <include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="Azure DevOps PAT"/></include> The page that opens provides the parameters to be used when connecting TeamCity to Azure DevOps Services.
 4. Log in to your Azure DevOps Services account to create a personal access token with _All scopes_ as described in the [Microsoft documentation](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate).
 5. Continue configuring the connection in TeamCity: on the __Add Connection__ page that is open, specify
    * the server URL in the `https://{account}.visualstudio.com` format or your Azure DevOps Server as `https://{server}:8080/tfs/`
@@ -109,8 +109,8 @@ To allow TeamCity to access Bitbucket data, you need to create an incoming appli
 
 1. <include from="common-templates.md" element-id="open-project-settings"/>
 2. <include from="common-templates.md" element-id="create-new-connection"/>
-3. <var name="connection-type" value="Bitbucket Server / Data Center"/><include from="common-templates.md" element-id="choose-connection-type"/>
-4. <var name="unique-url-sample" value="/oauth/bitbucketserver/rid:your_unique_id/accessToken.html"/><include from="common-templates.md" element-id="connections-unique-callback-URL"/>
+3. <include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="Bitbucket Server / Data Center"/></include>
+4. <include from="common-templates.md" element-id="connections-unique-callback-URL"><var name="unique-url-sample" value="/oauth/bitbucketserver/rid:your_unique_id/accessToken.html"/></include>
 5. In a separate browser tab, go to the Bitbucket **"Administration | Application Links"** page.
 6. Create a new [application link](https://confluence.atlassian.com/bitbucketserver/link-to-other-applications-1018764620.html) with the following parameters:
 
@@ -173,7 +173,7 @@ If you do not already have a suitable GitHub App, you can allow TeamCity to regi
 </li>
 
 <li>
-<var name="connection-type" value="GitHub App"/><include from="common-templates.md" element-id="choose-connection-type"/> This connection type works with both regular GitHub and GitHub Enterprise accounts.
+<include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="GitHub App"/></include> This connection type works with both regular GitHub and GitHub Enterprise accounts.
 </li>
 
 
@@ -261,7 +261,7 @@ To create a TeamCity connection that utilizes a GitHub OAuth Application:
 
 <li><include from="common-templates.md" element-id="create-new-connection"/></li>
 
-<li><var name="connection-type" value="GitHub.com or GitHub Enterprise"/><include from="common-templates.md" element-id="choose-connection-type"/></li>
+<li><include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="GitHub.com or GitHub Enterprise"/></include></li>
 
 <li>If you do not already have a GitHub OAuth Application, follow TeamCity instructions to <a href="https://docs.github.com/en/developers/apps/authorizing-oauth-apps">create a new one</a>.</li>
 
@@ -312,8 +312,8 @@ To create a TeamCity connection that uses a GitLab OAuth Application:
 
 1. <include from="common-templates.md" element-id="open-project-settings"/>
 2. <include from="common-templates.md" element-id="create-new-connection"/>
-3. <var name="connection-type" value="GitLab.com or GitLab CE/EE"/><include from="common-templates.md" element-id="choose-connection-type"/>
-4. **GitLab CE/EE** connections only: <var name="unique-url-sample" value="/oauth/gitlab/rid:your_unique_id/accessToken.html"/><include from="common-templates.md" element-id="connections-unique-callback-URL"/>
+3. <include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="GitLab.com or GitLab CE/EE"/></include>
+4. <b>GitLab CE/EE</b> connections only: <include from="common-templates.md" element-id="connections-unique-callback-URL"><var name="unique-url-sample" value="/oauth/gitlab/rid:your_unique_id/accessToken.html"/></include>
 5. If you do not already have a GitLab OAuth Application, follow the GitLab instructions to create an OAuth Application in one of the following scopes:
    - [User owned applications](https://docs.gitlab.com/ee/integration/oauth_provider.html#create-a-user-owned-application)
    - [Group owned applications](https://docs.gitlab.com/ee/integration/oauth_provider.html#create-a-group-owned-application)
@@ -352,7 +352,7 @@ To configure a Google connection in TeamCity:
 
 1. <include from="common-templates.md" element-id="open-project-settings"/>
 2. <include from="common-templates.md" element-id="create-new-connection"/>
-3. <var name="connection-type" value="Google"/><include from="common-templates.md" element-id="choose-connection-type"/>
+3. <include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="Google"/></include>
 4. Copy redirect URLs shown by TeamCity; these URLs are required to register an OAuth client.
 5. Go to the [Credentials](https://console.cloud.google.com/apis/credentials) page in the Google project and create the [OAuth client ID](https://developers.google.com/workspace/guides/create-credentials#oauth-client-id) with the Web application type.
 6. Paste your Callback URLs to the **Authorized redirect URIs** section in Google OAuth client ID. When the OAuth client is created, copy the Client ID and Client Secret.
@@ -378,7 +378,7 @@ To configure an AWS connection in TeamCity:
 
 1. <include from="common-templates.md" element-id="open-project-settings"/>
 2. <include from="common-templates.md" element-id="create-new-connection"/>
-3. <var name="connection-type" value="Amazon Web Services (AWS)"/><include from="common-templates.md" element-id="choose-connection-type"/>
+3. <include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="Amazon Web Services (AWS)"/></include>
 4. Provide a name to distinguish this connection from others.
 5. The _Connection ID_ field is filled out automatically. You can modify it and provide your own unique ID.
 6. Select the _AWS region_ where the target resources are located.
@@ -762,7 +762,7 @@ To configure an organization connection:
 
 1. <include from="common-templates.md" element-id="open-project-settings"/>
 2. <include from="common-templates.md" element-id="create-new-connection"/>
-3. <var name="connection-type" value="JetBrains Space"/><include from="common-templates.md" element-id="choose-connection-type"/>
+3. <include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="JetBrains Space"/></include>
 4. Choose **Automatic: Organization Connection** under **Creation mode**.
 5. Enter the name for your new connection and click **Create Space Application**.
 6. TeamCity will open a separate browser window that allows you to choose the required Space instance:
@@ -855,7 +855,7 @@ Kubernetes connections allow TeamCity to access your Kubernetes resources. These
    
 2. <include from="common-templates.md" element-id="create-new-connection"/>
 
-3. <var name="connection-type" value="Kubernetes Connection"><include from="common-templates.md" element-id="choose-connection-type"></include>
+3. <include from="common-templates.md" element-id="choose-connection-type"><var name="connection-type" value="Kubernetes Connection"/></include>
 
 4. <include from="common-templates.md" element-id="kubernetes-settings-api-server-url"/>
 
