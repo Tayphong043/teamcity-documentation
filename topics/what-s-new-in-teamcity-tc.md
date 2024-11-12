@@ -82,6 +82,8 @@ Version 2024.11 introduces two configuration parameters that accept tags and IDs
 
 These parameters can be a permanent part of your configuration or occasionally added via the [Run Custom Build](running-custom-build.md) dialog when you need to run a specific sub-chain.
 
+In addition, we have implemented the `skipQueuedBuilds` service message that you can send from build steps to cancel builds of downstream configurations that are already queued.
+
 Learn more: [](build-chain.md#Partial+Chain+Execution)
 
 
