@@ -146,7 +146,7 @@ object Build : BuildType({
 })
 ```
 
-The XML markup of this meta-runner is shown below, step #1 runs inside the "python:3.9.20-bullseye" container.
+The XML markup for this meta-runner is shown below. Step #1 runs in the `python:3.9.20-bullseye` container. Step #2 has no personal container settings and runs inside the `ubuntu` container as defined in the Kotlin code above.
 
 ```XML
 <meta-runner name="SimpleMetaRunner">
