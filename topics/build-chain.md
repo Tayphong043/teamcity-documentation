@@ -479,7 +479,7 @@ As a result, only `A` and `E` builds will start. These builds will effectively r
 
 <img src="dk-partial-chain-from-skipped-queued.png" width="706" alt="Partial chain"/>
 
-To make this result less confusing, redesign your chain to isolate a conditional portion of your chain. For example, you may want to add a direct `A → E` dependency to always see this mandatory section in TeamCity UI, even when optional configuration builds are skipped.
+To make this result less confusing, redesign your chain to isolate its conditional portions. For example, you may want to add a direct `A → E` dependency to always see this mandatory section in TeamCity UI, even when optional configuration builds are skipped.
 
 If you intend to frequently skip a mid-section of a linear chain, consider [cloning](copy-move-delete-build-configuration.md) configurations and making separate chains instead. This way you will be able to run both "essential" (without optional configurations) and "complete" variations and avoid downsides of running chains with missing links.
 
