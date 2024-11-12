@@ -22,6 +22,12 @@ Key benefits this integration brings to the table include:
     * **Parameters** — enter the list of [parameters](configuring-build-parameters.md) (in the `name=value` format) that should be present on K8s containers. These parameters will be matched to [explicit agent requirements](agent-requirements.md) of queued builds. As a result, you can specify which builds can be run in your K8s cluster.
         
         For example, add the `k8s=yes` value to this field in order to offload builds with the `equals("k8s", "yes")` agent requirement.
+        
+        > Parameters written to pods are not accessible to builds running on them. That is, you cannot access these parameters within build processes (for example, by echoing their values) or view them on the [Build Results](build-results-page.md#Parameters+Tab) page or via the `/app/rest/builds/id:<Int32>?fields=properties(property)` REST API requests. 
+        > 
+        > These parameters are used solely to match executors with configuration requirements.
+        > 
+        {style="note"}
    
 5. In your build configuration settings, specify [agent requirements](agent-requirements.md) and [step containers](container-wrapper.md) if needed.
 6. Trigger a new build.
