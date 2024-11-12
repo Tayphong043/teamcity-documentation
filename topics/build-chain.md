@@ -461,6 +461,26 @@ The list of available values does **NOT** have these options:
 * tests — this value can confuse users since you cannot trigger only leftmost "Test ..." and rightmost "Build All" configurations, leaving "Build ..." configurations intact. This happens because TeamCity cannot skip configurations in the middle of a chain, since it is then unclear how to handle dependencies traversing configurations which never run. 
 
 
+### Service Message
+
+Send the `##teamcity[skipQueuedBuilds tags='value1,value2,...' comment='Your comment']` [service message](service-messages.md) from any build step of an upstream build configuration to cancel queued builds of downstream configurations. Same as with `skipTags` / `onlyTags` [parameters](#Build+Parameters), the `tags` argument of this message accepts:
+
+* values of `teamcity.configuration.tags` parameters added to configurations;
+* configuration IDs.
+
+Send this message with caution when cancelling configurations in a middle of a linear chain. Doing so nullifies the entire mid-section of a chain and produces results that can be difficult to view and investigate. For example, consider the `A → B → C → D → E` chain.
+
+* The entire chain is triggered by a new configuration `E` build.
+* Configurations `B` and `D` are marked with the `teamcity.configuration.tags=optional` parameter.
+* Configuration `A` sends the `##teamcity[skipQueuedBuilds tags='optional']` message.
+* Configuration `C` is now unable to run, since both of its neighboring configurations were cancelled.
+
+As a result, only `A` and `E` builds will start. These builds will effectively run as solo builds, as if they never belonged to a chain. The [Dependencies](build-results-page.md#Dependencies+Tab) tab of a `E` build will show a truncated chain that reveals nether skipped nor configuration `A` builds.
+
+<img src="dk-partial-chain-from-skipped-queued.png" width="706" alt="Partial chain"/>
+
+To make this result less confusing, redesign your chain to encapsulate the optional portion to a separate branch. For example, you may want to add a direct `A → E` dependency. This way this permanent portion of a branch will always be visible in TeamCity UI. If you intend to frequently skip this mid-section of a chain, consider [cloning](copy-move-delete-build-configuration.md) you configurations to create two independent chains: the "essential" `A → E` and the complete `A → B → C → D → E`.
+
 
  <seealso>
         <category ref="concepts">

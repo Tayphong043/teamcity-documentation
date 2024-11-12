@@ -1190,7 +1190,15 @@ If you need to cancel a build from a script, for example, if a build cannot proc
 echo "##teamcity[buildStop comment='canceling comment' readdToQueue='true']"
 ```
 
-If required, you can re-add the build to the queue after canceling it. By default, TeamCity will do 3 attempts to re-add the build into the queue. 
+If required, you can re-add the build to the queue after canceling it. By default, TeamCity will do 3 attempts to re-add the build into the queue.
+
+Downstream chain builds can be cancelled by sending the `skipQueuedBuilds` message from preceding (upstream) configurations. This message accepts IDs or tags of configurations that you want to skip as the `tags` parameter.
+
+```Shell
+##teamcity[skipQueuedBuilds tags='value1,value2,...' comment='Your comment']
+```
+
+See the [](build-chain.md#Partial+Chain+Execution) article for more information about cancelling builds linked in a build chain.
 
 ## Adding and Removing Build Tags
 
