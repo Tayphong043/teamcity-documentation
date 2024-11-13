@@ -23,15 +23,19 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
             <li><b>Gradle:</b> <a href="https://docs.gradle.org/current/userguide/dependency_resolution.html#sub:cache_copy">Gradle cache directory</a>. The default path is <code>${user.home}/.gradle/caches/modules-&lt;version&gt;</code>.</li>
         </list>
     </def>
-    <def title="Publishing">
-        After a cache was created, the build feature publishes it to the <a href="configuring-artifacts-storage.md">artifact storage</a>, making it easily accessible to agents that process subsequent builds.
+    <def title="Publishing" instance="tc">
+        After a cache was created, the build feature publishes it to the <a href="configuring-artifacts-storage.md" instance="tc">artifact storage</a>, making it easily accessible to agents that process subsequent builds.
+    </def>
+    <def title="Publishing" instance="tcc">
+        After a cache was created, the build feature publishes it to the artifact storage, making it easily accessible to agents that process subsequent builds.
     </def>
     <def title="Validation">
         A cache is routinely checked to determine if it is still valid or needs replacement. A build feature can mark a cache as invalid at the start or end of a build (before or after executing build steps) in the following cases:
         <ul>
             <li>At the start:
                 <ul>
-                    <li>If the periodic cleanup is scheduled. Caches are forcibly pruned and republished every 30 days starting from their first publish date. This mechanism ensures caches stay up-to-date. You can modify the cleanup frequency by changing the value of the <code>teamcity.depcache.invalidation.periodical.periodMins</code> <a href="server-startup-properties.md#TeamCity+Internal+Properties">internal property</a>.</li>
+                    <li instance="tc">If the periodic cleanup is scheduled. Caches are forcibly pruned and republished every 30 days starting from their first publish date. This mechanism ensures caches stay up-to-date. You can modify the cleanup frequency by changing the value of the <code>teamcity.depcache.invalidation.periodical.periodMins</code> <a href="server-startup-properties.md#TeamCity+Internal+Properties">internal property</a>.</li>
+                    <li instance="tcc">If the periodic cleanup is scheduled. Caches are forcibly pruned and republished every 30 days starting from their first publish date. This mechanism ensures caches stay up-to-date.</li>
                     <li>If the <code>teamcity.depcache.invalidate</code> <a href="configuring-build-parameters.md">parameter</a> equals <b>true</b></li>
                 </ul>
             </li>

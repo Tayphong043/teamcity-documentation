@@ -17,6 +17,9 @@ Key benefits this integration brings to the table include:
 4. Set your K8s integration as follows:
     * **Connection** — choose a connection created in step 1.
     * **Server URL** — enter your TeamCity server URL or leave empty to use the URL specified on the server's [Global Settings](configuring-server-url.md) page.
+    {instance="tc"}
+    * **Server URL** — enter your TeamCity server URL or leave empty to use the default server URL.
+    {instance="tcc"}
     * **YAML Config** — choose a required pod configuration. See the [](#YAML+Configuration) section for more information.
     * **Maximum number of builds** — enter the cluster capacity. When this capacity is reached, new builds will remain queued unless currently ongoing builds are finished.
     * **Parameters** — enter the list of [parameters](configuring-build-parameters.md) (in the `name=value` format) that should be present on K8s containers. These parameters will be matched to [explicit agent requirements](agent-requirements.md) of queued builds. As a result, you can specify which builds can be run in your K8s cluster.
