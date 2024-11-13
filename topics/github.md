@@ -36,9 +36,7 @@ Before you start, make sure the GitHub issues feature [is enabled](https://docs.
       
       * **Anonymous** authentication can be used for public repositories and issues that do not require users to log in.
       * **Access token** requires a static [personal token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) issued on GitHub.
-      * **GitHub App access token** is the most secure option that leverages dynamic non-personal tokens. If the repository whose URL you specified is available via an existing [GitHub App connection](configuring-connections.md#GitHub), TeamCity will display this connection along with the **Acquire** button. Click it to issue a new token that will allow TeamCity to access this repository.
-         
-         <img src="dk-ghissues-token.png" width="706" alt="GitHub App token"/>
+      * **GitHub App access token** is the most secure option that leverages dynamic non-personal tokens. If the repository whose URL you specified is available via an existing [GitHub App connection](configuring-connections.md#GitHub), TeamCity will display this option. See the following article to learn more about refreshable tokens: [](manage-access-tokens.md).
    
    </tab>
    

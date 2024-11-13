@@ -166,17 +166,11 @@ For Git hosted from Team Foundation Server 2013, specify NTLM credentials here.
 
 <anchor name="refresh-token"/>
 
-* **Refreshable token** — if a VCS root that fetches data from a GitHub, GitHub App, Bitbucket Server, Bitbucket Cloud, Azure DevOps, GitLab, or JetBrains Space was configured using a TeamCity [connection](configuring-connections.md),
-refreshable tokens are enabled by default. Such tokens are short-lived providing more security than passwords or personal access tokens:
-the TeamCity server refreshes them automatically without sharing any related data with agents.
+* **Refreshable token** — if a VCS root that fetches data from a GitHub, GitHub App, Bitbucket Server, Bitbucket Cloud, Azure DevOps, GitLab, or JetBrains Space was configured using a TeamCity [connection](configuring-connections.md), refreshable tokens are enabled by default.
 
-   The **Token** field displays information about the user who obtained the token and the connection that provided the token.
+    <include from="common-templates.md" element-id="rat-single"/>
 
-   You can specify a **username** here if there is no username in the clone URL (the username specified here overrides the username from the URL).
-
-   For Azure DevOps, GitHub App, Bitbucket Server, Bitbucket Cloud, JetBrains Space and GitLab connections you can click the *Acquire new* button to instantly reissue the token used by the VCS root with a token issued for the current user.
-
-   <img src="dk-refreshableGitToken.png" width="706" alt="Reissue Token" />
+    You can specify a username if the clone (fetch) URL does not have it. The username specified here overrides the username from the URL.
 
 
 * **Private Key** — valid only for SSH protocol. A private key must be in the __OpenSSH format__.

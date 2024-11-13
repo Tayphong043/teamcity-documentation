@@ -38,7 +38,7 @@ For connection, select one of the available authentication types:
   
   <img src="dk-CSP-GitHubToken.png" width="708" alt="Acquire access token for GitHub"/>
   
-* **GitHub App access token** — if this project or any of the parent projects have a valid [GitHub App connection](configuring-connections.md#GitHub), the Commit Status Publisher can use tokens issued through this connection. The **Acquire new** button allows you to instantly re-issue the access token. This option is available only if the **VCS Root** setting points to the specific VCS root configured via a GitHub App connection.
+* **GitHub App access token** — if this project or any of the parent projects have a valid [GitHub App connection](configuring-connections.md#GitHub), the Commit Status Publisher can refreshable access tokens. <include from="common-templates.md" element-id="rat-single"/>
 
 * **Use VCS root(s) credentials** — TeamCity will try to extract credentials from the VCS root settings. This option is designed for VCS roots that use tokens (either static/personal or refreshable/OAuth) to pass authentication and obtain repositories using HTTP(S) fetch URLs. Choose other options if a related VCS root employs anonymous or standard username-password authentication or uses an SSH fetch URL.
 
@@ -60,9 +60,7 @@ The **Authentication Type** option allows you to choose which authentication met
 
 * **Personal access tokens** or PATs are static authentication tokens that you can [issue in your GitLab profile page](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html).
 
-* **Refreshable access tokens** are short-lived tokens issued via configured [GitLab OAuth 2.0 connections](configuring-connections.md#GitLab). Click the **Acquire** button next to a required connection to obtain an access token.
-
-    <img src="dk-csp-GitLabToken.png" width="708" alt="Acquire access token for GitLab"/>
+* <include from="common-templates.md" element-id="rat-single"/>
 
 * **Use VCS root credentials** — TeamCity will try to extract credentials from the VCS root settings. This option is designed for VCS roots that use tokens (either static/personal or refreshable/OAuth) to pass authentication and obtain repositories using HTTP(S) fetch URLs. Choose other options if a related VCS root employs anonymous or standard username-password authentication or uses an SSH fetch URL.
 
@@ -88,8 +86,7 @@ For the **Authentication Type**, you have the following options:
 
 * **Username/password** — Specify a username and password for connection to Bitbucket Cloud. For Bitbucket Cloud team accounts, it is possible to use the team name as the username and the API key as the password. We recommend using an [app password](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/) with the _Pull Requests | Read_ scope.
 
-* **Refreshable access token** — Displays a list of configured Bitbucket Cloud [OAuth connections](configuring-connections.md#Bitbucket+Cloud). Click the **Acquire** button next to the connection that should be used to issue a short-lived OAuth token.
-  <img src="dk-pullrequests-BBC-tokens.png" width="706" alt="PR Token for Bitbucket Cloud" style="block"/>
+* <include from="common-templates.md" element-id="rat-single"/>
 
 
 ### Bitbucket Server
@@ -133,20 +130,12 @@ If left empty, the URL will be extracted from the VCS root fetch URL.
 
 * **Use VCS root(s) credentials** — TeamCity will try to extract credentials from the VCS root settings. This option is designed for VCS roots that use tokens (either static/personal or refreshable/OAuth) to pass authentication and obtain repositories using HTTP(S) fetch URLs. Choose other options if a related VCS root employs anonymous or standard username-password authentication or uses an SSH fetch URL.
 
-* **Refreshable access token** — Displays a list of configured Bitbucket Server/Data Center [OAuth 2.0 connections](configuring-connections.md#Bitbucket+Server+and+Data+Center). Click the **Acquire** button next to the connection that should be used to issue a short-lived OAuth token.
-  > Only OAuth connections configured in this project (or in a parent) are included in the list. At least one OAuth connection must be configured in order to use this authentication option.
-  >
-  {style="note"}
+* <include from="common-templates.md" element-id="rat-single"/>
 
 </td>
 </tr>
 
 </table>
-
-When you select the **Refreshable access token** authentication type, TeamCity displays
-a list of [configured OAuth connections](configuring-connections.md#Bitbucket+Server+and+Data+Center)
-to Bitbucket Server / Data Center configured in the project and available to all project users.
-If a token is already configured, TeamCity displays the information about the user that obtained the token and the connection that provided the token.
 
 To protect a branch and ensure that only verified pull requests are merged into it, you can specify [required builds](https://confluence.atlassian.com/bitbucketserver/checks-for-merging-pull-requests-776640039.html#Checksformergingpullrequests-Requiredbuildsmergecheck) in your Bitbucket repository settings. To set a TeamCity build as a _required build_, open the __Add required builds__ page in Bitbucket and specify a build configuration ID as a build key in the __Add builds__ field. In this case, Bitbucket will not allow a pull request to be merged until the build on requested changes finishes successfully.
 
@@ -160,9 +149,7 @@ To set up the Commit Status Publisher for Azure DevOps, specify your Azure serve
 
 * **Personal access tokens** or PATs are static authentication tokens that you can [issue in your Azure DevOps account settings](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate). Your issued token should have the `Code (status)` and `Code (read)` scopes to allow Commit Status Publisher to post status updates. For [VSTS connections](configuring-connections.md#Azure+DevOps+PAT+Connection), a token can be retrieved from connection settings automatically.
 
-* **Refreshable access tokens** are short-lived tokens issued via configured [Azure OAuth 2.0 connections](configuring-connections.md#azure-devops-connection). Click the **Acquire** button next to a required connection to obtain an access token.
-
-    <img src="dk-azureOauth-token.png" width="706" alt="Azure OAuth in CSP"/>
+* <include from="common-templates.md" element-id="rat-single"/>
 
 ### JetBrains Space
 
