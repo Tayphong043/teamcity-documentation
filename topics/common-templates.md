@@ -4,6 +4,9 @@
 
 <snippet id="open-project-settings">Navigate to <b>Administration | &lt;Your Project&gt;</b> to access project settings.</snippet>
 
+<var name="tab-name" value="tab-name"/>
+<snippet id="open-project-settings-tab">Click the <b>%tab-name%</b> settings tab.</snippet>
+
 
 <snippet id="open-configuration-settings">Navigate to <b>Administration | &lt;Your Configuration&gt;</b> to access project settings.</snippet>
 
@@ -36,6 +39,12 @@ Ensure the <b>Enable unique callback URL</b> setting is enabled to generate a un
 
 
 <snippet id="test-and-save-connection">Click <b>Test connection</b> to verify TeamCity can access your resources, and save your new connection.</snippet>
+
+
+## Auth Methods
+
+
+<snippet id="rat-single"><b>Refreshable access tokens</b> are short-lived tokens acquired by TeamCity from a required VCS provider via existing OAuth connections (as opposed to static PAT tokens issued manually by users on a VCS hosting side). See the following article for more information on generating and using refreshable tokens: <a href="manage-access-tokens.md"></a>.</snippet>
 
 
 ## K8S

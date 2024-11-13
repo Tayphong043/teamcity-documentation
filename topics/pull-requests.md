@@ -318,10 +318,7 @@ Description
 
 * **Username/password** — Specify a username and password for connection to Bitbucket Server/Data Center. You can submit an access token instead of the password. The token should have _Read_ permissions for projects and repositories.
 
-* **Refreshable access token** — Displays a list of configured Bitbucket Server/Data Center [OAuth 2.0 connections](configuring-connections.md#Bitbucket+Server+and+Data+Center). Click the **Acquire** button next to the connection that should be used to issue a short-lived OAuth token.
-  > Only OAuth connections configured in this project (or in a parent) are included in the list. At least one OAuth connection must be configured in order to use this authentication option.
-  >
-  {style="note"}
+* <include from="common-templates.md" element-id="rat-single"/>
 
 </td>
 </tr>
@@ -420,8 +417,7 @@ The following parameters are available for the [Bitbucket Cloud](https://bitbuck
 
 * **Username/password** — Specify a username and password for connection to Bitbucket Cloud. We recommend using an [app password](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords/) with the _Pull Requests | Read_ scope.
 
-* **Refreshable access token** — Displays a list of configured Bitbucket Cloud [OAuth connections](configuring-connections.md#Bitbucket+Cloud). Click the **Acquire** button next to the connection that should be used to issue a short-lived OAuth token.
-  <img src="dk-pullrequests-BBC-tokens.png" width="706" alt="PR Token for Bitbucket Cloud" style="block"/>
+* <include from="common-templates.md" element-id="rat-single"/>
 
 * **Permanent Access Token** — Enter a Bitbucket [Repository Access Token](https://support.atlassian.com/bitbucket-cloud/docs/create-a-repository-access-token/), [Project Access Token](https://support.atlassian.com/bitbucket-cloud/docs/using-project-access-tokens/), or [Workspace Access Token](https://support.atlassian.com/bitbucket-cloud/docs/using-workspace-access-tokens/) to configure long-lived access to a repository, workspace, or project. The token must be configured with the _Pull Requests | Read_ scope.
 </td>
@@ -473,8 +469,7 @@ Authentication Type
 
 * **Personal Access Token** — Use a personal access token issued in GitLab. It must have either the `api` scope.
 
-* **GitLab Application Token** — Displays a list of configured [GitLab OAuth connections](configuring-connections.md#GitLab). Click the **Acquire** button next to the connection that should be used to issue a short-lived OAuth token.
-<img src="dk-pullrequests-GitLabToken.png" width="706" alt="PR Token for GitLab" style="block"/>
+* <include from="common-templates.md" element-id="rat-single"/>
 
 </td>
 </tr>
@@ -546,9 +541,7 @@ Note that the feature ignores Azure DevOps draft pull requests.
 
 * **Personal Access Token** — a static token that you can [issue in your Azure DevOps account settings](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate). Your issued token should have the `Code (read)` scope to allow Pull Requests to retrieve required information.
 
-* **Refreshable access token** — a short-lived token issued via a configured [Azure OAuth 2.0 connection](configuring-connections.md#azure-devops-connection). Click the **Acquire** button next to a required connection to obtain an access token.
-
-    <img src="dk-azure-pullRequestTokens.png" width="706" alt="Refreshable tokens for Azure DevOps"/>
+* <include from="common-templates.md" element-id="rat-single"/>
 
 
 **Pull Request Filtering**

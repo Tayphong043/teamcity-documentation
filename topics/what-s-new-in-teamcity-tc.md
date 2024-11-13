@@ -87,6 +87,22 @@ In addition, we have implemented the `skipQueuedBuilds` service message that you
 Learn more: [](build-chain.md#Partial+Chain+Execution)
 
 
+## Centralized Refreshable Token Management
+{instance="tc"}
+
+In recent releases, we have introduced support for refreshable access tokens across a wide range of OAuth connections. These short-lived tokens enable VCS roots, issue trackers, and build features like Commit Status Publisher to authenticate with VCS hosting providers. While refreshable tokens are a secure alternative to static tokens or username/password credentials, tracking all entities using these tokens can be challenging.
+
+To simplify token management, we created the **VCS Auth Tokens** page in project settings. Here, you can view, create, and revoke refreshable tokens for your projects.
+
+<img src="dk-vcs-auth-tokens-overview.png" width="706" alt="VCS Auth Tokens Overview"/>
+
+Additionally, we replaced the old **Acquire** / **Acquire New** buttons with redesigned controls. These updated controls allow you to copy existing token IDs from the **VCS Auth Tokens** page or generate new tokens right on the spot.
+
+<img src="dk-edit-ref-token.png" width="706" alt="Edit button"/>
+
+Learn more: [](manage-access-tokens.md)
+
+
 ## Execute Meta-Runners Inside Containers
 {instance="tc"}
 

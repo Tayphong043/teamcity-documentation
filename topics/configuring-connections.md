@@ -802,9 +802,7 @@ You can add more project connections to allow TeamCity to access additional Spac
 
 Individual Space project connections can also be employed by [](commit-status-publisher.md) and [](pull-requests.md) build features to interact with project repositories. Space organization connections in turn allow your users to log in TeamCity [using their Space credentials](authentication-modules.md).
 
-Space applications configured by project-level automatic connections issue access tokens that VCS roots and build features utilize to access project repositories. These access tokens are non-personal, which means if a user who initially set up TeamCity projects and issued tokens leaves your organization, these projects remain functional and do not require an update. In case you need to reissue a Space token, click the **Acquire New** button under the "Authentication Settings" section of a VCS root.
-
-<img src="dk-2023.07-refreshTokens.png" width="706" alt="Refreshable Access Tokens"/>
+Space applications configured by project-level automatic connections issue access tokens that VCS roots and build features utilize to access project repositories. These access tokens are non-personal, which means if a user who initially set up TeamCity projects and issued tokens leaves your organization, these projects remain functional and do not require an update. See this article for more information on refreshable tokens: [](manage-access-tokens.md).
 
 
 
