@@ -263,6 +263,7 @@
 				<toc-element topic="vcs-checkout-mode.md"/>
 			</toc-element>
 			<toc-element topic="configuring-connections.md">
+				<toc-element topic="manage-access-tokens.md"/>
 				<toc-element topic="configuring-connections-to-docker.md"/>
 			</toc-element>
 			<toc-element topic="storing-project-settings-in-version-control.md">
