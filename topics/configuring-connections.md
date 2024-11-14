@@ -459,19 +459,19 @@ To configure an AWS connection in TeamCity:
       6. Instance profile credentials delivered through the Amazon EC2 metadata service. 
       {instance="tc"}
 
-      7. Tick the **Available for sub-projects** option if you want this connection to be available for all subprojects of the current project.
+  8. Tick the **Available for sub-projects** option if you want this connection to be available for all subprojects of the current project.
 
-      8. Tick the **Available for build steps** option to allow choosing this connection in the [AWS Credentials build feature](aws-credentials.md) feature settings.
+  9. Tick the **Available for build steps** option to allow choosing this connection in the [AWS Credentials build feature](aws-credentials.md) feature settings.
 
-      9. <include from="common-templates.md" element-id="test-and-save-connection"/>
+  10. <include from="common-templates.md" element-id="test-and-save-connection"/>
 
-    <note instance="tc">
-    Note that if your TeamCity server is hosted on an AWS instance that has an associated IAM role granting access to sensitive resources, using the <b>Default Provider Chain</b> credentials may present a security risk: in this case the TeamCity project administrators who configured this type of connection can access all AWS resources permitted by the role.    
+   <note instance="tc">
+   Note that if your TeamCity server is hosted on an AWS instance that has an associated IAM role granting access to sensitive resources, using the <b>Default Provider Chain</b> credentials may present a security risk: in this case the TeamCity project administrators who configured this type of connection can access all AWS resources permitted by the role.    
     
-    To mitigate this risk, the **Default credential provider chain** credentials type is disabled by default. To enable it, set [the internal property](server-startup-properties.md#TeamCity+Internal+Properties) `teamcity.internal.aws.connection.defaultCredentialsProviderEnabled=true` (the default value is `false`.)
+   To mitigate this risk, the **Default credential provider chain** credentials type is disabled by default. To enable it, set [the internal property](server-startup-properties.md#TeamCity+Internal+Properties) `teamcity.internal.aws.connection.defaultCredentialsProviderEnabled=true` (the default value is `false`.)
     
-    No server restart is required after the property is set.
-    </note>
+   No server restart is required after the property is set.
+   </note>
 
 A configured AWS connection can supply credentials to the [AWS Credentials build feature](aws-credentials.md), [artifact S3 storages](storing-build-artifacts-in-amazon-s3.md), [EC2 cloud profiles](setting-up-teamcity-for-amazon-ec2.md) and other AWS connections that use IAM Roles.
 {instance="tc"}
