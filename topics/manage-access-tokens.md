@@ -22,25 +22,41 @@ To issue a token, TeamCity communicates with a VCS hosting provider using a conn
 
 ## Token Management
 
-The **VCS Auth Tokens** page provides centralized access to all refreshable tokens issued for this project and its subproject. To open this page:
+The **VCS Auth Tokens** page provides centralized access to all refreshable tokens issued for this project and its subprojects. To open this page:
 
 1. <include from="common-templates.md" element-id="open-project-settings"/> To view all tokens used on this server, open the Root project settings.
 2. <include from="common-templates.md" element-id="open-project-settings-tab"><var name="tab-name" value="VCS Auth Tokens"/></include>
 
 <img src="dk-vcs-auth-tokens-overview.png" width="706" alt="VCS Auth Tokens Overview"/>
 
-This page allows you to find tokens by their names, related connections, and users who issued them. Without any filters applied, the page shows 10 most recently tokens.
+> For security reasons, this page is available only for users with the Project Administrator [role](managing-roles-and-permissions.md).
+> 
+{style="note"}
+
+This page allows you to find tokens by their names, related connections, and users who issued them. Without any filters applied, the page shows 10 most recently used tokens.
 
 The **Show inherited tokens** checkbox allows you to view tokens issued in parent projects but available in the currently viewed project.
 
-To issue a new token, click the **Generate new token**. In a dialog that pops up, specify the token name and a TeamCity connection.
+To issue a new token, click the **Generate new token**. In a dialog that pops up, specify the token name and a TeamCity connection. You can additionally limit the token scope to specific TeamCity [projects](#Project+Scope) and (for GitHub App tokens) [VCS repositories](#Repository+Scope).
 
 <img src="dk-generate-token-dialog.png" width="464" alt="Generate new token"/>
 
-GitHub App connections support granular per-repository token access. To generate such token, enter repository names without user/organization names (`myRepo` instead of `myUser/myRepo`). Note that repositories must be hosted under the same account to which a corresponding GitHub App was installed.
+### Project Scope
 
-Project **VCS Auth Tokens** pages display only the tokens available for each project. If you create a new token for project `A` and restrict its scope to subprojects `A.2` and `A.3`, TeamCity will notify you that the current project will not have access to this token.
-{id="token-project-scopes"}
+Generated tokens are by default available for the currently edited project and all of its subprojects. That is, if you create a token from the Root project's **VCS Auth Page**, this token can be used by any project on the server by default. You can view projects that can use a token under the **Project Scope**.
+
+<img src="dk-view-token-scope.png" width="706" alt="View token project scope"/>
+
+
+Note that **VCS Auth Tokens** pages display only the tokens available for each project. If you create a new token for project `A` and restrict its scope to subprojects `A.2` and `A.3`, TeamCity will notify you that the current project will not have access to this token and you will not be able to see this token after the dialog closes.
+
+
+### Repository Scope
+
+[GitHub App connections](configuring-connections.md#github-app) support granular per-repository token permissions. When creating a refreshable token using this connection, you need to specify which repositories this token can access. Enter repository names without user/organization names (`myRepo` instead of `myUser/myRepo`). Note that repositories must be hosted under the same account to which a corresponding GitHub App was installed.
+
+For security reasons, you cannot issue a token with the global repository access permission.
+
 
 ## How to Create and Assign Refreshable Tokens
 
@@ -56,18 +72,18 @@ To assign a token manually, navigate to authentication settings of a build featu
 
 <procedure title="Generate new token" type="steps">
 <step>
-Click the <b>Generate new</b> button.
+Click the <b>Generate new</b> button. Note that similarly to the <a href="#Token+Management">VCS Auth Tokens</a> page, this button is available only to project administrators.
 <img src="dk-generate-new-token.png" width="706" alt="Generate new token"/>
 </step>
 <step>
-Enter the token name and choose a TeamCity connection that should be used to communicate with the VCS provider. The <a href="#token-project-scopes">project scope</a> will be automatically limited to this project and its subprojects. 
+Enter the token name and choose a TeamCity connection that should be used to communicate with the VCS provider. The <a href="#Project+Scope">project scope</a> will be automatically limited to this project and its subprojects. 
 </step>
 <step>Click <b>Save</b> to exit the setup.</step>
 </procedure>
 
 <procedure title="Choose an existing token" type="steps">
 <step>
-Click a pencil icon to enable the **Token** text box.
+Click a pencil icon to enable the <b>Token</b> text box. Note that similarly to the <a href="#Token+Management">VCS Auth Tokens</a> page, this button is available only to project administrators.
 <img src="dk-edit-ref-token.png" width="706" alt="Edit button"/>
 </step>
 <step>
