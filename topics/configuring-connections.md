@@ -384,7 +384,7 @@ The Amazon Web Services (AWS) connection allows defining AWS credentials once an
 To configure an AWS connection in TeamCity:
 
 1. In **Project Administration | Connections**, click **Add Connection**.
-2. Select _Amazon Web Services (AWS)_ as the connection type.
+2. Select "Amazon Web Services (AWS)" as the connection type
 3. Provide a name to distinguish this connection from others.
 4. The _Connection ID_ field is filled out automatically. You can modify it and provide your own unique ID.
 5. Select the _AWS region_ where the target resources are located.
@@ -392,88 +392,94 @@ To configure an AWS connection in TeamCity:
 
    {collapsible="true" style="full"}
    Access keys
-   : 
+   :
    If you selected access keys as the credentials type, get the keys from the AWS console's [Identity and Access Management section](https://console.aws.amazon.com/iam) and provide them to TeamCity. See how to get these keys [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey).
-   
+
      In the Access keys section in the TeamCity UI, do the following:
-     1. Specify permanent **Access keys**:
+      1. Specify permanent **Access keys**:
           * **Access key ID**. Enter the access key ID.
           * **Secret access Key**. Enter the secret access key.
 
-        It is [recommended](https://aws.amazon.com/blogs/security/how-to-rotate-access-keys-for-iam-users/) to change access keys regularly for security reasons. You will be able to do this after the connection is created via the **Rotate key** button.
+         It is [recommended](https://aws.amazon.com/blogs/security/how-to-rotate-access-keys-for-iam-users/) to change access keys regularly for security reasons. You will be able to do this after the connection is created via the **Rotate key** button.
 
-        TeamCity will not revoke old keys immediately. After a new key is generated, TeamCity will preserve the old inactive key for 24 hours and then remove it. The lifetime of old keys can be changed via the following properties: `teamcity.internal.cloud.aws.keyRotation.old.key.preserve.time.min` or `teamcity.internal.cloud.aws.keyRotation.old.key.preserve.time.days`.
-        
-        To be able to successfully rotate access keys, TeamCity requires the `iam:GetUser`, `iam:CreateAccessKey`, and `iam:DeleteAccessKey` permissions. 
-     
-     2. Configure temporary **Session Settings**:
+         TeamCity will not revoke old keys immediately. After a new key is generated, TeamCity will preserve the old inactive key for 24 hours and then remove it. The lifetime of old keys can be changed via the following properties: `teamcity.internal.cloud.aws.keyRotation.old.key.preserve.time.min` or `teamcity.internal.cloud.aws.keyRotation.old.key.preserve.time.days`.
+
+         To be able to successfully rotate access keys, TeamCity requires the `iam:GetUser`, `iam:CreateAccessKey`, and `iam:DeleteAccessKey` permissions.
+
+      2. Configure temporary **Session Settings**:
           * **Use session credentials**. Check the box to use an endpoint that provides [temporary access](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) keys via AWS STS. Such credentials are short-term (the default session duration is 60 minutes). You can override the default session duration in the [AWS Credentials build feature](https://docs.google.com/document/d/1Y1eJCpErG8NJ9RHPvPOnfZUZZrVRkP8I85BXXSuNYEg/edit#). These credentials do not belong to a specific user and can be provided on demand to grant temporary access to specific resources. We recommend using temporary credentials since they provide better security.
           * **STS endpoint**.
-            * TeamCity generates this field automatically when changing the AWS region. The regional endpoint is [recommended](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) because it is faster and has lower latency. In addition, all calls to the regional endpoint are logged in AWS Cloud Trail as any regional service call.
-            * Use the [global endpoint](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) if the selected regional endpoint is [disabled](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable) on the Amazon account and you do not want to enable it.
-            * [Contact the TeamCity support team ](https://teamcity-support.jetbrains.com/hc/en-us/requests/new?) if you need to specify a custom endpoint for Amazon alternatives like [MinIO](https://min.io/).
+              * TeamCity generates this field automatically when changing the AWS region. The regional endpoint is [recommended](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) because it is faster and has lower latency. In addition, all calls to the regional endpoint are logged in AWS Cloud Trail as any regional service call.
+              * Use the [global endpoint](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) if the selected regional endpoint is [disabled](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable) on the Amazon account and you do not want to enable it.
+              * [Contact the TeamCity support team ](https://teamcity-support.jetbrains.com/hc/en-us/requests/new?) if you need to specify a custom endpoint for Amazon alternatives like [MinIO](https://min.io/).
 
-   IAM Role
-   :
-   Using [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html), you can delegate access to your AWS resources to users, applications, or services that usually don't have these permissions. These entities will [assume this role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) to get such access.
-   
-     You can use the IAM Role as the credentials type only if you already have at least one AWS connection with access keys or default credential provider chain configured in this TeamCity project.
-     1. Specify **IAM Role**:
+    IAM Role
+    :
+    Using [IAM roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html), you can delegate access to your AWS resources to users, applications, or services that usually don't have these permissions. These entities will [assume this role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html) to get such access.
+
+      You can use the IAM Role as the credentials type only if you already have at least one AWS connection with access keys or default credential provider chain configured in this TeamCity project.
+      1. Specify **IAM Role**:
           * **AWS Connection**. Select the AWS connection that will [grant the specified IAM Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html). Note that if the target AWS connection belongs to a parent TeamCity project, this connection's **Available for sub-projects** setting must be enabled.
           * **Role ARN**. Specify the [ARN](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns) of the role to assume by the connection you are creating.
-     2. Configure **Session settings**:
+      2. Configure **Session settings**:
           * **Session tag**. The session [tag](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_know) is required by Amazon. It is useful to locate sessions created by the TeamCity connection in AWS logs. TeamCity generates the tag automatically, but you can specify your own value.
           * **STS endpoint**.
-            * TeamCity generates this field automatically when changing the AWS region. The regional endpoint is [recommended](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) because it is faster and has lower latency. In addition, all calls to the regional endpoint are logged in AWS Cloud Trail as any regional service call.
-            * Use the [global endpoint](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) if the selected regional endpoint is [disabled](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable) on the Amazon account and you do not want to enable it.
-            * [Contact the TeamCity support team ](https://teamcity-support.jetbrains.com/hc/en-us/requests/new?) if you need to specify a custom endpoint for Amazon alternatives like [MinIO](https://min.io/).
+              * TeamCity generates this field automatically when changing the AWS region. The regional endpoint is [recommended](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) because it is faster and has lower latency. In addition, all calls to the regional endpoint are logged in AWS Cloud Trail as any regional service call.
+              * Use the [global endpoint](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html) if the selected regional endpoint is [disabled](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable) on the Amazon account and you do not want to enable it.
+              * [Contact the TeamCity support team ](https://teamcity-support.jetbrains.com/hc/en-us/requests/new?) if you need to specify a custom endpoint for Amazon alternatives like [MinIO](https://min.io/).
 
-     After the connection is created, you can view and copy the automatically generated external connection ID. We strongly recommend that you always add it to the [trust policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) in AWS to prevent the [confused deputy problem](https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html). This ensures that only authorized TeamCity AWS connections will be able to use the specified IAM Role.
+      After the connection is created, you can view and copy the automatically generated external connection ID. We strongly recommend that you always add it to the [trust policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html) in AWS to prevent the [confused deputy problem](https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html). This ensures that only authorized TeamCity AWS connections will be able to use the specified IAM Role.
 
-   Default credential provider chain {instance="tc"}
-   :
-   Select this type to provide access credentials according to the [default chain](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default).
-     This approach provides an alternatives to storing credentials in plain text.
-     
-> Note that if your TeamCity server is hosted on an AWS instance that has an associated IAM role granting access to sensitive resources,
-      using the **Default Provider Chain** credentials may present a security risk: 
-      in this case the TeamCity project administrators who configured this type of connection can access all AWS resources permitted by the role.    
+    Default credential provider chain {instance="tc"}
+    :
+    Select this type to provide access credentials according to the [default chain](https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html#credentials-default). This approach provides an alternatives to storing credentials in plain text.<br/>
+
+      When this credentials type is used, TeamCity searches for credentials in the following order:
+
+      1. Java System Properties: `aws.accessKeyId` and `aws.secretAccessKey`.
+
+      2. Environment Variables: `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+
+      3. [Web Identity Token credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html#cli-configure-role-oidc) from system properties or environment variables.
+         ```
+         # In ~/.aws/config
+         
+         [profile web-identity]
+         role_arn=arn:aws:iam:123456789012:role/RoleNameToAssume
+         web_identity_token_file=/path/to/a/token
+         ```
   
-     To mitigate this risk, the **Default credential provider chain** credentials type is disabled by default. To enable it, set [the internal property](server-startup-properties.md#TeamCity+Internal+Properties) `teamcity.internal.aws.connection.defaultCredentialsProviderEnabled=true`. (The default value is `false`.)
-     No server restart is required after the property is set.
-   {instance="tc"}
-     When this credentials type is used, TeamCity searches for credentials in the following order:
-        1. Java System Properties: `aws.accessKeyId` and `aws.secretAccessKey`.
-        2. Environment Variables: `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
-        3. [Web Identity Token credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html#cli-configure-role-oidc) from system properties or environment variables.
-            ```
-            # In ~/.aws/config
-            
-            [profile web-identity]
-            role_arn=arn:aws:iam:123456789012:role/RoleNameToAssume
-            web_identity_token_file=/path/to/a/token
-            ```
-        4. Credential profiles file in the default location (`~/.aws/credentials`) shared by all AWS SDKs and the AWS CLI.
-            
-            
-            ```
-            # In ~/.aws/credentials
-            
-            [default]
-            aws_access_key_id = your_key
-            aws_secret_access_key = your_secret
-            ```
-            
-            The default location can be overridden via the [`AWS_SHARED_CREDENTIALS_FILE`](aws-credentials.md) environment variable.
-        5. Credentials delivered via the Amazon EC2 container service if the `AWS_CONTAINER_CREDENTIALS_RELATIVE_URI` environment variable is set and the security manager has access to it.
-        6. Instance profile credentials delivered through the Amazon EC2 metadata service. 
-   {instance="tc"}
+      4. Credential profiles file in the default location (`~/.aws/credentials`) shared by all AWS SDKs and the AWS CLI.
+  
+         ```
+         # In ~/.aws/credentials
+         [default]
+         aws_access_key_id = your_key
+         aws_secret_access_key = your_secret
+         ```
+  
+         The default location can be overridden via the [`AWS_SHARED_CREDENTIALS_FILE`](aws-credentials.md) environment variable.
+  
+      5. Credentials delivered via the Amazon EC2 container service if the `AWS_CONTAINER_CREDENTIALS_RELATIVE_URI` environment variable is set and the security manager has access to it.
+
+      6. Instance profile credentials delivered through the Amazon EC2 metadata service.
+       {instance="tc"}
 
 7. Tick the **Available for sub-projects** option if you want this connection to be available for all subprojects of the current project.
+
 8. Tick the **Available for build steps** option to allow choosing this connection in the [AWS Credentials build feature](aws-credentials.md) feature settings.
+
 9. Test and save the connection.
 
-A configured AWS connection can supply credentials to the [AWS Credentials build feature](aws-credentials.md), [artifact S3 storages](storing-build-artifacts-in-amazon-s3.md), and other AWS connections that use IAM Roles.
+<note instance="tc">
+Note that if your TeamCity server is hosted on an AWS instance that has an associated IAM role granting access to sensitive resources, using the <b>Default Provider Chain</b> credentials may present a security risk: in this case the TeamCity project administrators who configured this type of connection can access all AWS resources permitted by the role.    
+
+To mitigate this risk, the **Default credential provider chain** credentials type is disabled by default. To enable it, set [the internal property](server-startup-properties.md#TeamCity+Internal+Properties) `teamcity.internal.aws.connection.defaultCredentialsProviderEnabled=true` (the default value is `false`.)
+
+No server restart is required after the property is set.
+</note>
+
+A configured AWS connection can supply credentials to the [AWS Credentials build feature](aws-credentials.md), [artifact S3 storages](storing-build-artifacts-in-amazon-s3.md), [EC2 cloud profiles](setting-up-teamcity-for-amazon-ec2.md) and other AWS connections that use IAM Roles.
 {instance="tc"}
 
 A configured AWS connection can supply credentials to the [AWS Credentials build feature](aws-credentials.md) and other AWS connections that use IAM Roles.
@@ -489,15 +495,15 @@ TeamCity allows your project to access required AWS resources using connections 
 1. In AWS Management Console, go to the [IAM dashboard](https://console.aws.amazon.com/iam/) and navigate to the **Roles** tab.
 2. Create a new IAM Role <i>without any permissions</i>. We will reference this role as "Role A".
 3. Configure your TeamCity server machine to access AWS using this role instead of locally stored credentials. Required steps may vary depending on the exact type of your machine.
-   * [Server running on an EC2 instance](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html)
-   * [Server running in an ECS container](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
-   * Other configurations: [Web Identity](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html), [SAML](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithSAML.html)
-    
+    * [Server running on an EC2 instance](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html)
+    * [Server running in an ECS container](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html)
+    * Other configurations: [Web Identity](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html), [SAML](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithSAML.html)
+
 4. In TeamCity, create a new AWS connection of the **Default Credentials Provider Chain** type. Press **Test Connection** to ensure TeamCity uses your empty "Role A".
 
 
 5. If you want subprojects to have access to this new connection, check the **Available for sub-projects** option. Otherwise, only the same project that owns this connection will be able to use it.
-        
+
     <img src="dk-shareAwsConnections.png" width="706" alt="Share AWS connections"/>
 
 
@@ -519,14 +525,14 @@ TeamCity allows your project to access required AWS resources using connections 
     ```
 8. In a TeamCity project that needs access to AWS resources, create another AWS connection.
 
-   * **Type** — "IAM Role".
-   * **AWS Connection** — the connection created in step 4.
-   * **Role ARN** — the ARN of "Role B".
+    * **Type** — "IAM Role".
+    * **AWS Connection** — the connection created in step 4.
+    * **Role ARN** — the ARN of "Role B".
 
-    Note that if you configure this new connection in a subproject of a project that owns the primary "Default Credentials Provider Chain" connection, this primary connection must have its **Available for sub-projects** setting enabled (see step 5).
+   Note that if you configure this new connection in a subproject of a project that owns the primary "Default Credentials Provider Chain" connection, this primary connection must have its **Available for sub-projects** setting enabled (see step 5).
 
 9. Click **Test connection** to ensure TeamCity can assume **Role B**.
-    
+
     ```
     Running STS get-caller-identity...
     Caller Identity:
@@ -534,11 +540,11 @@ TeamCity allows your project to access required AWS resources using connections 
      User ID: <user ID:session>
      ARN: <Role B ARN>
     ```
-    
+
 10. Save your new connection and reopen it. You should now see the **External ID** value of the connection.
-    
+
     <img src="dk-AWS-externalID.png" width="706" alt="External ID of an AWS Connection"/>
-    
+
 11. Go back to the **Trust relationships** of Role B and add the extra condition:
     ```JSON
     {
@@ -560,16 +566,16 @@ TeamCity allows your project to access required AWS resources using connections 
     }
     ```
 
-    
+
 As a result, you now have a following setup:
 
 * The primary **Default credentials provider chain** connection does not require locally stored credentials.
 * This shared primary connection has no permissions to access anything. To access AWS resources, it needs to assume other IAM roles.
 * Because of a condition configured in step 11, roles with actual access permissions can be assumed only by configured "IAM Role" TeamCity connections. TeamCity administrators cannot create more connections that utilize these roles.
-    
+
     <img src="dk-aws-cannotassumeRole.png" width="706" alt="Incorrect External ID"/>
-    
-    To create more connections that can access Amazon resources, your AWS administrator must add additional conditions to whitelist external IDs of these new connections.
+
+  To create more connections that can access Amazon resources, your AWS administrator must add additional conditions to whitelist external IDs of these new connections.
 
 
 ## Amazon ECR
