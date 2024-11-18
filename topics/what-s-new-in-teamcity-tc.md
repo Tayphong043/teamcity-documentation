@@ -6,7 +6,7 @@
 ## Pull Request Filters
 {instance="tc"}
 
-Starting with version 2024.11, TeamCity [branch filters](branch-filter.md#Pull+Request+Branch+Filters) support the `+|-pr:` syntax. This syntax allows you to create fine-grained filter expressions that track pull requests by a number of parameters: author, user role, target and source branches, and more.
+Starting with version 2024.11, TeamCity [branch filters](branch-filter.md#Pull+Request+Branch+Filters) support the `+|-pr:` syntax. This syntax allows you to create fine-grained filter expressions that track pull requests by a number of parameters: user role, target and source branches, and more.
 
 The new syntax is currently available only for triggers. When setting up trigger settings, click a magic wand next to the **Branch Filter** field to invoke an expression editor.
 
