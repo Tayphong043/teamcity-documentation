@@ -292,9 +292,9 @@ The `<parameter>=<value>` expressions are combined using the logical `AND` opera
 
 * `draft` — specifies whether draft pull requests are accepted. This parameter is in effect only for GitHub and GitLab. Supported values: `true` to accept **only** requests labeled as drafts; `false` to accept **only** non-draft requests.
 
-* `author` — allows you to filter pull (merge) requests by their authors. Note that the actual author of incoming changes may be different from a person who sent a request. Supported values: usernames. Currently not supported for Azure and Bitbucket Cloud repositories.
+<!--* `author` — allows you to filter pull (merge) requests by their authors. Note that the actual author of incoming changes may be different from a person who sent a request. Supported values: usernames. Currently not supported for Azure and Bitbucket Cloud repositories.-->
 
-* `github_role` — allows you to filter pull (merge) requests by author roles (relative to the repository organization). Supported values: `collaborator`, `contributor`, `member`, `owner`, `none` (not case-sensitive).
+* `github_role` — allows you to filter pull (merge) requests by sender roles (relative to the repository organization). Supported values: `collaborator`, `contributor`, `member`, `owner`, `none` (not case-sensitive).
 
 > Currently, joint parameter values are not supported. To enumerate multiple accepted values, add multiple stand-alone filter expressions (for example, `+pr: github_role=COLLABORATOR` and `+pr: github_role=CONTRIBUTOR`).
 >
