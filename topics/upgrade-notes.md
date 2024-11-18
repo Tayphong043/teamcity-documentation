@@ -4,11 +4,19 @@
 ## Changes from 2024.07 to 2024.11
 {id="2024.11"}
 
+* The **.NET build runners support** plugin (`/plugins/dotNetRunners.zip`) is no longer bundled with TeamCity. The following build steps will continue working on existing TeamCity instances, but will be unavailable for newly created configurations:
+  * NUnit Legacy
+  * NAnt
+  * .NET Process Runner
+  * MSpec
+  * Visual Studio (sln)
+  * Visual Studio 2003
 * TeamCity now uses the updated K2 compiler to compile Kotlin scripts. See the [K2 migration guide](https://kotlinlang.org/docs/k2-compiler-migration-guide.html) and the [Upgrading DSL](upgrading-dsl.md#dsl202411) article for more information.
 * Since the [](artifacts-migration-tool.md) now supports Azure cloud storages in addition to AWS S3 buckets, certain configuration properties were renamed.
   * `teamcity.storage.migration.s3.threadCount` was renamed to `teamcity.storage.migration.copying.threadCount`
   * `property teamcity.storage.migration.s3.upload.numberOfRetries` was renamed to `teamcity.storage.migration.upload.numberOfRetries`
   * `teamcity.storage.migration.s3.upload.retryDelayMs` was renamed to `teamcity.storage.migration.upload.retryDelayMs`
+
 
 ## Changes from 2024.07.2 to 2024.07.3
 {id="2024.07.3"}
