@@ -58,7 +58,7 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
 
 ### Common
 
-* Currently, caching is employed only for builds running on cloud agents with the "After the first build" terminate condition. Such agents are called ephemeral and can be identified by the [`teamcity.agent.ephemeral=true`](predefined-build-parameters.md) parameter. You can upvote ticket [TW-90253](https://youtrack.jetbrains.com/issue/TW-90253/Dependency-cache-extend-beyond-ephemeral-agents) or share suggestions if you want "... Cache" features to support other agent types as well.
+* Dependency and Package caching is most effective on short-lived agents that terminate after a single build, as they avoid accumulating dependencies from other builds. For long-lived or permanent agents, periodically review `.teamcity.build_cache/depcache_***_cacheRoot_***.tar` [hidden artifacts](build-artifact.md#Hidden+Artifacts) to monitor cache size and contents. Each dependency directory is archived in its own cache, so your builds can publish multiple archives. If caches grow excessively due to redundant dependencies, consider disabling this feature.
 
 * The cache is only published if the build was successful. See this ticket for more information: [TW-89838](https://youtrack.jetbrains.com/issue/TW-89838/The-dependency-cache-is-not-saved-and-not-published-for-the-failed-builds-with-failed-tests).
 
