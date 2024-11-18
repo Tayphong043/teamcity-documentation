@@ -468,20 +468,19 @@ Send the `##teamcity[skipQueuedBuilds tags='value1,value2,...' comment='Your com
 * values of `teamcity.configuration.tags` parameters added to configurations;
 * configuration IDs.
 
-Send this message with caution when cancelling configurations in a middle of a linear chain. Doing so nullifies the entire mid-section of a chain and produces results that can be difficult to view and investigate. For example, consider the `A → B → C → D → E` chain.
+Use service messages to cancel out certain "limbs" of a build chain. For example, you may want to send the `skipQueuedBuilds` from the "Build" configuration to cancel individual tests suites. With some of the tests running and some of them skipped, the integrity of the "Build → Test → Deploy" chain remains intact.
 
-* The entire chain is triggered by a new configuration `E` build.
-* Configurations `B` and `D` are marked with the `teamcity.configuration.tags=optional` parameter.
-* Configuration `A` sends the `##teamcity[skipQueuedBuilds tags='optional']` message.
-* Configuration `C` is now unable to run, since both of its neighboring configurations were cancelled.
 
-As a result, only `A` and `E` builds will start. These builds will effectively run as solo builds, as if they never belonged to a chain. The [Dependencies](build-results-page.md#Dependencies+Tab) tab of a `E` build will show a truncated chain that reveals nether skipped nor configuration `A` builds.
+```Shell
+Build ----|---- Test Suite 1 ----|
+          |---- Test Suite 2 ----|
+          |---- Test Suite 3 ----|
+          |---- Test Suite 4 ----|
+          |---- Test Suite 5 ----|---- Deploy
+```
 
-<img src="dk-partial-chain-from-skipped-queued.png" width="706" alt="Partial chain"/>
+If you skip all of these tests, the entire mid-section of this chain will be gone. This will produce a potentially confusing "Build → ??? → Deploy" chain. To avoid this, consider [cloning](copy-move-delete-build-configuration.md) configurations and making a separate "Build → Deploy" chain instead.
 
-To make this result less confusing, redesign your chain to isolate its conditional portions. For example, you may want to add a direct `A → E` dependency to always see this mandatory section in TeamCity UI, even when optional configuration builds are skipped.
-
-If you intend to frequently skip a mid-section of a linear chain, consider [cloning](copy-move-delete-build-configuration.md) configurations and making separate chains instead. This way you will be able to run both "essential" (without optional configurations) and "complete" variations and avoid downsides of running chains with missing links.
 
  <seealso>
         <category ref="concepts">
