@@ -3,6 +3,29 @@
 <snippet id="2024-11-tc">
 
 
+## Pipelines Merge Announcement and Major UI Changes
+{instance="tc"}
+
+The first glaring change you will notice seconds after the updated 2024.11 TeamCity server starts is the redesigned UI. We replaced the top navigation bar with a sleek side menu, revamped breadcrumbs, refreshed project and configuration icons, and introduced other visual enhancements for a cleaner, more functional experience.
+
+
+<img src="dk-2024-11-ui-update.png" width="706" alt="2024.11 UI Update"/>
+
+Although significant on their own, these changes are more than a visual refresh — they lay the foundation for another major upcoming change: the integration of TeamCity and TeamCity Pipelines.
+
+Currently, TeamCity focuses on robust CI/CD for complex workflows, while [TeamCity Pipelines](https://www.jetbrains.com/teamcity/download/#section=saas) is a user-friendly option for smaller teams that puts a high value on usability and intuitive UI. However, this separation leads us to the obvious challenges: some TeamCity users wish for the simplicity of Pipelines, while Pipelines users occasionally miss advanced features currently available only in TeamCity.
+
+By merging these two products, we aim to eliminate this frustration and deliver a unified experience. TeamCity users will be able to choose between creating a streamlined Pipeline for quick setups or a fully customizable build configuration for advanced scenarios and complex build chains, ensuring the right level of flexibility for every user.
+
+We encourage you to try TeamCity Pipelines now and share your feedback. Your insights are invaluable as we work to make this transition as smooth and user-focused as possible.
+
+> While we plan to integrate Pipelines into TeamCity, it will continue as an [actively developed](https://blog.jetbrains.com/search/?q=pipelines&p=TeamCity) standalone solution.
+> 
+{style="note"}
+
+[Try TeamCity Pipelines](https://www.jetbrains.com/teamcity/download/#section=saas)
+
+
 ## Pull Request Filters
 {instance="tc"}
 
