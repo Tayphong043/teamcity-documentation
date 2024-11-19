@@ -70,6 +70,7 @@ All "... Cache" build features operate in a similar manner. Caches undergo ident
 ### Maven Cache
 
 * The build feature supports all three local Maven repo types: per-agent, per-build, and Maven default.
+* If builds that produce and consume caches run inside Linux Docker containers, set the [Artifact repository](maven.md#Local+Artifact+Repository+Settings) Maven setting to either "Per agent" (default value) or "Per build configuration". Otherwise, a TeamCity server running as a regular user may lack sufficient permissions to access caches published by steps executed in Docker containers under the "root" user.
 
 ### NuGet Cache
 
