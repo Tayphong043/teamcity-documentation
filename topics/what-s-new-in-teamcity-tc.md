@@ -23,7 +23,7 @@ We encourage you to try TeamCity Pipelines now and share your feedback. Your ins
 > 
 {style="note"}
 
-[Try TeamCity Pipelines](https://www.jetbrains.com/teamcity/download/#section=saas)
+Learn more: [Try TeamCity Pipelines](https://www.jetbrains.com/teamcity/download/#section=saas) | [Pipelines Pulse](https://blog.jetbrains.com/search/?q=pulse&p=TeamCity) | [Pipelines documentation](https://www.jetbrains.com/help/teamcity/pipelines/teamcity-pipelines.html)
 
 
 ## Pull Request Filters
@@ -67,7 +67,7 @@ Starting with version 2024.11, you will be able to take an alternative route: of
 
 <img src="dk-k8s-integration-overview.png" alt="K8S integration" width="706"/>
 
-Learn more: [](external-kubernetes-agents.md), [Kubernetes connection](configuring-connections.md#Kubernetes)
+Learn more: [](external-kubernetes-agents.md) | [Kubernetes connection](configuring-connections.md#Kubernetes)
 
 
 ## Approve Multiple Builds at Once
@@ -82,7 +82,7 @@ Previously, both options required approving each build individually within a cha
 
 <img src="dk-approve-chain.png" width="706" alt="Approve chain"/>
 
-Learn more: [](build-approval.md), [](untrusted-builds.md)
+Learn more: [](build-approval.md) | [](untrusted-builds.md)
 
 ## Upload Custom Kotlin Libraries
 {instance="tc"}
