@@ -314,6 +314,8 @@ Enter your own [pod template](https://kubernetes.io/docs/concepts/workloads/pods
 
 Example of a simple template:
 
+
+<snippet id="k8s-template-sample">
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -329,6 +331,7 @@ spec:
         limits:
           memory: "2Gi"
 ```
+</snippet>
 
 ## Kotlin DSL
 
