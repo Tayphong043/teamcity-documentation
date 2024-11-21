@@ -277,6 +277,87 @@ The **Running instances** block shows all agents started from this specific imag
 
 You can open an [interactive terminal](install-and-start-teamcity-agents.md#Debug+Agents+Remotely) to any active agent instance via the **Open Terminal** button. The terminal allows you to debug and maintain your cloud agent machines.
 
+
+## EC2-Specific Agent Parameters
+
+AWS-hosted agents report several [system properties](configuring-build-parameters.md) that store EC2-specific information about these machines and allow you to identify a required agent. The majority of these parameters return values of standard AWS [image metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html).
+
+<deflist type="wide">
+<def title="system.ec2.ami-id">
+If the agent machine was started from an Amazon Machine Image, this property returns the corresponding AMI ID.
+
+Example: <code>ami-08b0a7588100450ff</code>.
+</def>
+
+<def title="system.ec2.ami-launch-index">
+Indicates the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMI-launch-index-examples.html">order in which the instances were launched</a>.
+
+Example: <code>0</code>
+</def>
+
+<def title="system.ec2.ami-manifest-path">
+The path to the AMI manifest file in Amazon S3. If you used an Amazon EBS-backed AMI to launch the instance, the returned result is unknown.
+
+Example: <code>(unknown)</code>
+</def>
+
+<def title="system.ec2.instance-id">
+The ID of this instance.
+
+Example: <code>i-07a39ee4b882caa3e</code>
+</def>
+
+<def title="system.ec2.instance-life-cycle">
+The purchasing option of this instance.
+
+Example: <code>spot</code>
+</def>
+
+<def title="system.ec2.instance-type">
+The <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html">instance type</a>.
+
+Example: <code>t2.2xlarge</code>
+</def>
+
+<def title="system.ec2.local-hostname">
+The <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-naming.html">private hostname</a> of the agent instance.
+
+Example: <code>ip-10-128-93-39.eu-west-1.compute.internal</code>
+</def>
+
+<def title="system.ec2.local-ipv4">
+The private IPv4 address of the instance. 
+
+Example: <code>10.128.93.39</code>
+</def>
+
+<def title="proposed-agent-name">
+The public agent name, typically in the <code>cloudProfileName-instanceID</code> format.
+
+Example: <code>Win-Server-2022-xLarge-i-07a39ee4b882caa3e</code>
+</def>
+
+<def title="system.ec2.public-hostname">
+The instance's public DNS (IPv4).
+
+Example: <code>ec2-54-154-113-80.eu-west-1.compute.amazonaws.com</code>
+</def>
+
+<def title="public-ipv4">
+The public IPv4 address. If an Elastic IP address is associated with the instance, the value returned is the Elastic IP address.
+
+Example: <code>54.154.113.80</code>
+</def>
+
+<def title="system.ec2.reservation-id">
+The ID of the reservation.
+
+Example: <code>r-0461cf168b52cd309</code>
+</def>
+</deflist>
+
+
+
 ## DSL Configuration
 
 The following Kotlin snippet illustrates a sample [DSL configuration](kotlin-dsl.md) for a cloud profile that uses locally stored credentials and includes three images with different settings.
@@ -579,6 +660,7 @@ Standard Amazon EC2 pricing applies. Amazon charges can depend on the specific c
 
 Note that traffic volumes and necessary server and agent machines characteristics depend a big deal on the TeamCity setup and nature of the builds run. See also [Estimate Hardware Requirements for TeamCity](system-requirements.md#Estimating+External+Database+Capacity).
 {instance="tc"}
+
 
 ### Estimating Traffic
 
