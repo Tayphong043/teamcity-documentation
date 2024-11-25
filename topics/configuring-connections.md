@@ -847,7 +847,7 @@ Save the connection and proceed with adding a [Commit Status Publisher](commit-s
 
 ## Kubernetes
 
-Kubernetes connections allow TeamCity to access your Kubernetes resources. These connections can be used to [offload building tasks to K8s clusters](external-kubernetes-agents.md).
+Kubernetes connections allow TeamCity to access your Kubernetes resources. These connections can be used to [offload building tasks to K8s clusters](kubernetes-executor.md).
 
 1. <include from="common-templates.md" element-id="open-project-settings"/>
    
