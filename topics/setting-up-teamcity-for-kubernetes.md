@@ -1,7 +1,18 @@
 [//]: # (title: Setting Up TeamCity for Kubernetes)
 [//]: # (auxiliary-id: Setting Up TeamCity for Kubernetes)
 
-Thanks to the [Kubernetes Support](https://plugins.jetbrains.com/plugin/9818-kubernetes-support) plugin, TeamCity can run [build agents](build-agent.md) in your Kubernetes cluster.
+
+<snippet id="k8s-integration-types">
+
+TeamCity offers two types of Kubernetes integration:
+
+* **Regular Kubernetes integration.** This approach uses TeamCity cloud profiles and images, similar to integrations with other cloud providers like AWS, Microsoft Azure, or Google Cloud. You configure build agents in TeamCity and use a Kubernetes cluster to host them. This integration type relies on the external [Kubernetes Support](https://plugins.jetbrains.com/plugin/9818-kubernetes-support) plugin.
+* **Agentless Kubernetes integration**. In this mode, TeamCity is unaware of any build agents on the Kubernetes side. Instead, it recognizes the cluster's capability to run builds and delegates the assignment and lifecycle management of entities running its builds entirely to the cluster.
+
+</snippet>
+
+This article explains the traditional integration approach. To learn about the native integration instead, refer to the [](kubernetes-executor.md) topic.
+
 
 <note instance="tc">
 

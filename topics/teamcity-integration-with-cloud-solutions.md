@@ -6,19 +6,67 @@ TeamCity integration with cloud (IaaS) solutions allows TeamCity to provide virt
 <!--autoscale-->
 <!--auto-scale-->
 
-This page covers __general information__ on how to configure this integration. For the list of currently supported solutions, refer to [Available Integrations](#Available+Integrations).
 
 In TeamCity Cloud, you have a choice if you want to use [preconfigured cloud agents hosted by JetBrains](teamcity-cloud-subscription-and-licensing.md#cloud-jb-hosted-agents) or configure them yourself and host them in your Cloud infrastructure. You can also combine these approaches and use them together with [hosting agents in your local environment](teamcity-cloud-subscription-and-licensing.md#cloud-self-hosted-agents)).  
 One agent instance launched in your own cloud profile takes one self-hosted agent slot. It is managed according to the same licensing rules as agents hosted locally in a customer's environment.
 {instance="tcc"}
 
-## General Description
 
-In a large TeamCity setup with many projects, it can be difficult to predict the load on build agents and what number of agents will be sufficient. With the cloud agent integration configured, TeamCity will leverage clouds elasticity to provide additional build agents on-demand.
+## Cloud Agents and Executors
+
+TeamCity supports two types of integrations:
+
+* Regular cloud agents. This integration type uses cloud hosting providers (AWS, Microsoft Azure, Google Cloud, and so on) as an environment where build agents are hosted. These agents are entirely controlled by TeamCity: build queue distribution, compatibility check-ups, start-up and wind down activity, and more.
+
+* Agentless integrations. In this scenario, a cloud provider serves as a "contractor" that handles TeamCity builds. TeamCity server sends queued builds to the "executor" and does not interfere in how it handles this queue.
+
+
+Both options are available from the **Project Settings | Cloud Profiles** page.
+
+<img src="dk-k8s-integration-overview.png" alt="K8S integration" width="706"/>
+
+<procedure title="Regular cloud agents" instance="tc">
+
+Available under the **Add agents to the project** section. Currently supported integrations include:
+
+* [Amazon EC2](setting-up-teamcity-for-amazon-ec2.md)
+* [VMWare vSphere](setting-up-teamcity-for-vmware-vsphere-and-vcenter.md)
+* [Kubernetes](setting-up-teamcity-for-kubernetes.md)
+* [Windows Azure](https://plugins.jetbrains.com/plugin/9260-azure-resource-manager-cloud-support) (non-bundled plugin)
+* [Google Cloud](https://plugins.jetbrains.com/plugin/9704-google-cloud-agents) (non-bundled plugin)
+* Other integrations powered by [custom plugins](https://plugins.jetbrains.com/docs/teamcity/implement-cloud-support.html). Check out this [JetBrains Marketplace page](https://plugins.jetbrains.com/category/102-cloud-support/teamcity) for the complete list.
+
+
+</procedure>
+
+
+<procedure title="Regular cloud agents" instance="tcc">
+
+Available under the **Add agents to the project** section. Currently supported integrations include:
+
+* [Amazon EC2](setting-up-teamcity-for-amazon-ec2.md)
+* [VMWare vSphere](setting-up-teamcity-for-vmware-vsphere-and-vcenter.md)
+* [Kubernetes](setting-up-teamcity-for-kubernetes.md)
+
+</procedure>
+
+<procedure title="Agentless Cloud Executors">
+
+Available under the **Offload your tasks to external agents** section. Currently, this type of cloud hosting provider integrations supports only Kubernetes clusters. We expect to introduce other integrations in future release cycles.
+
+* [Kubernetes Executor](kubernetes-executor.md)
+
+</procedure>
+
+This documentation section focuses primarily on regular cloud agents. For more information about the agentless executor mode, refer to this article: [](kubernetes-executor.md).
+
+
+## Common Information
 
 For each queued build, TeamCity first tries to start it on one of the self-hosted agents. If there is none available, TeamCity finds a matching cloud image with a compatible agent and starts a new instance for this image. TeamCity ensures that the number of running cloud instances limit is not exceeded.
 
-The integration requires:
+The regular cloud agent integration requires:
+
 * A configured virtual machine with an installed TeamCity agent in your cloud. It should be preconfigured to start the TeamCity agent on boot.
 * A configured [cloud profile](agent-cloud-profile.md) in TeamCity.
 
@@ -34,28 +82,6 @@ The disconnected agent will be removed from the authorized agents list and delet
 The disconnected agent will be removed from the authorized agents list and deleted from the system. On removal, one self-hosted slot will be released.
 {instance="tcc"}
 
-## Available Integrations
-{instance="tc"}
-
-The following Cloud solutions are supported out of the box (see their dedicated articles for more details):
-* [Amazon EC2](setting-up-teamcity-for-amazon-ec2.md)
-* [VMWare vSphere](setting-up-teamcity-for-vmware-vsphere-and-vcenter.md)
-* [Kubernetes](setting-up-teamcity-for-kubernetes.md)
-
-Available as non-bundled plugins:
-* [Windows Azure](https://plugins.jetbrains.com/plugin/9260-azure-resource-manager-cloud-support)
-* [Google Cloud](https://plugins.jetbrains.com/plugin/9704-google-cloud-agents)
-* [Others](https://plugins.jetbrains.com/category/102-cloud-support/teamcity)
-
-New integrations can be implemented as a TeamCity plugin, see [Implementing Cloud support](https://plugins.jetbrains.com/docs/teamcity/implement-cloud-support.html).
-
-## Available Integrations
-{instance="tcc"}
-
-The following Cloud solutions are supported out of the box (see their dedicated articles for more details):
-* [Amazon EC2](setting-up-teamcity-for-amazon-ec2.md)
-* [VMWare vSphere](setting-up-teamcity-for-vmware-vsphere-and-vcenter.md)
-* [Kubernetes](setting-up-teamcity-for-kubernetes.md)
 
 ## TeamCity Setup for Cloud Integration
 

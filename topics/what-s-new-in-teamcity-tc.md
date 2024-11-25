@@ -35,7 +35,7 @@ Starting with version 2024.11, you will be able to take an alternative route: of
 
 <img src="dk-k8s-integration-overview.png" alt="K8S integration" width="706"/>
 
-Learn more: [](external-kubernetes-agents.md) | [Kubernetes connection](configuring-connections.md#Kubernetes)
+Learn more: [](kubernetes-executor.md) | [Kubernetes connection](configuring-connections.md#Kubernetes)
 
 
 ## New Dependency Cache Features
