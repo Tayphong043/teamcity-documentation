@@ -1,13 +1,14 @@
-# External Kubernetes Agents
+# Executor Mode: Agentless Kubernetes Integration
 
-TeamCity allows you to offload building tasks to a Kubernetes (K8s) cluster.
 
-Key benefits this integration brings to the table include:
+<include from="setting-up-teamcity-for-kubernetes.md" element-id="k8s-integration-types"/>
 
-* Pods can run [TeamCity agent Docker images](agent-docker-images.md), which eliminates the need to periodically update your build agents.
-* K8s acts as an orchestrator that starts and winds down pods, and assigns queued builds to them. This means you also no longer need to control agents lifecycle.
-* Each build step runs in a separate pod, which allows you to specify different [containers](container-wrapper.md) for individual builds.
 
+This article explains the native integration approach. To learn about the traditional integration instead, refer to the [](setting-up-teamcity-for-kubernetes.md) topic.
+
+> This feature is currently in experimental stage and may change in future release cycles.
+> 
+{style="warning"}
 
 ## How It Works
 
@@ -34,13 +35,13 @@ Key benefits this integration brings to the table include:
    
 5. In your build configuration settings, specify [agent requirements](agent-requirements.md) and [step containers](container-wrapper.md) if needed.
 6. Trigger a new build.
-7. The TeamCity K8s executor collects a list of build steps with their parameters, generates a pod definition, and submits it to K8s cluster.
+7. The TeamCity K8s executor collects a list of build steps with their parameters, generates a pod definition, and submits it to K8s cluster. Each build step runs in a separate pod, which allows you to specify different [containers](container-wrapper.md) for individual builds.
 8. The K8s cluster allocates pods required to run a build and starts it.
 
 
 ## Cluster Permissions
 
-Make sure the TeamCity user is allowed to perform writing operations in the Kubernetes namespace used by TeamCity agents. Your Kubernetes user role must be configured with the following permissions:
+Make sure the TeamCity user is allowed to perform writing operations in the Kubernetes namespace. Your Kubernetes user role must be configured with the following permissions:
 
 * Pods: `get`, `create`, `list`, `delete`.
 * Pod templates: `get`, `list`
