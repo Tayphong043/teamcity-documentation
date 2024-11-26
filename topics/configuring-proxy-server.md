@@ -302,11 +302,13 @@ teamcity.http.proxyPort=8080
 teamcity.http.nonProxyHosts=localhost|*.mydomain.com
  
 ## For an authenticated proxy add the following properties:
-### Authentication type. "basic" and "ntlm" values are supported. The default is basic.
+### Authentication type. "basic" and "ntlm" values are supported. The default is "basic".
 teamcity.http.proxyAuthenticationType=basic
-### Login and Password for the proxy:
-teamcity.http.proxyLogin=username
+### Login and Password for the proxy. Used only with the "basic" auth type
+teamcity.http.proxyLogin=login
 teamcity.http.proxyPassword=password
+### Windows NT credentials for NTLM authentication. Used only with the "ntlm" auth type
+teamcity.http.proxyAuthentication=NT_credentials
  
 # For HTTPS protocol
 ## The domain name or the IP address of the proxy host and the port:
@@ -317,20 +319,22 @@ teamcity.https.proxyPort=8080
 teamcity.https.nonProxyHosts=localhost|*.mydomain.com
  
 ## For an authenticated proxy add the following properties:
-### Authentication type. "basic" and "ntlm" values are supported. The default is basic.
+### Authentication type. "basic" and "ntlm" values are supported. The default is "basic".
 teamcity.https.proxyAuthenticationType=basic
-### Login and Password for the proxy:
+### Login and Password for the proxy. Used only with the "basic" auth type
 teamcity.https.proxyLogin=login
 teamcity.https.proxyPassword=password
-
+### Windows NT credentials for NTLM authentication. Used only with the "ntlm" auth type
+teamcity.https.proxyAuthentication=NT_credentials
 ```
 
-> For external Git repositories, the aforementioned settings resolve connection issues only if you switch to the bundled JGit. If TeamCity uses the [native Git](git.md#Native+Git+for+VCS-related+operations+on+the+server), you need to manually setup proxy settings in your Git configuration. See the following articles for more information:
+> TeamCity proxy settings are automatically propagated to [native Git](git.md#Native+Git+for+VCS-related+operations+on+the+server) configuration. However, Git's own configuration has a priority over TeamCity settings. See the following articles for more information about setting up native Git proxy configuration:
 > 
 > * [Configure Git to use a proxy](https://gist.github.com/evantoli/f8c23a37eb3558ab8765)
 > * [The `git config` reference](https://git-scm.com/docs/git-config)
 > 
-{style="warning"}
+> [SSH-related properties](git.md#internalProperties) (`teamcity.git.sshProxyType`, `teamcity.git.sshProxyHost` and `teamcity.git.sshProxyPort`) are propagated to native Git only for the server machine.
+{style="tip"}
 
 <anchor name="Use+Proxy+to+Connect+Agents+to+TeamCity+Server"/>
 
@@ -354,7 +358,7 @@ teamcity.http.proxyLogin=login
 teamcity.http.proxyPassword=password
 ```
 
-If the proxy has a HTTPS endpoint, you can also configure the `teamcity.https.*` properties.
+If TeamCity must access HTTPS endpoints (for example, external VCS hosting providers or cloud artifact storages), configure the `teamcity.https.*` properties as well.
 
 > * The proxy has to be configured not to cache any TeamCity server responses. For example, if you use Squid, add "cache deny all" line to the `squid.conf` file.
 > * Since TeamCity Cloud servers' integrated [](build-artifact.md#Artifacts+Storage) is hosted on [Amazon S3](https://aws.amazon.com/s3/), the proxy should allow `*.amazonaws.com` traffic.
