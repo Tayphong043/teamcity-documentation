@@ -79,7 +79,7 @@ A **cloud profile** is a collection of general settings for TeamCity to start vi
 2. Click **Create new profile**.
 3. Set **Cloud type** to "Amazon EC2".
 4. Enter your profile name and optional description.
-5. Choose an [AWS Connection](configuring-connections.md#AmazonWebServices) that should be used to access your AWS-based images and instances. Note that IAM connections require underlying connections of either access keys or default credentials provider chain types to operate.
+5. Choose an [AWS Connection](configuring-connections.md#AmazonWebServices) that should be used to access your AWS-based images and instances. Note that AWS connections of the "IAM Role" type require underlying connections of either access keys or default credentials provider chain types to operate.
 
    > For EC2 profiles configured before version 2024.11, TeamCity will continue supporting legacy authorization methods using access keys and the default credentials provider chain. However, it will recommend migrating these settings to a separate or existing AWS connection.
    >
