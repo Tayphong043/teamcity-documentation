@@ -99,8 +99,7 @@ then no additional changes to your DSL are required and you can change the confi
 You should review these suggestions and apply them to your DSL scripts. The _configs version_ can be changed only after all these suggestions are applied.
 
 
-<anchor name="dsl202411"/>
-
+<!--
 ## Update DSL from 2024.07.x to 2024.11.x
 
 Starting with version 2024.11, TeamCity uses the K2 Kotlin compiler. This change requires possible edits to your Kotlin DSL files. See the [K2 migration guide](https://kotlinlang.org/docs/k2-compiler-migration-guide.html) for more information.
@@ -130,6 +129,7 @@ data class MyClass(
 
 * The bundled Kotlin version has been updated to 1.8.22.
 * For security reasons, existing AWS connections can now be used only those TeamCity project that own these connections. Child sub-projects cannot access connections of their parent projects. To allow a subproject to use the AWS connection of its parent project, add the `allowInSubProjects = true` parameter to this connection's settings block.
+-->
 
 
 <anchor name="dsl202305"/>
