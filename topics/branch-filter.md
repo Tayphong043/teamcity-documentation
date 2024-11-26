@@ -308,7 +308,7 @@ When setting up branch filters, click the magic wand button and switch to the **
 
 ### Wildcards and Patterns
 
-Use the asterisk ("*") as a wildcard for any string. For example, the `+pr:*` and `-pr:*` rules allow an object (a trigger or an [](automatic-merge.md) feature) accept or ignore all incoming requests.
+Use the asterisk ("*") as a wildcard for any string. For example, the `+pr:*` and `-pr:*` rules allow triggers to accept or ignore all incoming requests.
 
 The following rule allows an object to accept only those requests whose target branch starts with "dev/":
 
