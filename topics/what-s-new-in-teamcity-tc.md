@@ -151,6 +151,7 @@ Existing connections will retain legacy authentication but recommend migrating t
 ## Miscellaneous Changes
 {instance="tc"}
 
+* Both TeamCity server and agents now support Java 21.
 * Artifacts in custom [S3 storages](storing-build-artifacts-in-amazon-s3.md) are now downloaded in parallel, using up to 5 threads per artifact. This improvement boosts download speeds by up to 80% based on our benchmarks. The feature is enabled by default, requiring no manual configuration.
 * EC2-hosted agents now [report](setting-up-teamcity-for-amazon-ec2.md#EC2-Specific+Agent+Parameters) the `system.ec2.instance-life-cycle` parameter that allows you to identify whether this agent uses a spot or on-demand EC2 instance.
 * The [](artifacts-migration-tool.md) now supports migration to and from Microsoft Azure storages. This tool allows you to easily transfer build artifacts from one storage to another. Note that you need to install an unbundled plugin to set up Azure storages: [Azure Artifact Storage](https://plugins.jetbrains.com/plugin/9617-azure-artifact-storage).
