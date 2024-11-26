@@ -1223,3 +1223,18 @@ Several platform-specific libraries from JetBrains and external sources are able
 * [Python Unit Test Reporting to TeamCity](https://pypi.python.org/pypi/teamcity-messages) — the package that automatically reports unit tests to the TeamCity server via service messages (when run under TeamCity and provided the testing code is adapted to use it).
 * [Mocha](https://github.com/visionmedia/mocha) — on-the-fly reporting via service messages for Mocha JavaScript testing framework. See the related [post](http://richarddingwall.name/2012/06/17/running-mocha-browser-tests-in-teamcity/) with instructions.
 * [Karma](https://github.com/karma-runner/karma) — support in the JavaScript testing tool to report tests progress into TeamCity using TeamCity service messages.
+
+
+## Perforce Service Messages
+
+<snippet id="p4-service-message">
+
+[Personal builds](personal-build.md) working with [Perfoce projects](integrating-teamcity-with-perforce.md) may fail during the final "Undo personal changes" stage. This usually occurs if the code source checkout directory becomes unavailable before this stage begins (for example, when it is mounted by a [Bootstrap build step](configuring-build-steps.md#Bootstrap+Steps) and automatically unmounted after the last build step).
+
+In such cases, you must undo personal changes earlier than TeamCity normally does — while the build steps are still running. To do so, send the following [service message](service-messages.md) during the final build step:
+
+```Text
+##teamcity[undoPersonalPatch]
+```
+
+</snippet>
