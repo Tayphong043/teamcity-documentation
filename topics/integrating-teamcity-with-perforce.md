@@ -128,3 +128,8 @@ If a build contains a changelist that is associated with one or more [jobs](http
 {instance="tc"}
 
 All operations of the Perforce plugin are logged in to the `teamcity-vcs.log` files with the category `jetbrains.buildServer.VCS.P4` (on an agent or on a server, depending on the operation mode). The detailed logging can be enabled with [TeamCity Server Logs](teamcity-server-logs.md).
+
+
+## Perforce Service Messages
+
+<include from="service-messages.md" element-id="p4-service-message"/>
