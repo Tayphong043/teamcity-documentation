@@ -4,7 +4,7 @@
 ## Changes from 2024.07 to 2024.11
 {id="2024.11"}
 
-* The **.NET build runners support** plugin (`/plugins/dotNetRunners.zip`) is no longer bundled with TeamCity. The following build steps will continue working on existing TeamCity instances, but will be unavailable for newly created configurations:
+* The **.NET build runners support** plugin (`/plugins/dotNetRunners.zip`) is no longer bundled with TeamCity. The following build steps will continue working on existing TeamCity servers, but will be unavailable for newly installed instances:
   * NUnit Legacy
   * NAnt
   * .NET Process Runner
