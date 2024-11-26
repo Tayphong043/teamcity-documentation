@@ -23,7 +23,7 @@
 * Agent and server Docker image updates:
   * [Docker Engine](https://endoflife.date/docker-engine) (Docker CE and Docker CE CLI) were updated to version 27.3.1 in all [Linux agent images](agent-docker-images.md).
   * The Linux image in TeamCity server Docker containers was updated to version 22.04 (LTS).
-  * The bundled Git was updated to version 2.47 in both Server and Agent Docker images.
+  * The bundled Git was updated to version 2.47.1 in both Server and Agent Docker images.
   * The Git LFS version was bumped to 3.0.2.
 
 
