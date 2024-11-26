@@ -37,7 +37,7 @@ Starting with version 2024.11, you will be able to take an alternative route: of
 
 Learn more: [](kubernetes-executor.md) | [Kubernetes connection](configuring-connections.md#Kubernetes)
 
-
+<!--
 ## New Dependency Cache Features
 {instance="tc"}
 
@@ -50,6 +50,7 @@ This TeamCity version introduces three new [build features](adding-build-feature
 All three features require no configuration: add/enable a required build feature to enable caching, and remove/disable it to force agents to re-download missing dependencies with each build.
 
 Learn more: [](dependency-caches.md)
+-->
 
 
 ## Partial Chain Execution
