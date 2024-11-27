@@ -1230,6 +1230,11 @@ Several platform-specific libraries from JetBrains and external sources are able
 <snippet id="p4-service-message">
 
 [Personal builds](personal-build.md) working with [Perfoce projects](integrating-teamcity-with-perforce.md) may fail during the final "Undo personal changes" stage. This usually occurs if the code source checkout directory becomes unavailable before this stage begins (for example, when it is mounted by a [Bootstrap build step](configuring-build-steps.md#Bootstrap+Steps) and automatically unmounted after the last build step).
+{instance="tc"}
+
+[Personal builds](personal-build.md) working with [Perfoce projects](integrating-teamcity-with-perforce.md) may fail during the final "Undo personal changes" stage. This usually occurs if the code source checkout directory becomes unavailable before this stage begins.
+{instance="tcc"}
+
 
 In such cases, you must undo personal changes earlier than TeamCity normally does — while the build steps are still running. To do so, send the following [service message](service-messages.md) during the final build step:
 
