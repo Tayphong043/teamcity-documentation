@@ -100,7 +100,7 @@ To build the target shelved changelist with [TeamCity REST API](https://www.jetb
 }
 ```
 
-<deflist type="medium">
+<deflist style="medium">
 <def title="swarmUpdateUrl">
 <p>
 A URL for the Perforce Helix Swarm test updates. This property is optional and used only by builds triggered by Helix Swarm.
@@ -113,16 +113,34 @@ This property should point to a shelved changelist number and a valid VCS root e
 </def>
 </deflist>
 
-<!--
+This endpoint allows building Perforce shelved changelists only if the `teamcity.internal.perforce.buildShelvesFromParams=true` [internal property](server-startup-properties.md#TeamCity+Internal+Properties) is present. Otherwise, you can use a dedicated `runBuildForShelve` endpoint:
+{instance="tc"}
+
+This endpoint allows building Perforce shelved changelists only if the parent build configuration has the `teamcity.internal.perforce.buildShelvesFromParams=true` parameter. Otherwise, you can use a dedicated `/app/perforce/runBuildForShelve` endpoint:
+{instance="tcc"}
+
 ```Shell
 /app/perforce/runBuildForShelve?buildTypeId=<BUILD_TYPE_ID>&vcsRootId=<VCS_ROOT_ID>&shelvedChangelist=<SHELVED_CHANGELIST_ID>
 ```
 {prompt="POST"}
 
-* `BUILD_TYPE_ID` — the ID of your build configuration.
-* `VCS_ROOT_ID` — the external ID of a related [](vcs-root.md).
-* `SHELVED_CHANGELIST_ID` — the ID of the required changelist.
--->
+<deflist style="medium">
+<def title="BUILD_TYPE_ID">
+<p>
+The ID of your build configuration.
+</p>
+</def>
+<def title="VCS_ROOT_ID">
+<p>
+The external ID of a related VCS Root.
+</p>
+</def>
+<def title="SHELVED_CHANGELIST_ID">
+<p>
+The ID of the required changelist.
+</p>
+</def>
+</deflist>
 
 ### Publishing Build Statuses to Perforce Helix Swarm
 
