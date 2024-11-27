@@ -97,3 +97,4 @@ The sample template below launches pods that have 2GB of memory and run builds i
 ## Special Notes and Limitations
 
 * Currently, a project can use only one Kubernetes integration. We expect to support multiple executors per project (along with a mechanism to prioritize them) in future release cycles.
+* Executor mode is an agentless integration, so TeamCity is not aware of any "classic" build agents on the Kubernetes side. This leads to a "Build agent was disconnected while running a build" warning displayed when a build handled by an executor is running. As long as builds finish successfully, this warning does not indicate a misconfiguration or connectivity issue and can be disregarded. We expect to resolve this behavior in upcoming bug-fix releases.
