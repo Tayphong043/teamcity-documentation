@@ -78,8 +78,42 @@ To **configure automatic triggering** for a Perforce shelved changelist:
 2. Add a new trigger of the _Perforce Shelve Trigger_ type.
 3. Configure its settings as described in [this article](perforce-shelve-trigger.md).
 
-To build the target shelved changelist with [TeamCity REST API](teamcity-rest-api.md), send a request to the following endpoint:
+To build the target shelved changelist with [TeamCity REST API](https://www.jetbrains.com/help/teamcity/rest/start-and-cancel-builds.html), send a `POST` request with the following body to the `/app/rest/buildQueue` endpoint:
 
+```JSON
+{
+  "buildType": {
+    "id": "Perforce_Swarm_Build"
+  },
+  "properties": {
+    "property": [
+      {
+        "name": "teamcity.perforce.build.swarmUpdateUrl",
+        "value": "{update}"
+      },
+      {
+        "name": "vcsRoot.Perforce_Swarm_Root.shelvedChangelist",
+        "value": "{change}"
+      }
+    ]
+  }
+}
+```
+
+<deflist type="medium">
+<def title="swarmUpdateUrl">
+<p>
+A URL for the Perforce Helix Swarm test updates. This property is optional and used only by builds triggered by Helix Swarm.
+</p>
+</def>
+<def title="shelvedChangelist">
+<p>
+This property should point to a shelved changelist number and a valid VCS root external ID. The value should be in the <code>vcsRoot.&lt;external_id&gt;.shelvedChangeList</code> format.
+</p>
+</def>
+</deflist>
+
+<!--
 ```Shell
 /app/perforce/runBuildForShelve?buildTypeId=<BUILD_TYPE_ID>&vcsRootId=<VCS_ROOT_ID>&shelvedChangelist=<SHELVED_CHANGELIST_ID>
 ```
@@ -88,6 +122,7 @@ To build the target shelved changelist with [TeamCity REST API](teamcity-rest-ap
 * `BUILD_TYPE_ID` — the ID of your build configuration.
 * `VCS_ROOT_ID` — the external ID of a related [](vcs-root.md).
 * `SHELVED_CHANGELIST_ID` — the ID of the required changelist.
+-->
 
 ### Publishing Build Statuses to Perforce Helix Swarm
 
