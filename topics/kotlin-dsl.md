@@ -319,7 +319,7 @@ After that you can start using objects from this library in your `.kts` settings
 ```Kotlin
 import src.main.kotlin.builds.MyBuildType
 
-version = "2024.11"
+version = "2024.12"
 
 val myConf = MyBuildType("Custom Build Type")
 

@@ -1,15 +1,15 @@
-[//]: # (title: What's New in TeamCity On-Premises 2024.11)
+[//]: # (title: What's New in TeamCity On-Premises 2024.12)
 
-<snippet id="2024-11-tc">
+<snippet id="2024-12-tc">
 
 
 ## Pipelines Merge Announcement and Major UI Changes
 {instance="tc"}
 
-The first glaring change you will notice seconds after the updated 2024.11 TeamCity server starts is the redesigned UI. We replaced the top navigation bar with a sleek side menu, revamped breadcrumbs, refreshed project and configuration icons, and introduced other visual enhancements for a cleaner, more functional experience.
+The first glaring change you will notice seconds after the updated 2024.12 TeamCity server starts is the redesigned UI. We replaced the top navigation bar with a sleek side menu, revamped breadcrumbs, refreshed project and configuration icons, and introduced other visual enhancements for a cleaner, more functional experience.
 
 
-<img src="dk-2024-11-ui-update.png" width="706" alt="2024.11 UI Update"/>
+<img src="dk-2024-11-ui-update.png" width="706" alt="2024.12 UI Update"/>
 
 Although significant on their own, these changes are more than a visual refresh — they lay the foundation for another major upcoming change: the integration of TeamCity and TeamCity Pipelines.
 
@@ -31,7 +31,7 @@ Learn more: [Try TeamCity Pipelines](https://www.jetbrains.com/teamcity/download
 
 In a traditional TeamCity paradigm, you should set up, maintain, and manage build agents that process builds. This applies to both cloud-hosted and local agents.
 
-Starting with version 2024.11, you will be able to take an alternative route: offload building tasks to the K8s cluster. Set up the new integration and start building right away: our K8s executor will generate pod definitions based on build parameters and required containers and submit them to K8s cluster. As a result, your cluster will act as an orchestrator that manages builds and "agents" lifecycle.
+Starting with version 2024.12, you will be able to take an alternative route: offload building tasks to the K8s cluster. Set up the new integration and start building right away: our K8s executor will generate pod definitions based on build parameters and required containers and submit them to K8s cluster. As a result, your cluster will act as an orchestrator that manages builds and "agents" lifecycle.
 
 <img src="dk-k8s-integration-overview.png" alt="K8S integration" width="706"/>
 
@@ -56,7 +56,7 @@ Learn more: [](dependency-caches.md)
 ## Partial Chain Execution
 {instance="tc"}
 
-Version 2024.11 introduces two configuration parameters that accept tags and IDs of upstream builds. Doing so allows you to run a portion of your build chain.
+Version 2024.12 introduces two configuration parameters that accept tags and IDs of upstream builds. Doing so allows you to run a portion of your build chain.
 
 <img src="dk-subchains-gif.gif" width="706" alt="Subchains"/>
 
@@ -86,7 +86,7 @@ Learn more: [](manage-access-tokens.md)
 ## Pull Request Filters
 {instance="tc"}
 
-Starting with version 2024.11, TeamCity [branch filters](branch-filter.md#Pull+Request+Branch+Filters) support the `+|-pr:` syntax. This syntax allows you to create fine-grained filter expressions that track pull requests by a number of parameters: user role, target and source branches, and more.
+Starting with version 2024.12, TeamCity [branch filters](branch-filter.md#Pull+Request+Branch+Filters) support the `+|-pr:` syntax. This syntax allows you to create fine-grained filter expressions that track pull requests by a number of parameters: user role, target and source branches, and more.
 
 The new syntax is currently available only for triggers. When setting up trigger settings, click a magic wand next to the **Branch Filter** field to invoke an expression editor.
 
@@ -109,7 +109,7 @@ TeamCity enables you to require explicit permission from designated users before
 * When a build configuration has the [](build-approval.md) feature to prevent accidental runs.
 * When [](untrusted-builds.md) are enabled, ensuring unverified pull request changes are reviewed before builds begin.
 
-Previously, both options required approving each build individually within a chain. Starting with version 2024.11, clicking **Approve** now grants permission for all builds in the chain at once.
+Previously, both options required approving each build individually within a chain. Starting with version 2024.12, clicking **Approve** now grants permission for all builds in the chain at once.
 
 <img src="dk-approve-chain.png" width="706" alt="Approve chain"/>
 
@@ -156,7 +156,7 @@ Existing connections will retain legacy authentication but recommend migrating t
 * EC2-hosted agents now [report](setting-up-teamcity-for-amazon-ec2.md#EC2-Specific+Agent+Parameters) the `system.ec2.instance-life-cycle` parameter that allows you to identify whether this agent uses a spot or on-demand EC2 instance.
 * The [](artifacts-migration-tool.md) now supports migration to and from Microsoft Azure storages. This tool allows you to easily transfer build artifacts from one storage to another. Note that you need to install an unbundled plugin to set up Azure storages: [Azure Artifact Storage](https://plugins.jetbrains.com/plugin/9617-azure-artifact-storage).
 * All messages written to `teamcity-server.log` during a server startup are now duplicated to the [teamcity-startup.log](teamcity-server-logs.md). This log ensures major boot events are logged to a separate file, which may assist in troubleshooting server startup issues.
-* The [HashiCorp Vault connection](hashicorp-vault.md) no longer provides a setting that allows builds to proceed when TeamCity is unable to retrieve Vault secrets. Starting with version 2024.11, such build will fail.
+* The [HashiCorp Vault connection](hashicorp-vault.md) no longer provides a setting that allows builds to proceed when TeamCity is unable to retrieve Vault secrets. Starting with version 2024.12, such build will fail.
 * [TeamCity proxy settings](configuring-proxy-server.md) are now automatically propagated to the [native Git](git.md#Native+Git+for+VCS-related+operations+on+the+server) configuration (if it does not have corresponding properties already set up). Previously, you had to configure them manually.
 * The [new Perforce-specific service message](service-messages.md#Perforce+Service+Messages) was added. This message allows you to manually rollback personal changes.
 * TeamCity REST API: You can now [build Perforce shelved changelists](integrating-teamcity-with-perforce.md#Running+Builds+on+Perforce+Shelved+Files) using the regular `buildQueue` endpoint. Previously, this functionality was available only via a dedicated `/app/perforce/runBuildForShelve` endpoint.

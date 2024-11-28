@@ -1,8 +1,8 @@
 [//]: # (title: Upgrade Notes)
 [//]: # (auxiliary-id: Upgrade Notes)
 
-## Changes from 2024.07 to 2024.11
-{id="2024.11"}
+## Changes from 2024.07 to 2024.12
+{id="2024.12"}
 
 * The **.NET build runners support** plugin (`/plugins/dotNetRunners.zip`) is no longer bundled with TeamCity. The following build steps will continue working on existing TeamCity servers, but will be unavailable for newly installed instances:
   * NUnit Legacy
@@ -18,7 +18,7 @@
   * `teamcity.storage.migration.s3.upload.retryDelayMs` was renamed to `teamcity.storage.migration.upload.retryDelayMs`
 
 ### Bundled Tools Updates
-{id="bundled-tools-updates-2024-11"}
+{id="bundled-tools-updates-2024-12"}
 
 * Agent and server Docker image updates:
   * [Docker Engine](https://endoflife.date/docker-engine) (Docker CE and Docker CE CLI) were updated to version 27.3.1 in all [Linux agent images](agent-docker-images.md).
