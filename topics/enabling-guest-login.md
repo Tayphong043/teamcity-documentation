@@ -15,6 +15,11 @@ To enable the guest login in TeamCity:
 The __Log in as guest__ link will appear on the __Log in to TeamCity__ page.
 
 By default, the guest user can view all the projects. To customize which projects a guest user has access to, click __Configure guest user roles__ under the _Allow login as guest user_ option and configure the respective [roles and permissions](managing-roles-and-permissions.md). This link appears only if the [per-project authorization mode](managing-roles-and-permissions.md#Changing+Authorization+Mode) is enabled.
+{instance="tc"}
+
+
+By default, the guest user can view all the projects. To customize which projects a guest user has access to, click __Configure guest user roles__ under the _Allow login as guest user_ option and configure the respective [roles and permissions](managing-roles-and-permissions.md).
+{instance="tcc"}
 
  <seealso>
         <category ref="admin-guide">

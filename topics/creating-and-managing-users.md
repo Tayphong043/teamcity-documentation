@@ -20,7 +20,10 @@ The __Administration | Users__ page provides the _Create user account_ option.
 
 When creating a user account when [several authentication modes enabled](configuring-authentication-settings.md#Enabling+Multiple+Authentication+Modules) on the server, only a username is required.
 
-If only the [default authentication](authentication-modules.md) is used, the password is required as well. Any new user is automatically added to the [All Users group](creating-and-managing-user-groups.md#%22All+Users%22+Group) and inherits the roles and permissions defined for this group. If you do not use [per-project permissions](managing-roles-and-permissions.md#Authorization+Mode), you can specify here whether a user should have administrative permissions or not. Otherwise, you can assign roles to this user [later](#Assigning+Roles+to+Users).
+If only the [default authentication](authentication-modules.md) is used, the password is required as well. Any new user is automatically added to the [All Users group](creating-and-managing-user-groups.md#%22All+Users%22+Group) and inherits the roles and permissions defined for this group.
+
+If you do not use [per-project permissions](managing-roles-and-permissions.md#Authorization+Mode), you can specify here whether a user should have administrative permissions or not. Otherwise, you can assign roles to this user [later](#Assigning+Roles+to+Users).
+{instance="tc"}
 
 <anchor name="ManagingUsersandUserGroups-EditingUserAccount"/>
 

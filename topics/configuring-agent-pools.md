@@ -25,7 +25,7 @@ Using agent pools allows:
 
 ## Required Permissions
 
-To be able to add/remove pools and set maximum number of agents in the pool, you need to have the "_Manage agent pools_" permission granted to the System Administrator and Agent Manager [roles](managing-roles-and-permissions.md) in the default TeamCity [per-project authorization mode](managing-roles-and-permissions.md#Per-Project+Authorization+Mode).
+To be able to add/remove pools and set maximum number of agents in the pool, you need to have the "_Manage agent pools_" permission. By default, these permissions are granted to the System Administrator and Agent Manager [roles](managing-roles-and-permissions.md).
 
 Assigning and unassigning projects and agents to/from pools is restricted by the "_Change agent pools associated with project_" permission, which by default is a part of the Project Administrator role. Users can perform the operations on the pool only if they have the "_Change agent pools associated with project_" permission for _all projects_ associated with _all pools_ affected by the operation.
 

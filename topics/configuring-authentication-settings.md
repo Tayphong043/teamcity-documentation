@@ -109,6 +109,7 @@ In the __General Settings__ block, you can:
 * Enable the [guest login](enabling-guest-login.md) on the server and change the guest username. Please read our [security notes](security-notes.md#caution-guest-login) before enabling this option.
 * Customize the view of the login form: enter an introductory text and hide the default username/password fields (convenient if you prefer [authentication through third-party services](#HTTP+%2F+SSO+Authentication+Modules)).
 * Enable the [per-project authorization mode](managing-roles-and-permissions.md#Changing+Authorization+Mode).
+{instance="tc"}
 * Enable the [two-factor authentication](managing-two-factor-authentication.md).
 {instance="tc"}
 * Enforce the [email verification](enabling-email-verification.md) for all TeamCity users.
