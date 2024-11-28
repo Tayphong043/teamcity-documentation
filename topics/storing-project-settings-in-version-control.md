@@ -30,6 +30,10 @@ You can store project settings in the XML format or in the [Kotlin language](htt
 By default, the synchronization of the project settings with the version control system is disabled.
 
 To enable it, go to __Project Settings | Versioned Settings | Configuration__. The "_Enable/disable versioned settings_" permission is required (default for the [System Administrator](managing-roles-and-permissions.md#Per-Project+Authorization+Mode) role).
+{instance="tc"}
+
+To enable it, go to __Project Settings | Versioned Settings | Configuration__. The "_Enable/disable versioned settings_" permission is required (default for the [System Administrator](managing-roles-and-permissions.md#Default+User+Roles) role).
+{instance="tcc"}
 
 <img src="dk-versioned-settings-main.png" width="706" alt="Main versioned settings page"/>
 

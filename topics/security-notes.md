@@ -95,10 +95,16 @@ Out of the box, TeamCity offers several predefined [roles](managing-roles-and-pe
 You can create [user groups](creating-and-managing-user-groups.md) that match your organizational structure and assign the above roles to those groups. Then add your users to the respective groups, granting them the lowest level of privileges they need for their day-to-day work.
 
 It is also strongly recommended that you create new roles with additional permissions, instead of immediately assigning the Project Administrator role to anyone who needs slightly more privileges. (This does not work if you disable [per-project permissions](managing-roles-and-permissions.md#Per-Project+Authorization+Mode).)
+{instance="tc"}
+
+It is also strongly recommended that you create new roles with additional permissions, instead of immediately assigning the Project Administrator role to anyone who needs slightly more privileges.
+{instance="tcc"}
 
 __Use per-project authorization__.
+{instance="tc"}
 
 To tighten security even more, you can also make use of [per-project authorization](managing-roles-and-permissions.md#Per-Project+Authorization+Mode). This way, your developers could, for example, have access only to the compilation part of your build chain, while devops could access and run the deployment part.
+{instance="tc"}
 
 <anchor name="caution-guest-login"/>
 
