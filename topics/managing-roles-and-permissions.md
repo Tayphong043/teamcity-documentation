@@ -8,6 +8,7 @@ A _permission_ is an _authorization_ to perform particular operations, for examp
 A _role_ is a set of _permissions_ that can be granted to a user in one or all projects thus controlling access to the projects and various features in the UI.
 
 ## Authorization Mode
+{instance="tc"}
 
 TeamCity authorization supports two modes: __simple__ and __per-project__.
 * In the __simple__ mode, there are only three types of authorization levels: guest, logged-in user, and administrator.
@@ -17,12 +18,14 @@ Permissions within a role granted at the project level are automatically propaga
 The __View project and all parent projects__ permission allows viewing not only the project (with its subprojects) but its parent projects too.
 
 ## Changing Authorization Mode
+{instance="tc"}
 
 Unless explicitly configured, the simple authorization mode is used in TeamCity Professional and per-project is used in TeamCity Enterprise.
 
 To change the authorization mode, go to __Administration | Authentication__ and enable/disable the _Enable per-project permissions_ option.
 
 ## Simple Authorization Mode
+{instance="tc"}
 
 <table>
 
@@ -86,6 +89,105 @@ Corresponds to the default [Project Viewer](#project-viewer) role granted for al
 </td></tr></table>
 
 ## Per-Project Authorization Mode
+{instance="tc"}
+
+Roles are assigned to users by administrators on a per-project basis: a user can have different roles in different projects, and hence, the permissions are project-based. A user can have a role in a specific project or in all available projects, or no roles at all. You can [associate a user account with a set of roles](creating-and-managing-users.md#Assigning+Roles+to+Users). A role can also be granted to a user group. This means that the role is automatically granted to all the users that are included into the group (both directly or through other groups).
+
+You can add roles and assign permissions to them in __Administration | Roles__. Click __Add permission__ under any role to see the list of all available permissions, select a required permission, and click __Add__. To add multiple permissions, hold the __CTRL__ key when selecting them.
+
+By default, TeamCity provides the following per-project roles:
+
+<table>
+
+<tr>
+
+<td>
+
+Role
+
+</td>
+
+<td>
+
+Description
+
+</td></tr><tr>
+
+<td id="system-administrator">
+
+__System Administrator__
+
+</td>
+
+<td>
+
+Has no restrictions in permissions, and has all of the [Project Administrator's](#project-administrator) permissions. Сan create and manage user accounts, change HTTPS settings, authorize build agents, set up projects and build configurations, edit the TeamCity server settings, manage TeamCity licenses, configure server data clean-up rules, change VCS roots, and so on.
+
+
+</td></tr><tr>
+
+<td id="project-administrator">
+
+__Project Administrator__
+
+</td>
+
+<td>
+
+Can customize general settings of a project and settings of build configurations, assign roles to the project users, create subprojects, change a user's VCS username in the project without adding the permission to modify user profile and roles.
+Has all the [Project Developer's](#project-developer) permissions.
+
+Project administrators can assign roles and modify groups that correspond only to projects they administer. For example, a project A administrator can neither grant users any roles for project B, nor add them to a group with project B-specific permissions; only a project B administrator (or system administrator) can do that.
+
+With the enabled "_Change user / group notification rules in project_" permission, can edit notification rules for users and user groups assigned to their projects.
+
+</td></tr><tr>
+
+<td id="project-developer">
+
+__Project developer__
+
+</td>
+
+<td>
+
+Usually commits changes to a project. Can start/stop builds, reorder builds in the build queue, label the build sources, review agent details, start investigation of a failed build.
+
+Note that by default this role has the _Customize build parameters_ and _Change build source code with a custom patch_ permissions. This could give indirect access to altering a configuration/environment per build (see [more details](creating-and-editing-build-configurations.md#Permissions+to+Edit+Build+Configuration)).
+
+</td></tr><tr>
+
+<td id="project-viewer">
+
+__Project Viewer__
+
+</td>
+
+<td>
+
+Has read-only access to projects and can only _view_ the project, its parent, and subprojects. Does not have permissions to [view agent details](build-agents-configuration-and-maintenance.md#Viewing+TeamCity+Agents+Details).
+
+</td></tr><tr>
+
+
+<td id="agent-manager">
+
+__Agent manager__
+
+</td>
+
+<td>
+
+Can customize and manage [Build Agents](build-agent.md), change the run configuration policy, [enable/disable](build-agents-configuration-and-maintenance.md#Enabling%2FDisabling+Agents+via+UI) build agents, and [pause/resume build queue](working-with-build-queue.md#Pausing+and+Resuming+Build+Queue).
+
+
+</td></tr></table>
+
+When per-project permissions are enabled, server administrators can modify the roles, delete them, or add new roles with any combination of permissions right in the TeamCity Administration web UI, or by modifying the `roles-config.xml` file stored in the [`<TeamCity Data Directory>`](teamcity-data-directory.md)`/config` directory. When assigning roles to users, the _View role permissions_ link in the web UI displays the list of permissions for each role in accordance with their current configuration.
+
+
+## Default User Roles
+{instance="tcc"}
 
 Roles are assigned to users by administrators on a per-project basis: a user can have different roles in different projects, and hence, the permissions are project-based. A user can have a role in a specific project or in all available projects, or no roles at all. You can [associate a user account with a set of roles](creating-and-managing-users.md#Assigning+Roles+to+Users). A role can also be granted to a user group. This means that the role is automatically granted to all the users that are included into the group (both directly or through other groups).
 
@@ -183,7 +285,7 @@ When per-project permissions are enabled, server administrators can modify the r
 
 ## Project-level Agent Management Permissions
 
-TeamCity has the following project-level permissions to perform a task on an agent:
+TeamCity provides the following project-level permissions to perform a task on an agent:
 * Enable/disable agents associated with project
 * Start/Stop cloud agent for project
 * Change agent run configuration policy for project
