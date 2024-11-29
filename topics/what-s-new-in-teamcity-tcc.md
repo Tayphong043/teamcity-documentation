@@ -144,7 +144,7 @@ Learn more: [](working-with-meta-runner.md#Launch+Meta-Runners+in+Containers)
 ## AWS Integration Enhancements
 {instance="tcc"}
 
-[Amazon EC2 cloud profiles](setting-up-teamcity-for-amazon-ec2.md) will no longer use access keys or the default credentials provider chain, shifting to authentication through [TeamCity AWS connections](configuring-connections.md#AmazonWebServices). This change consolidates all authentication settings into a single connection that can be shared across multiple features (cloud profiles, [S3 artifact storages](storing-build-artifacts-in-amazon-s3.md), [](aws-credentials.md) build feature, and so on).
+[Amazon EC2 cloud profiles](setting-up-teamcity-for-amazon-ec2.md) will no longer use access keys or the default credentials provider chain, shifting to authentication through [TeamCity AWS connections](configuring-connections.md#AmazonWebServices). This change consolidates all authentication settings into a single connection that can be shared across multiple cloud profiles and [](aws-credentials.md) build features.
 
 Existing connections will retain legacy authentication but recommend migrating to connection-based access. New EC2 cloud profiles will support only the new authentication method.
 
@@ -153,7 +153,7 @@ Existing connections will retain legacy authentication but recommend migrating t
 {instance="tcc"}
 
 * Both TeamCity server and agents now support Java 21.
-* Artifacts in custom [S3 storages](storing-build-artifacts-in-amazon-s3.md) are now downloaded in parallel, using up to 5 threads per artifact. This improvement boosts download speeds by up to 80% based on our benchmarks. The feature is enabled by default, requiring no manual configuration.
+* Artifacts in the default S3 storage are now downloaded in parallel, using up to 5 threads per artifact. This improvement boosts download speeds by up to 80% based on our benchmarks. The feature is enabled by default, requiring no manual configuration.
 * EC2-hosted agents now [report](setting-up-teamcity-for-amazon-ec2.md#EC2-Specific+Agent+Parameters) the `system.ec2.instance-life-cycle` parameter that allows you to identify whether this agent uses a spot or on-demand EC2 instance.
 * The [HashiCorp Vault connection](hashicorp-vault.md) no longer provides a setting that allows builds to proceed when TeamCity is unable to retrieve Vault secrets. Starting with version 2024.12, such build will fail.
 * The [new Perforce-specific service message](service-messages.md#Perforce+Service+Messages) was added. This message allows you to manually rollback personal changes.
