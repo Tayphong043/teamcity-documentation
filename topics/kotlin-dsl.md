@@ -282,6 +282,7 @@ This is especially useful if you need to add some build feature or trigger to yo
 
 
 ## Add Custom Kotlin Libraries
+{help-id="customLibraries"}
 
 TeamCity allows you to upload custom `.jar` libraries that extend the default Kotlin syntax. For example, assume you have a custom library that declares the custom `MyBuildType` class inherited from a standard [BuildType](https://teamcity.jetbrains.com/app/dsl-documentation/root/build-type/index.html?query=BuildType) class.
 
