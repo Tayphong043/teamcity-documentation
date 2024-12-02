@@ -232,7 +232,7 @@ You can insert references to parameters as `%\parameter_name%` when writing scri
 The script below prints the [checkout directory](build-checkout-directory.md) path (configuration parameter) and TeamCity server version (environment variable) to the build log.<br/><br/>
 
 ```Shell
-echo "Checkout directory: %\teamcity.build.checkoutDir%"
+echo "Checkout directory: %teamcity.build.checkoutDir%"
 echo "Server version: '$TEAMCITY_VERSION'"
 ```
 
@@ -262,7 +262,7 @@ curl -o libraries_%\build.number%.tar.gz %\serverUrlBase%libraries.tar.gz
 The following script prints the [checkout directory](build-checkout-directory.md) path (configuration parameter) and TeamCity server version (environment variable) to the build log.<br/><br/>
 
 ```Python
-print(f'Current checkout directory is: %\teamcity.build.checkoutDir%')
+print(f'Current checkout directory is: %teamcity.build.checkoutDir%')
 print(f'TeamCity version is: %\env.TEAMCITY_VERSION%')
 # or
 print(f"TeamCity version is: {os.environ['TEAMCITY_VERSION']}")
@@ -275,7 +275,7 @@ print(f"TeamCity version is: {os.environ['TEAMCITY_VERSION']}")
 The following script obtains the [checkout directory](build-checkout-directory.md) path and appends an additional path to it:<br/><br/>
 
 ```C#
-string fullPath = Path.Combine("%\teamcity.build.checkoutDir%", "myFolder/bin");
+string fullPath = Path.Combine("%teamcity.build.checkoutDir%", "myFolder/bin");
 Console.WriteLine(fullPath);
 ```
 
