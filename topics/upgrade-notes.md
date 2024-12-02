@@ -25,6 +25,7 @@
   * The Linux image in TeamCity server Docker containers was updated to version 22.04 (LTS).
   * The bundled Git was updated to version 2.47.1 in both Server and Agent Docker images.
   * The Git LFS version was bumped to 3.0.2.
+* <include from="upgrading-dsl.md" element-id="kotllin-dsl202412"/>
 
 
 ## Changes from 2024.07.2 to 2024.07.3

@@ -121,15 +121,24 @@ data class MyClass(
     // ...
 )
 ```
+-->
 
 
-<anchor name="dsl202311"/>
+## Update DSL from 2023.11.x to 2024.12.x
+{help-id="dsl202412"}
+
+
+
+* <snippet id="kotllin-dsl202412">The bundled Kotlin version has been updated to 2.0.21. The language version remains 1.9. We hope to bump the language version in future releases, along with migrating to the K2 compiler. See the [K2 migration guide](https://kotlinlang.org/docs/k2-compiler-migration-guide.html) to check whether this change will affect your custom Kotlin code.</snippet>
+
+
 
 ## Update DSL from 2022.05.x to 2023.11.x
+{help-id="dsl202311"}
 
 * The bundled Kotlin version has been updated to 1.8.22.
 * For security reasons, existing AWS connections can now be used only those TeamCity project that own these connections. Child sub-projects cannot access connections of their parent projects. To allow a subproject to use the AWS connection of its parent project, add the `allowInSubProjects = true` parameter to this connection's settings block.
--->
+
 
 
 <anchor name="dsl202305"/>
