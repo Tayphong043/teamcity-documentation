@@ -80,6 +80,24 @@ To **configure automatic triggering** for a Perforce shelved changelist:
 
 To build the target shelved changelist with [TeamCity REST API](https://www.jetbrains.com/help/teamcity/rest/start-and-cancel-builds.html), send a `POST` request with the following body to the `/app/rest/buildQueue` endpoint:
 
+<tabs>
+
+<tab title="XML">
+
+```XML
+<build>
+    <buildType id="Perforce_Swarm_Build"/>
+    <properties>
+        <property name="teamcity.perforce.build.swarmUpdateUrl" value="{update}"/>
+        <property name="vcsRoot.Perforce_Swarm_Root.shelvedChangelist" value="{change}"/>
+    </properties>
+</build>
+```
+
+</tab>
+
+<tab title="JSON">
+
 ```JSON
 {
   "buildType": {
@@ -100,6 +118,10 @@ To build the target shelved changelist with [TeamCity REST API](https://www.jetb
 }
 ```
 
+</tab>
+
+</tabs>
+
 <deflist style="medium">
 <def title="swarmUpdateUrl">
 <p>
@@ -113,11 +135,7 @@ This property should point to a shelved changelist number and a valid VCS root e
 </def>
 </deflist>
 
-This endpoint allows building Perforce shelved changelists only if the `teamcity.internal.perforce.buildShelvesFromParams=true` [internal property](server-startup-properties.md#TeamCity+Internal+Properties) is present. Otherwise, you can use a dedicated `runBuildForShelve` endpoint:
-{instance="tc"}
-
-This endpoint allows building Perforce shelved changelists only if the parent build configuration has the `teamcity.internal.perforce.buildShelvesFromParams=true` parameter. Otherwise, you can use a dedicated `/app/perforce/runBuildForShelve` endpoint:
-{instance="tcc"}
+In addition to this endpoint, you can also use a dedicated `runBuildForShelve` endpoint that was available prior to version 2024.12:
 
 ```Shell
 /app/perforce/runBuildForShelve?buildTypeId=<BUILD_TYPE_ID>&vcsRootId=<VCS_ROOT_ID>&shelvedChangelist=<SHELVED_CHANGELIST_ID>
