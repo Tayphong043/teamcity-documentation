@@ -280,6 +280,9 @@ When viewing your build configuration settings in the UI, you can click __View a
 
 This is especially useful if you need to add some build feature or trigger to your DSL scripts and you're not sure how DSL code should look like.
 
+<anchor name="customLibraries"/>
+
+<anchor name="KotlinDSL-customLibraries"/>
 
 ## Add Custom Kotlin Libraries
 
