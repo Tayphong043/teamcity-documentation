@@ -3,9 +3,8 @@
 
 <snippet id="2024-12-tcc">
 
-
 ## Pipelines Merge Announcement and Major UI Changes
-{instance="tcс"}
+{instance="tcc"}
 
 The first glaring change you will notice seconds after the updated 2024.12 TeamCity server starts is the redesigned UI. We replaced the top navigation bar with a sleek side menu, revamped breadcrumbs, refreshed project and configuration icons, and introduced other visual enhancements for a cleaner, more functional experience.
 
