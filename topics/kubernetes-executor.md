@@ -90,11 +90,46 @@ subjects:
 
 The `podtemplates list` [permission](#Cluster+Permissions) enables TeamCity to access the list of [pod templates](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/#pod-templates) stored in your cluster (under the same namespace as specified in the selected [Kubernetes connection](configuring-connections.md#Kubernetes). The retrieved templates are displayed in the **YAML Configuration** drop-down menu.
 
-The sample template below launches pods that have 2GB of memory and run builds inside the latest [TeamCity agent docker image](agent-docker-images.md).
+The sample template below launches pods that have 2GB of memory and 25Gb of storage, and use a custom build agent image (see the [](#Special+Notes+and+Limitations) section).
 
-<include from="setting-up-teamcity-for-kubernetes.md" element-id="k8s-template-sample"/>
+```yaml
+apiVersion: v1
+kind: PodTemplate
+metadata:
+  name: pod-certificate-agent
+  namespace: default
+template:
+  spec:
+    containers:
+      - name: template-container # see the limitations section
+        image: johndoe/custom_agent_image:latest
+        nodeSelector:
+            linux: arm64
+        resources:
+          limits:
+            ephemeral-storage: 25Gi
+            memory: 2Gi
+          requests:
+            ephemeral-storage: 25Gi
+        env:
+          - name: JDK_1_8
+            value: /usr/local/openjdk-8
+```
 
 ## Special Notes and Limitations
 
 * Currently, a project can use only one Kubernetes integration. We expect to support multiple executors per project (along with a mechanism to prioritize them) in future release cycles.
 * Executor mode is an agentless integration, so TeamCity is not aware of any "classic" build agents on the Kubernetes side. This leads to a "Build agent was disconnected while running a build" warning displayed when a build handled by an executor is running. As long as builds finish successfully, this warning does not indicate a misconfiguration or connectivity issue and can be disregarded. We expect to resolve this behavior in upcoming bug-fix releases.
+* [Pod templates](#YAML+Configuration) that specify custom images must have the "template-container" container names.
+
+    ```yaml
+    # ...
+    template:
+      spec:
+        containers:
+          - name: template-container
+            image: johndoe/custom_agent_image:latest
+    # ...
+    ```
+    
+    Otherwise, the standard "jetbrains/teamcity-agent:latest" image is used regardless of the `image` property value.
