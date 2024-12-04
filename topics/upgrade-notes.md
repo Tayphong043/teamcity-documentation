@@ -4,6 +4,7 @@
 ## Changes from 2024.07 to 2024.12
 {id="2024.12"}
 
+* The default **Project Developer** [role](managing-users-and-roles.md) now includes the **View project agents details** permission instead of **View agent details**. This update ensures permissions align with roles, preventing project developers from accessing agent details outside their project pools.
 * The **.NET build runners support** plugin (`/plugins/dotNetRunners.zip`) is no longer bundled with TeamCity. The following build steps will continue working on existing TeamCity servers, but will be unavailable for newly installed instances:
   * NUnit Legacy
   * NAnt
