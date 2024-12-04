@@ -96,7 +96,7 @@ The sample template below launches pods that have 2GB of memory and 25Gb of stor
 apiVersion: v1
 kind: PodTemplate
 metadata:
-  name: pod-certificate-agent
+  name: my-template
   namespace: default
 template:
   spec:
@@ -133,3 +133,14 @@ template:
     ```
     
     Otherwise, the standard "jetbrains/teamcity-agent:latest" image is used regardless of the `image` property value.
+* Currently, the Kubernetes executor does not support Windows nodes. Builds handled by these nodes are stuck in the "Setting up resources" phase with pods displaying the `MountVolume.SetUp failed for volume "kube-api-access-sfhbc"` error.
+
+    To avoid this issue for mixed clusters (with both Windows and Linux nodes), specify the required node in [pod templates](#YAML+Configuration):
+
+    ```yaml
+    spec:
+      containers:
+      # ...
+      nodeSelector:
+        kubernetes.io/os: linux
+    ```
