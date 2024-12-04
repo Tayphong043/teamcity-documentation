@@ -91,7 +91,7 @@ There are several important issues with data format upgrade:
 If you accidentally performed an inconsistent upgrade, check the [recovery instructions](how-to.md#Recover+from+%22Data+format+of+the+Data+Directory+%28NNN%29+and+the+database+%28MMM%29+do+not+match%22+error).
 
 ### Automatic Update
-{help-id="Upgrade-AutomaticUpdate"}
+{id="Automatic+Update" help-id="Upgrade-AutomaticUpdate"}
 
 > Automatic update is available only for `.tar.gz` and `.exe` installations.
 > In particular, automatic update cannot be used with a Docker installation (see [](#manual-update-of-docker-image)) and the [AWS CloudFormation template](https://github.com/JetBrains/teamcity-cloudformation-template#readme) is no longer supported.
