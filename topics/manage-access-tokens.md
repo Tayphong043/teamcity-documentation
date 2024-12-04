@@ -57,6 +57,20 @@ Note that **VCS Auth Tokens** pages display only the tokens available for each p
 
 For security reasons, you cannot issue a token with the global repository access permission.
 
+> The repository scope of a token can automatically expand when performing actions that involve cloning or creating new VCS roots. These actions include:
+> 
+> * Using the "Create subproject" wizard
+> * Using the "Create build configuration" wizard
+> * Copying a project
+> * Moving a project
+> * Copying a build configuration
+> * Moving a build configuration
+> * Setting up a token on a Git VCS root manually by copying a token ID
+> 
+> This behavior ensures a smooth user experience. For example, cloned build configurations are expected to function correctly without encountering VCS access issues.
+> 
+{style="note"}
+
 
 ## How to Create and Assign Refreshable Tokens
 
