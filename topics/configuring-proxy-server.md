@@ -328,7 +328,7 @@ teamcity.https.proxyPassword=password
 teamcity.https.proxyAuthentication=NT_credentials
 ```
 
-> TeamCity proxy settings are automatically propagated to [native Git](git.md#Native+Git+for+VCS-related+operations+on+the+server) configuration. However, Git's own configuration has a priority over TeamCity settings. See the following articles for more information about setting up native Git proxy configuration:
+> Starting with version 2024.12, TeamCity proxy settings are automatically propagated to [native Git](git.md#Native+Git+for+VCS-related+operations+on+the+server) configuration. However, Git's own configuration has a priority over TeamCity settings. See the following articles for more information about setting up native Git proxy configuration:
 > 
 > * [Configure Git to use a proxy](https://gist.github.com/evantoli/f8c23a37eb3558ab8765)
 > * [The `git config` reference](https://git-scm.com/docs/git-config)
@@ -358,7 +358,7 @@ teamcity.http.proxyLogin=login
 teamcity.http.proxyPassword=password
 ```
 
-If TeamCity must access HTTPS endpoints (for example, external VCS hosting providers or cloud artifact storages), configure the `teamcity.https.*` properties as well.
+To access HTTPS endpoints (for example, GitHub-hosted repositories), configure the `teamcity.https.*` properties as well.
 
 > * The proxy has to be configured not to cache any TeamCity server responses. For example, if you use Squid, add "cache deny all" line to the `squid.conf` file.
 > * Since TeamCity Cloud servers' integrated [](build-artifact.md#Artifacts+Storage) is hosted on [Amazon S3](https://aws.amazon.com/s3/), the proxy should allow `*.amazonaws.com` traffic.
