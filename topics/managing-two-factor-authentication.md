@@ -57,6 +57,8 @@ User groups with mandatory 2FA mode share this requirement with their child user
 
 <img src="dk-2FAGroups.png" width="708" alt="Parent user group with enforced 2FA"/>
 
+If a group switched to mandatory 2FA already has users, set the `teamcity.2fa.mandatory.user.group.grace.period` [intenral property](server-startup-properties.md#TeamCity+Internal+Properties) to a required date when the grace period for these users should end. Otherwise, users without configured 2FA will be locked out of TeamCity. This property accepts values in the [UNIX time format](https://en.wikipedia.org/wiki/Unix_time) with milliseconds (for example, `1672753992000`).
+
 
 
 ## Reduce Excessive Authorization Requests
