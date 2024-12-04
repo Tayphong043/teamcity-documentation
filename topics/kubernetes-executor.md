@@ -133,7 +133,7 @@ template:
     ```
     
     Otherwise, the standard "jetbrains/teamcity-agent:latest" image is used regardless of the `image` property value.
-* Currently, the Kubernetes executor does not support Windows nodes. Builds handled by these nodes are stuck in the "Setting up resources" phase with pods displaying the `MountVolume.SetUp failed for volume "kube-api-access-sfhbc"` error.
+* Currently, the Kubernetes executor does not support Windows nodes. Builds handled by these nodes are stuck in the "Setting up resources" phase with pods displaying the `MountVolume.SetUp failed for volume "kube-api-access-sfhbc"` error. For that reason, builds designed to run under Windows cannot be delegated to Kubernetes executor.
 
     To avoid this issue for mixed clusters (with both Windows and Linux nodes), specify the required node in [pod templates](#YAML+Configuration):
 
@@ -144,3 +144,7 @@ template:
       nodeSelector:
         kubernetes.io/os: linux
     ```
+  
+* The [](docker.md) build step is not supported.
+* The Docker inside Docker (DinD) setup is not supported.
+* Pod initialization can stall while cleaning the "/agent/temp/.old" directory.
