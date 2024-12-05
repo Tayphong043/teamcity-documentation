@@ -101,6 +101,8 @@ Learn more: [](branch-filter.md#Pull+Request+Branch+Filters)
 {instance="tcc"}
 
 * When a [Perforce VCS Root](perforce.md) is configured to check out sources by label (the **Label/changelist to sync** setting), TeamCity now records the revision number in a new `vcsRoot.{externalId}.changelist` parameter. This quality-of-life improvement enables clear identification of the synced revision.
+* The [new Perforce-specific service message](service-messages.md#Perforce+Service+Messages) was added. This message allows you to manually rollback personal changes.
+* You can now [build Perforce shelved changelists](integrating-teamcity-with-perforce.md#Running+Builds+on+Perforce+Shelved+Files) using the regular `buildQueue` REST API endpoint. Previously, this functionality was available only via a dedicated `/app/perforce/runBuildForShelve` endpoint.
 
 
 ## Approve Multiple Builds at Once
@@ -169,8 +171,6 @@ In this release, we've overhauled the internal logic for fetching build lists an
 <!--* Artifacts in the default S3 storage are now downloaded in parallel, using up to 5 threads per artifact. This improvement boosts download speeds by up to 80% based on our benchmarks. The feature is enabled by default, requiring no manual configuration.-->
 * EC2-hosted agents now [report](setting-up-teamcity-for-amazon-ec2.md#EC2-Specific+Agent+Parameters) the `system.ec2.instance-life-cycle` parameter that allows you to identify whether this agent uses a spot or on-demand EC2 instance.
 * The [HashiCorp Vault connection](hashicorp-vault.md) no longer provides a setting that allows builds to proceed when TeamCity is unable to retrieve Vault secrets. Starting with version 2024.12, such build will fail.
-* The [new Perforce-specific service message](service-messages.md#Perforce+Service+Messages) was added. This message allows you to manually rollback personal changes.
-* TeamCity REST API: You can now [build Perforce shelved changelists](integrating-teamcity-with-perforce.md#Running+Builds+on+Perforce+Shelved+Files) using the regular `buildQueue` endpoint. Previously, this functionality was available only via a dedicated `/app/perforce/runBuildForShelve` endpoint.
 
 </snippet>
 

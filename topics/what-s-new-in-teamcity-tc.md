@@ -101,7 +101,8 @@ Learn more: [](branch-filter.md#Pull+Request+Branch+Filters)
 {instance="tc"}
 
 * When a [Perforce VCS Root](perforce.md) is configured to check out sources by label (the **Label/changelist to sync** setting), TeamCity now records the revision number in a new `vcsRoot.{externalId}.changelist` parameter. This quality-of-life improvement enables clear identification of the synced revision.
-
+* The [new Perforce-specific service message](service-messages.md#Perforce+Service+Messages) was added. This message allows you to manually rollback personal changes.
+* You can now [build Perforce shelved changelists](integrating-teamcity-with-perforce.md#Running+Builds+on+Perforce+Shelved+Files) using the regular `buildQueue` REST API endpoint. Previously, this functionality was available only via a dedicated `/app/perforce/runBuildForShelve` endpoint.
 
 ## Approve Multiple Builds at Once
 {instance="tc"}
@@ -171,8 +172,6 @@ In this release, we've overhauled the internal logic for fetching build lists an
 * All messages written to `teamcity-server.log` during a server startup are now duplicated to the [teamcity-startup.log](teamcity-server-logs.md). This log ensures major boot events are logged to a separate file, which may assist in troubleshooting server startup issues.
 * The [HashiCorp Vault connection](hashicorp-vault.md) no longer provides a setting that allows builds to proceed when TeamCity is unable to retrieve Vault secrets. Starting with version 2024.12, such build will fail.
 * [TeamCity proxy settings](configuring-proxy-server.md) are now automatically propagated to the [native Git](git.md#Native+Git+for+VCS-related+operations+on+the+server) configuration (if it does not have corresponding properties already set up). Previously, you had to configure them manually. HTTP proxy settings are propagated on both agent and server sides, whereas SSH proxy settings are currently propagated only for TeamCity server.
-* The [new Perforce-specific service message](service-messages.md#Perforce+Service+Messages) was added. This message allows you to manually rollback personal changes.
-* TeamCity REST API: You can now [build Perforce shelved changelists](integrating-teamcity-with-perforce.md#Running+Builds+on+Perforce+Shelved+Files) using the regular `buildQueue` endpoint. Previously, this functionality was available only via a dedicated `/app/perforce/runBuildForShelve` endpoint.
 * TeamCity [metrics](teamcity-monitoring-and-diagnostics.md#Metrics) set now includes new experimental metrics:
     * the `log_messages` metric allows you to obtain the total number of [Log4j](teamcity-server-logs.md) messages. This metric reports a separate number of log messages for each category (`ACTIVITIES`, `AGENT`, `STARTUP`, and others) and severity (`INFO` or `WARN`).
     * the `persistTasks_global_settings_count` and `persistTasks_project_configs_count` metrics report same values as the **Settings Persist Status** tab of the [Diagnostics](teamcity-monitoring-and-diagnostics.md) page. Both metrics are reported only for the main [node](multinode-setup.md).
