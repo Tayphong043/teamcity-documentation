@@ -35,7 +35,7 @@ This article explains the native integration approach. To learn about the tradit
    
 5. In your build configuration settings, specify [agent requirements](agent-requirements.md) and [step containers](container-wrapper.md) if needed.
 6. Trigger a new build.
-7. The TeamCity K8s executor collects a list of build steps with their parameters, generates a pod definition, and submits it to K8s cluster. Each build step runs in a separate pod, which allows you to specify different [containers](container-wrapper.md) for individual builds.
+7. The TeamCity K8s executor collects a list of build steps with their parameters, generates a pod definition, and submits it to K8s cluster. Each build step runs in a separate container, which allows you to specify different [images](container-wrapper.md) for individual steps.
 8. The K8s cluster allocates pods required to run a build and starts it.
 
 
@@ -103,8 +103,6 @@ template:
     containers:
       - name: template-container # see the limitations section
         image: johndoe/custom_agent_image:latest
-        nodeSelector:
-            linux: arm64
         resources:
           limits:
             ephemeral-storage: 25Gi
@@ -114,13 +112,15 @@ template:
         env:
           - name: JDK_1_8
             value: /usr/local/openjdk-8
+    nodeSelector:
+      linux: arm64
 ```
 
 ## Special Notes and Limitations
 
 * Currently, a project can use only one Kubernetes integration. We expect to support multiple executors per project (along with a mechanism to prioritize them) in future release cycles.
 * Executor mode is an agentless integration, so TeamCity is not aware of any "classic" build agents on the Kubernetes side. This leads to a "Build agent was disconnected while running a build" warning displayed when a build handled by an executor is running. As long as builds finish successfully, this warning does not indicate a misconfiguration or connectivity issue and can be disregarded. We expect to resolve this behavior in upcoming bug-fix releases.
-* [Pod templates](#YAML+Configuration) that specify custom images must have the "template-container" container names.
+* [Pod templates](#YAML+Configuration) that specify custom container properties must have the "template-container" container names.
 
     ```yaml
     # ...
@@ -132,7 +132,7 @@ template:
     # ...
     ```
     
-    Otherwise, the standard "jetbrains/teamcity-agent:latest" image is used regardless of the `image` property value.
+    Otherwise, the container will use default settings. For example, it will override the `image` property in favor of the standard "jetbrains/teamcity-agent:latest" image.
 * Currently, the Kubernetes executor does not support Windows nodes. Builds handled by these nodes are stuck in the "Setting up resources" phase with pods displaying the `MountVolume.SetUp failed for volume "kube-api-access-sfhbc"` error. For that reason, builds designed to run under Windows cannot be delegated to Kubernetes executor.
 
     To avoid this issue for mixed clusters (with both Windows and Linux nodes), specify the required node in [pod templates](#YAML+Configuration):
