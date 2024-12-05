@@ -128,7 +128,7 @@ Starting with version 2024.12, TeamCity supports the `teamcity.build.chain.skipT
 
 Both parameters accept comma-separated tags and configuration IDs as values.
 
-* Tags are values of the `teamcity.configuration.tags` parameter. Use this parameter to label any configuration and set the same value in `skipTags`/`onlyTags`.
+* Tags are values of the `teamcity.configuration.tags` parameter. Use this parameter to label any configuration and set the same value in `skipTags`/`onlyTags`. Multiple tag values may be separated with spaces, commas, or semicolons.
 * [Configuration IDs](identifier.md) are shown in configuration settings, below the configuration name.
 
     <img src="dk-get-build-conf-id.png" width="706" alt="Build configuration ID"/>
