@@ -77,4 +77,4 @@ To change the mode of the SSL connection (for example, to enforce or disable it)
     ```Text
     connectionUrl=jdbc:mysql://<hostname>:3306/<dbname>?sslMode=<value>
   ``` 
-See the list of supported connection mode values in [Connector/J configuration properties](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-configuration-properties.html).
+See the list of supported connection mode values in [Connector/J Reference / Configuration Properties](https://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).
