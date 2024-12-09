@@ -93,7 +93,7 @@ The time frame for automatic directory expiration can be changed by specifying a
    * `never` will let TeamCity know that the directory should never be deleted by TeamCity 
    * `default` will enforce using the default value
 
-_Expiration-based directory cleaning_ is performed in the background when build agent is idle (i.e. no builds are running).
+_Expiration-based directory cleaning_ is performed in the background when build agent is idle (that is, no builds are running).
 
 The _lifetime_ of a checkout directory is reflected in the `work/directory.map` file. Rows in the file correspond to existing checkout directories (one to one). Last value in each row represents the number of hours before that particular directory is cleaned up. By default, the value is set to 192 hours (8 days) for each directory (parameter value: `default`).
 
