@@ -30,11 +30,11 @@ In the future, the changes to the build steps of the original configuration will
 2. The triggered build will be transformed into a [composite build](composite-build-configuration.md) with dependencies on the builds from the generated build configurations.
 3. As soon as the first dependency build starts, the composite build will start too.
 
->The settings of the original build configuration are not affected by the _Parallel tests_ build feature. 
+> The settings of the original build configuration are not affected by the _Parallel tests_ build feature. 
 >
->On the other hand, the number and settings of the generated build configurations are fully controlled by the _Parallel tests_ build feature. The generated build configurations are read-only by default and are not intended to be modified manually. 
-The generated build configurations are also placed into a subproject that is hidden.
-If the project has [versioned settings](storing-project-settings-in-version-control.md) enabled, the generated build configurations will not be committed to the VCS repository.
+>On the other hand, the number and settings of the generated build configurations are fully controlled by the _Parallel tests_ build feature. The generated build configurations are read-only by default and are not intended to be modified manually.
+> The generated build configurations are also placed into a subproject that is hidden.
+> If the project has [versioned settings](storing-project-settings-in-version-control.md) enabled, the generated build configurations will not be committed to the VCS repository.
 
 A build of a generated build configuration will run the same set of build steps as defined in the original build configuration. If some of these steps are 
 of the [Maven](maven.md), [Gradle](gradle.md), [IntelliJ IDEA Project](intellij-idea-project.md), 
@@ -77,18 +77,33 @@ These parameters are:
 
 The format of the file with excluded tests is as follows:
 ```
-#version=1
-#algorithm=<name of the algorithm used to split tests, optional>
-#current_batch=<number of the current batch, same as teamcity.build.parallelTests.currentBatch parameter>
-#total_batches=<total number of batches, same as teamcity.build.parallelTests.totalBatches parameter>
-#suite=<suite name, can be empty>
+#version=<value>
+#algorithm=<value>
+#current_batch=<value>
+#total_batches=<value>
+#suite=<value>
 <new line separated list of test classes>
 ```
 
-Here `version` represents the file format version. It is implied that the custom tests' execution logic checks the version and reports an error or fails a build if the version has an unexpected value. 
+<deflist type="narrow">
 
-In the future, new keywords starting with the `#` character can be added to the file. All such unrecognized keywords should be ignored.    
+<def title="version">An integer value that is the file format version. It is implied that the custom tests' execution logic checks the version and reports an error or fails a build if the version has an unexpected value.</def>
 
+<def title="algorithm">
+Optional parameter. The type of the algorithm responsible for breaking down tests into batches. Available values:
+<ul>
+<li><code>DURATION</code> — prioritizes the execution time of test classes as the primary metric to create batches with approximately equal runtime.</li>
+<li><code>SPLIT_SUITE</code> — splits each test class within a test suite into N batches.</li>
+<li><code>GROUP_SUITES</code> — same as <code>DURATION</code> but groups all tests from the same suite into a single batch, ignoring individual test classes.</li>
+</ul>
+</def>
+
+<def title="current_batch">The number of the current batch, same as <code>teamcity.build.parallelTests.currentBatch</code> <a href="configuring-build-parameters.md">parameter</a>.</def>
+
+<def title="total_batches">The total number of batches, same as <code>teamcity.build.parallelTests.totalBatches</code> <a href="configuring-build-parameters.md">parameter</a>.</def>
+
+<def title="suite">The test suite name. This parameter can have an empty value.</def>
+</deflist>
 
 Note: Java and .NET test frameworks usually report tests to TeamCity in the following format:
 
