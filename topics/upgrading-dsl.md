@@ -34,7 +34,7 @@ This is the version specified in `settings.kts`, it looks like this:
 ```Kotlin
 version = "%product-version%"
 ```
-{interpolate-variables="true"}
+{ignore-vars="false"}
 
 
 
@@ -73,7 +73,7 @@ The `settings.kts` contains a so-called _configs version_:
   ```Kotlin
   version = "%product-version%"
   ```
-{interpolate-variables="true"}
+{ignore-vars="false"}
 
 This version should be changed to the current version of the TeamCity server.
 For instance, if TeamCity server was upgraded to `%product-version%`, then `%product-version%` should be specified in the `settings.kts`.

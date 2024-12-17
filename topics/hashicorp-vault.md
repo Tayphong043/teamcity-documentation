@@ -174,7 +174,7 @@ project {
 ### Update Legacy Parameters
 
 If you already used the TeamCity Vault plugin before the 2023.11 version, you might have legacy parameters that store paths to Vault secrets directly in their parameter values (in the `%vault:PATH!/KEY%` format).
-{interpolate-variables="false"}
+{ignore-vars="true"}
 
 Compared to these legacy parameters, new "remote parameters" showcase the following advantages:
 

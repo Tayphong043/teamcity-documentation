@@ -120,7 +120,7 @@ project {
 }
 
 ```
-{interpolate-variables="true"}
+{ignore-vars="false"}
 
 Here, `project {}` represents the current project whose settings you'll define in the DSL (in DSL code it is sometimes referenced as `_Self`). This is the same project where you enabled versioned settings on the previous step. This project ID and name can be accessed via a special `DslContext` object but cannot be changed via the DSL code.
 
@@ -144,7 +144,7 @@ project {
   }
 }
 ```
-{interpolate-variables="true"}
+{ignore-vars="false"}
 
 <anchor name="id-or-name"/>
 
@@ -171,7 +171,7 @@ object HelloWorld: BuildType({
     }
 })
 ```
-{interpolate-variables="true"}
+{ignore-vars="false"}
 
 In this case the usage of the `id()` function call is optional because TeamCity will generate the id based on the class name (`HelloWorld` in our case).
 
@@ -582,7 +582,7 @@ version = "%product-version%"
 project(MyProjectId.Project)
 
 ```
-{interpolate-variables="true"}
+{ignore-vars="false"}
 
 This is the entry point for project settings generation. Basically, it represents a Project instance which generates project settings.
 
