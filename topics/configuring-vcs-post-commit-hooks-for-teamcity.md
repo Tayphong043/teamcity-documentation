@@ -340,7 +340,7 @@ The latest Azure DevOps Server (formerly Team Foundation Server) and Azure DevOp
    ```Shell
    http://teamcity/app/rest/vcs-root-instances/commitHookNotification?locator=vcsRoot:(type:tfs,count:99999),property:(name:tfs-url,value:http%3A%2F%2Ftfs%3Aport%2Ftfs%2Fcollection,matchType:equals,ignoreCase:true),property:(name:tfs-root,value:Project,matchType:contains,ignoreCase:true),count:99999
    ```
-   {interpolate-variables="false"}
+   {ignore-vars="true"}
    
    </tab><tab title="Git Repository">
    
@@ -353,7 +353,7 @@ The latest Azure DevOps Server (formerly Team Foundation Server) and Azure DevOp
    ```Shell
    http://teamcity/app/rest/vcs-root-instances/commitHookNotification?locator=vcsRoot:(type:jetbrains.git,count:99999),property:(name:url,value:https%3A%2F%2Faccount.visualstudio.com%2FDefaultCollection%2FProject%2F_git%2FRepository,matchType:equals,ignoreCase:true),count:99999
    ```
-   {interpolate-variables="false"}
+   {ignore-vars="true"}
    
    </tab></tabs>
 
